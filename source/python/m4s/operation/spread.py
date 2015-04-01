@@ -22,13 +22,15 @@ class AddressesToVisit(object):
 
     def __init__(self,
             nr_rows,
-            nr_cols):
+            nr_cols,
+            cell_size):
         # List of row, col tuples of cells to spread from.
         self.list_of_cells = []
 
         # Raster with cells to spread from marked.
         # Boolean raster. False means 'not in list', True means 'in list'.
-        self.raster = raster.Raster(nr_rows, nr_cols, dtype=numpy.bool_)
+        self.raster = raster.Raster(nr_rows, nr_cols, cell_size,
+            dtype=numpy.bool_)
 
     def __nonzero__(self):
         return len(self.list_of_cells) > 0
@@ -63,7 +65,7 @@ def calc_spread_value(
         row,
         col):
     f = friction[row][col]
-    cell_length = cost.cell_length
+    cell_size = cost.cell_size
 
     min_costs = sys.float_info.max
     new_id = 0
@@ -79,10 +81,10 @@ def calc_spread_value(
 
             if 0 in neighbor:
                 # Vertical/horizonal neighbor.
-                costs *= cell_length
+                costs *= cell_size
             else:
                 # Diagonal neighbor.
-                costs *= cell_length * math.sqrt(2.0)
+                costs *= cell_size * math.sqrt(2.0)
 
             costs += cost[row_next][col_next]
 
@@ -112,11 +114,11 @@ def perform_spread(
     nr_cols = cost.nr_cols
 
     # While there are points to spread from.
-    ### iteration = 0
+    iteration = 0
     while(addresses_to_visit):
-        ### iteration += 1
-        ### debug.visualize(addresses_to_visit.raster,
-        ###     "cells_to_visit_{}.png".format(iteration))
+        iteration += 1
+        debug.visualize(addresses_to_visit.raster,
+            "cells_to_visit_{}.png".format(iteration))
         # Pop address of cell from the current collection with addresses to
         # visit.
         row, col = addresses_to_visit.pop()
@@ -163,26 +165,27 @@ def spread_all(
 
     nr_rows = points.nr_rows
     nr_cols = points.nr_cols
+    cell_size = points.cell_size
 
     if isinstance(initial_cost, (int, float)):
-        initial_cost = raster.Raster(nr_rows, nr_cols,
+        initial_cost = raster.Raster(nr_rows, nr_cols, cell_size,
             dtype=numpy.float32, fill_value=initial_cost)
 
     if isinstance(friction, (int, float)):
-        friction = raster.Raster(nr_rows, nr_cols,
+        friction = raster.Raster(nr_rows, nr_cols, cell_size,
             dtype=numpy.float32, fill_value=friction)
 
     # Initialize the collection identifying the cells that need to be
     # visited. Initially, this collection is empty.
-    addresses_to_visit = AddressesToVisit(nr_rows, nr_cols)
+    addresses_to_visit = AddressesToVisit(nr_rows, nr_cols, cell_size)
 
     # Mask all result costs.
-    cost = raster.Raster(nr_rows, nr_cols, dtype=numpy.float32)
+    cost = raster.Raster(nr_rows, nr_cols, cell_size, dtype=numpy.float32)
     cost.mask_all()
 
     # Initialize result point_id with 0, which is not a valid id for points
     # passed into this function. None of the result point id cells is masked.
-    point_id = raster.Raster(nr_rows, nr_cols, dtype=points.dtype)
+    point_id = raster.Raster(nr_rows, nr_cols, cell_size, dtype=points.dtype)
 
     # Iterate over all cells.
     for row in xrange(nr_rows):

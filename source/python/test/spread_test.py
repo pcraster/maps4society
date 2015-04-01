@@ -13,8 +13,9 @@ class SpreadTest(unittest.TestCase):
     def test_spread(self):
         nr_rows = 5
         nr_cols = 5
+        cell_size = 2.0
         dtype = numpy.int32
-        points = raster.Raster(nr_rows, nr_cols, dtype=dtype)
+        points = raster.Raster(nr_rows, nr_cols, cell_size, dtype=dtype)
 
         points[0][4] = 6
         points[1][1] = 1

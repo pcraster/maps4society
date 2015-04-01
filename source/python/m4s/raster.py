@@ -10,8 +10,11 @@ class Raster(object):
     def __init__(self,
             nr_rows,
             nr_cols,
+            cell_size,
             dtype=None,
             fill_value=None):
+        self.cell_size = cell_size
+
         if dtype is None:
             if fill_value is not None:
                 dtype = type(fill_value)
