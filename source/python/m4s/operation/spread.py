@@ -114,11 +114,12 @@ def perform_spread(
     nr_cols = cost.nr_cols
 
     # While there are points to spread from.
-    iteration = 0
+    ### iteration = 0
     while(addresses_to_visit):
-        iteration += 1
-        debug.visualize(addresses_to_visit.raster,
-            "cells_to_visit_{}.png".format(iteration))
+        ### iteration += 1
+        ### debug.visualize([addresses_to_visit.raster, cost, point_id],
+        ###     "cells_to_visit_{}.png".format(iteration), titles=["visit", "cost",
+        ###     "point_id"])
         # Pop address of cell from the current collection with addresses to
         # visit.
         row, col = addresses_to_visit.pop()
@@ -144,8 +145,8 @@ def perform_spread(
                         # First route was found.
                         (id == 0) or
                         # Cheaper route was found.
-                        (new_cost < current_cost and (not numpy.isclose(
-                            new_cost, current_cost)))):
+                        (new_cost < current_cost and (not numpy.allclose(
+                            [new_cost], [current_cost])))):
 
                     # A cheaper or first route to this cell was found.
                     # Inspect the neighbors too.
