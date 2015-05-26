@@ -20,12 +20,11 @@ class RasterTest(unittest.TestCase):
         self.assertEqual(raster_.cell_size, cell_size)
         self.assertEqual(raster_.dtype, numpy.int64)
 
-        self.assertEqual(raster_[0][0], 4)
-        self.assertEqual(raster_[0][1], 4)
-        self.assertEqual(raster_[1][0], 4)
-        self.assertEqual(raster_[1][1], 4)
-        self.assertEqual(raster_[2][0], 4)
-        self.assertEqual(raster_[2][1], 4)
+        numpy.testing.assert_equal(raster_.elements, [
+            [4, 4],
+            [4, 4],
+            [4, 4],
+        ])
 
         raster_ = raster.Raster(nr_rows, nr_cols, cell_size, fill_value=4.5)
 
@@ -34,12 +33,11 @@ class RasterTest(unittest.TestCase):
         self.assertEqual(raster_.cell_size, cell_size)
         self.assertEqual(raster_.dtype, numpy.float64)
 
-        self.assertEqual(raster_[0][0], 4.5)
-        self.assertEqual(raster_[0][1], 4.5)
-        self.assertEqual(raster_[1][0], 4.5)
-        self.assertEqual(raster_[1][1], 4.5)
-        self.assertEqual(raster_[2][0], 4.5)
-        self.assertEqual(raster_[2][1], 4.5)
+        numpy.testing.assert_almost_equal(raster_.elements, [
+            [4.5, 4.5],
+            [4.5, 4.5],
+            [4.5, 4.5],
+        ])
 
     def test_boole_raster(self):
         nr_rows = 3
@@ -54,28 +52,25 @@ class RasterTest(unittest.TestCase):
         self.assertEqual(raster_.dtype, dtype)
 
         # Default value is False.
-        self.assertEqual(raster_[0][0], False)
-        self.assertEqual(raster_[0][1], False)
-        self.assertEqual(raster_[1][0], False)
-        self.assertEqual(raster_[1][1], False)
-        self.assertEqual(raster_[2][0], False)
-        self.assertEqual(raster_[2][1], False)
+        numpy.testing.assert_equal(raster_.elements, [
+            [False, False],
+            [False, False],
+            [False, False],
+        ])
 
         # Default mask is False.
-        self.assertEqual(raster_.mask[0][0], False)
-        self.assertEqual(raster_.mask[0][1], False)
-        self.assertEqual(raster_.mask[1][0], False)
-        self.assertEqual(raster_.mask[1][1], False)
-        self.assertEqual(raster_.mask[2][0], False)
-        self.assertEqual(raster_.mask[2][1], False)
+        numpy.testing.assert_equal(raster_.mask, [
+            [False, False],
+            [False, False],
+            [False, False],
+        ])
 
         raster_.mask_all()
-        self.assertEqual(raster_.mask[0][0], True)
-        self.assertEqual(raster_.mask[0][1], True)
-        self.assertEqual(raster_.mask[1][0], True)
-        self.assertEqual(raster_.mask[1][1], True)
-        self.assertEqual(raster_.mask[2][0], True)
-        self.assertEqual(raster_.mask[2][1], True)
+        numpy.testing.assert_equal(raster_.mask, [
+            [True, True],
+            [True, True],
+            [True, True],
+        ])
 
 
 if __name__ == "__main__":

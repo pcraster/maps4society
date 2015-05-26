@@ -30,107 +30,37 @@ class SpreadTest(unittest.TestCase):
 
         self.assertEqual(cost.dtype, numpy.float32)
 
-        self.assertFalse(cost.mask[0][0])
-        self.assertFalse(cost.mask[0][1])
-        self.assertFalse(cost.mask[0][2])
-        self.assertFalse(cost.mask[0][3])
-        self.assertFalse(cost.mask[0][4])
-        self.assertFalse(cost.mask[1][0])
-        self.assertFalse(cost.mask[1][1])
-        self.assertFalse(cost.mask[1][2])
-        self.assertFalse(cost.mask[1][3])
-        self.assertTrue(cost.mask[1][4])
-        self.assertFalse(cost.mask[2][0])
-        self.assertFalse(cost.mask[2][1])
-        self.assertFalse(cost.mask[2][2])
-        self.assertFalse(cost.mask[2][3])
-        self.assertFalse(cost.mask[2][4])
-        self.assertFalse(cost.mask[3][0])
-        self.assertFalse(cost.mask[3][1])
-        self.assertFalse(cost.mask[3][2])
-        self.assertFalse(cost.mask[3][3])
-        self.assertFalse(cost.mask[3][4])
-        self.assertFalse(cost.mask[4][0])
-        self.assertFalse(cost.mask[4][1])
-        self.assertFalse(cost.mask[4][2])
-        self.assertFalse(cost.mask[4][3])
-        self.assertFalse(cost.mask[4][4])
+        numpy.testing.assert_equal(cost.mask, [
+            [False, False, False, False, False],
+            [False, False, False, False, True],
+            [False, False, False, False, False],
+            [False, False, False, False, False],
+            [False, False, False, False, False],
+        ])
 
-        self.assertAlmostEqual(cost[0][0], 2.8284271)
-        self.assertAlmostEqual(cost[0][1], 2.0)
-        self.assertAlmostEqual(cost[0][2], 2.0)
-        self.assertAlmostEqual(cost[0][3], 2.0)
-        self.assertAlmostEqual(cost[0][4], 0.0)
-        self.assertAlmostEqual(cost[1][0], 2.0)
-        self.assertAlmostEqual(cost[1][1], 0.0)
-        self.assertAlmostEqual(cost[1][2], 0.0)
-        self.assertAlmostEqual(cost[1][3], 0.0)
-        self.assertAlmostEqual(cost[2][0], 2.0)
-        self.assertAlmostEqual(cost[2][1], 0.0)
-        self.assertAlmostEqual(cost[2][2], 2.0)
-        self.assertAlmostEqual(cost[2][3], 2.0)
-        self.assertAlmostEqual(cost[2][4], 2.8284271)
-        self.assertAlmostEqual(cost[3][0], 2.0)
-        self.assertAlmostEqual(cost[3][1], 0.0)
-        self.assertAlmostEqual(cost[3][2], 2.0)
-        self.assertAlmostEqual(cost[3][3], 4.0)
-        self.assertAlmostEqual(cost[3][4], 4.8284273)
-        self.assertAlmostEqual(cost[4][0], 2.0)
-        self.assertAlmostEqual(cost[4][1], 0.0)
-        self.assertAlmostEqual(cost[4][2], 2.0)
-        self.assertAlmostEqual(cost[4][3], 4.0)
-        self.assertAlmostEqual(cost[4][4], 6.0)
+        numpy.testing.assert_almost_equal(cost.elements, [
+            [2.8284271, 2.0, 2.0, 2.0, 0.0],
+            [2.0, 0.0, 0.0, 0.0, numpy.nan],
+            [2.0, 0.0, 2.0, 2.0, 2.8284271],
+            [2.0, 0.0, 2.0, 4.0, 4.8284273],
+            [2.0, 0.0, 2.0, 4.0, 6.0],
+        ])
 
-        self.assertFalse(point_id.mask[0][0])
-        self.assertFalse(point_id.mask[0][1])
-        self.assertFalse(point_id.mask[0][2])
-        self.assertFalse(point_id.mask[0][3])
-        self.assertFalse(point_id.mask[0][4])
-        self.assertFalse(point_id.mask[1][0])
-        self.assertFalse(point_id.mask[1][1])
-        self.assertFalse(point_id.mask[1][2])
-        self.assertFalse(point_id.mask[1][3])
-        self.assertTrue(point_id.mask[1][4])
-        self.assertFalse(point_id.mask[2][0])
-        self.assertFalse(point_id.mask[2][1])
-        self.assertFalse(point_id.mask[2][2])
-        self.assertFalse(point_id.mask[2][3])
-        self.assertFalse(point_id.mask[2][4])
-        self.assertFalse(point_id.mask[3][0])
-        self.assertFalse(point_id.mask[3][1])
-        self.assertFalse(point_id.mask[3][2])
-        self.assertFalse(point_id.mask[3][3])
-        self.assertFalse(point_id.mask[3][4])
-        self.assertFalse(point_id.mask[4][0])
-        self.assertFalse(point_id.mask[4][1])
-        self.assertFalse(point_id.mask[4][2])
-        self.assertFalse(point_id.mask[4][3])
-        self.assertFalse(point_id.mask[4][4])
+        numpy.testing.assert_equal(point_id.mask, [
+            [False, False, False, False, False],
+            [False, False, False, False, True],
+            [False, False, False, False, False],
+            [False, False, False, False, False],
+            [False, False, False, False, False],
+        ])
 
-        self.assertEqual(point_id[0][0], 1)
-        self.assertEqual(point_id[0][1], 1)
-        self.assertEqual(point_id[0][2], 1)
-        self.assertEqual(point_id[0][3], 2)
-        self.assertEqual(point_id[0][4], 6)
-        self.assertEqual(point_id[1][0], 1)
-        self.assertEqual(point_id[1][1], 1)
-        self.assertEqual(point_id[1][2], 1)
-        self.assertEqual(point_id[1][3], 2)
-        self.assertEqual(point_id[2][0], 4)
-        self.assertEqual(point_id[2][1], 4)
-        self.assertEqual(point_id[2][2], 4)
-        self.assertEqual(point_id[2][3], 2)
-        self.assertEqual(point_id[2][4], 2)
-        self.assertEqual(point_id[3][0], 2)
-        self.assertEqual(point_id[3][1], 2)
-        self.assertEqual(point_id[3][2], 2)
-        self.assertEqual(point_id[3][3], 2)
-        self.assertEqual(point_id[3][4], 2)
-        self.assertEqual(point_id[4][0], 3)
-        self.assertEqual(point_id[4][1], 3)
-        self.assertEqual(point_id[4][2], 3)
-        self.assertEqual(point_id[4][3], 3)
-        self.assertEqual(point_id[4][4], 3)
+        numpy.testing.assert_equal(point_id.elements, [
+            [1, 1, 1, 2, 6],
+            [1, 1, 1, 2, numpy.nan],
+            [4, 4, 4, 2, 2],
+            [2, 2, 2, 2, 2],
+            [3, 3, 3, 3, 3],
+        ])
 
 
 if __name__ == "__main__":
