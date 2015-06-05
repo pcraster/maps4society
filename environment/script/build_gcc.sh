@@ -6,20 +6,52 @@ set -e
 # is a big difference between compiler versions.
 
 # Hardwiring build and install roots. Update if necessary.
-build_root=$HOME/tmp
-install_root=~/tmp/opt
+
+
+function print_usage()
+{
+    echo -e "\
+usage: $0 [-h] <build_prefix> <install_prefix> <nr_jobs>
+
+-h              Show (this) usage information.
+
+build_prefix    Directory to store temporary files.
+install_prefix  Root of directory to install the resulting files.
+nr_jobs         Number of jobs to run simultaneously."
+}
+
+
+function parse_commandline()
+{
+    while getopts h option; do
+        case $option in
+            h) print_usage; exit 0;;
+            *) print_usage; exit 2;;
+        esac
+    done
+    shift $((OPTIND-1))
+
+    if [ $# -ne 3 ]; then
+        print_usage
+        exit 2
+    fi
+
+    build_prefix=$1
+    install_prefix=$2
+    nr_jobs=$3
+}
+
 
 wget="wget --no-check-certificate"
 gnu_make="make"
-nr_jobs=4
 
 
 build_gcc() {
     local gcc_version=4.9.2
     local gcc_base=gcc-$gcc_version
-    local gcc_prefix=$install_root/$gcc_base
+    local gcc_prefix=$install_prefix/$gcc_base
 
-    cd $build_root
+    cd $build_prefix
 
     if [ ! -e $gcc_base.tar.bz2 ]; then
         $wget ftp://ftp.nluug.nl/mirror/languages/gcc/releases/$gcc_base/$gcc_base.tar.bz2
@@ -58,4 +90,5 @@ build_gcc() {
 }
 
 
+parse_commandline $*
 build_gcc
