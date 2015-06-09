@@ -1,0 +1,38 @@
+INCLUDE_DIRECTORIES(
+  ${MULTICORE_FIELD_INCLUDE_DIR}
+  ${_PCRTREE2_ROOT_INCLUDE}/pcraster_model_engine
+  ${_PCRTREE2_ROOT_INCLUDE}/pcraster_python
+  ${_PCRTREE2_ROOT_INCLUDE}/pcrgeo
+  ${_PCRTREE2_ROOT_INCLUDE}/include
+  ${_PCRTREE2_ROOT_INCLUDE}/pcrcom
+  ${FERN_INCLUDE_DIRS}
+)
+
+
+SET(_SOURCES
+  execution_policy
+  pcraster_multicore
+)
+
+
+ADD_LIBRARY(_pcraster_multicore SHARED ${_SOURCES})
+
+
+ADD_DEPENDENCIES(_pcraster_multicore
+  multicore_field)
+
+
+TARGET_LINK_LIBRARIES(_pcraster_multicore
+  ${PCRTREE2_MODELENGINE_LIBRARY}
+  ${PCRTREE2_PYTHON_LIBRARY}
+  ${FERN_ALGORITHM_CORE_LIBRARY}
+  ${FERN_ALGORITHM_POLICY_LIBRARY}
+  ${FERN_CORE_LIBRARY}
+  ${BOOST_PYTHON_LIBRARY}
+  ${BOOST_CHRONO_LIBRARY}
+)
+
+
+CONFIGURE_PYTHON_EXTENSION(_pcraster_multicore
+    "_pcraster_multicore"
+)
