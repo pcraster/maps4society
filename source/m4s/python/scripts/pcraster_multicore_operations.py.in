@@ -1,0 +1,76 @@
+import types
+import pcraster._pcraster as _pcraster
+import _pcraster_multicore as pmc
+
+
+def get_scalar_field(arg):
+  res = arg
+
+  if isinstance(arg, _pcraster.Field):
+    return(arg)
+  elif isinstance(arg, types.IntType) or isinstance(arg, types.LongType) or isinstance(arg, types.FloatType):
+    res = _pcraster.newNonSpatialField(float(arg))
+  else:
+    raise RuntimeError("conversion of argument {} not possible".format(type(arg)))
+
+  # nonspatials do not return a good valuescale...
+  #if not res.dataType() == _pcraster.VALUESCALE.Scalar:
+  #  raise RuntimeError("argument type is '{}', legal type is 'scalar'".format(str(res.dataType()).lower()))
+
+  return res
+
+
+def add(arg1, arg2):
+  try:
+    arg1 = get_scalar_field(arg1)
+    arg2 = get_scalar_field(arg2)
+    return pmc.add(arg1, arg2)
+  except RuntimeError as exception:
+    raise RuntimeError("add: {}".format(str(exception)))
+
+
+def sub(arg1, arg2):
+  try:
+    arg1 = get_scalar_field(arg1)
+    arg2 = get_scalar_field(arg2)
+    return pmc.sub(arg1, arg2)
+  except RuntimeError as exception:
+    raise RuntimeError("sub: {}".format(str(exception)))
+
+def mul(arg1, arg2):
+  try:
+    arg1 = get_scalar_field(arg1)
+    arg2 = get_scalar_field(arg2)
+    return pmc.mul(arg1, arg2)
+  except RuntimeError as exception:
+    raise RuntimeError("mul: {}".format(str(exception)))
+
+def div(arg1, arg2):
+  try:
+    arg1 = get_scalar_field(arg1)
+    arg2 = get_scalar_field(arg2)
+    return pmc.div(arg1, arg2)
+  except RuntimeError as exception:
+    raise RuntimeError("div: {}".format(str(exception)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def power(arg1, arg2):
+  try:
+    arg1 = get_scalar_field(arg1)
+    arg2 = get_scalar_field(arg2)
+    return pmc.power(arg1, arg2)
+  except RuntimeError as exception:
+    raise RuntimeError("pow: {}".format(str(exception)))

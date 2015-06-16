@@ -1,7 +1,8 @@
 #pragma once
 
 #include "csftypes.h"
-#include "multicore_field.h"
+
+#include "m4s/wrapper/multicore_field.h"
 
 template<class T>
 class MulticoreFieldOutputNoDataPolicy

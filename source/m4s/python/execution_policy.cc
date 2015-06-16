@@ -1,6 +1,7 @@
+#include <iostream>
+
 #include "execution_policy.h"
 
-#include <iostream>
 
 namespace fa = fern::algorithm;
 
@@ -16,20 +17,17 @@ static fa::ExecutionPolicy _execution_policy{
 void set_nr_cpus(size_t cpus){
   size_t max_cpus = std::thread::hardware_concurrency();
   if(cpus > max_cpus){
-    std::cout <<"Number of CPUs requested (" << cpus << ") larger than CPUs available, limiting to " << max_cpus << std::endl;
+    std::cout << "Number of CPUs requested (" << cpus << ") larger than CPUs available, limiting to " << max_cpus << " CPUs" << std::endl;
     cpus = max_cpus;
   }
-  if(cpus <= 1){
-    _execution_policy = fa::SequentialExecutionPolicy{};
+  if(cpus < 1){
+    cpus = 1;
   }
-  else{
-    _execution_policy = fa::ParallelExecutionPolicy{cpus};
-  }
+  _execution_policy = fa::ParallelExecutionPolicy{cpus};
 }
 
 
-fa::ExecutionPolicy const& execution_policy()
-{
+fa::ExecutionPolicy const& execution_policy(){
   return _execution_policy;
 }
 

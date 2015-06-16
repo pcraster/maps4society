@@ -2,6 +2,7 @@
 
 #include "csftypes.h"
 #include "com_mvop.h"
+
 #include "multicore_field.h"
 
 template<class T>

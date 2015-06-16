@@ -38,7 +38,7 @@ public:
 
   void             set_cell(size_t idx2) const;
 
-  calc::Field*     getField();
+  calc::Field*     getField() const;
 
 protected:
 
@@ -65,7 +65,7 @@ multicore_field<T>::multicore_field(calc::Field* field){
 
 
 template<class T>
-inline calc::Field* multicore_field<T>::getField(){
+inline calc::Field* multicore_field<T>::getField() const{
   return pcr_field;
 }
 

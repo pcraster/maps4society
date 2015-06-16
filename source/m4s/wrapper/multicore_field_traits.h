@@ -1,8 +1,8 @@
 #pragma once
 
-#include "multicore_field.h"
 #include "fern/core/argument_traits.h"
 
+#include "multicore_field.h"
 
 namespace fern {
 

@@ -1,5 +1,8 @@
+ADD_SUBDIRECTORY(local)
+ADD_SUBDIRECTORY(scripts)
+
+
 INCLUDE_DIRECTORIES(
-  ${MULTICORE_FIELD_INCLUDE_DIR}
   ${_PCRTREE2_ROOT_INCLUDE}/pcraster_model_engine
   ${_PCRTREE2_ROOT_INCLUDE}/pcraster_python
   ${_PCRTREE2_ROOT_INCLUDE}/pcrgeo
@@ -19,10 +22,12 @@ ADD_LIBRARY(_pcraster_multicore SHARED ${_SOURCES})
 
 
 ADD_DEPENDENCIES(_pcraster_multicore
-  multicore_field)
+  multicore_field
+)
 
 
 TARGET_LINK_LIBRARIES(_pcraster_multicore
+  multicore_field_python_locals
   ${PCRTREE2_MODELENGINE_LIBRARY}
   ${PCRTREE2_PYTHON_LIBRARY}
   ${FERN_ALGORITHM_CORE_LIBRARY}

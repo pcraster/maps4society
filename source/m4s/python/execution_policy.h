@@ -6,7 +6,7 @@
 namespace pcraster_multicore {
 namespace python {
 
-void set_nr_cpus(size_t cpus);
+void               set_nr_cpus         (size_t cpus);
 
 fern::algorithm::ExecutionPolicy const&
                    execution_policy    ();
