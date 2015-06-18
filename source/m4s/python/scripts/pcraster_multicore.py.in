@@ -5,8 +5,8 @@ except:
   raise ImportError("Failed to import the module '_pcraster'")
 
 import pcraster_multicore_operations as pmcop
-import _pcraster_multicore as pmc
-from _pcraster_multicore import set_nr_cpus
+#import _pcraster_multicore as pmc
+from _pcraster_multicore import set_nr_cpus, slope
 
 
 def pcrmcAdd(self, field):

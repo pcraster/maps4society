@@ -5,7 +5,6 @@
 
 namespace calc {
   class Field;
-  class Spatial;
 }
 
 namespace multicore_field{

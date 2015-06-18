@@ -1,7 +1,7 @@
 import types
 import pcraster._pcraster as _pcraster
 import _pcraster_multicore as pmc
-
+from _pcraster_multicore import set_nr_cpus, slope
 
 def get_scalar_field(arg):
   res = arg
@@ -74,3 +74,15 @@ def power(arg1, arg2):
     return pmc.power(arg1, arg2)
   except RuntimeError as exception:
     raise RuntimeError("pow: {}".format(str(exception)))
+
+
+
+
+
+#def slope(arg1):
+#  try:
+#    print "arg2 = get_scalar_field(arg2)"
+#    arg1 = get_scalar_field(arg1)
+#    return pmc.slope(arg1)
+#  except RuntimeError as exception:
+#    raise RuntimeError("slope: {}".format(str(exception)))

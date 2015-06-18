@@ -35,6 +35,7 @@ inline MulticoreFieldOutputNoDataPolicy<T>::MulticoreFieldOutputNoDataPolicy(
 {
 }
 
+
 template<class T>
 inline void MulticoreFieldOutputNoDataPolicy<T>::mark_as_no_data(
     size_t index) const noexcept

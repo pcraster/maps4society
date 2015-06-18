@@ -29,6 +29,7 @@ private:
 
 };
 
+
 template<class T>
 inline MulticoreFieldInputNoDataPolicy<T>::MulticoreFieldInputNoDataPolicy(
     multicore_field::multicore_field<T> const& aField) noexcept
@@ -37,6 +38,7 @@ inline MulticoreFieldInputNoDataPolicy<T>::MulticoreFieldInputNoDataPolicy(
 
 {
 }
+
 
 template<class T>
 inline bool MulticoreFieldInputNoDataPolicy<T>::is_no_data(

@@ -40,6 +40,8 @@ public:
 
   calc::Field*     getField() const;
 
+  double           cell_size() const;
+
 protected:
 
 private:
@@ -52,6 +54,8 @@ private:
 
   size_t           cols;
 
+  double           _cell_size;
+
 };
 
 
@@ -61,11 +65,12 @@ multicore_field<T>::multicore_field(calc::Field* field){
   the_cells = static_cast<T*>(pcr_field->dest());
   rows = pcraster::python::globals.cloneSpace().nrRows();
   cols = pcraster::python::globals.cloneSpace().nrCols();
+  _cell_size = pcraster::python::globals.cloneSpace().cellSize();
 }
 
 
 template<class T>
-inline calc::Field* multicore_field<T>::getField() const{
+inline calc::Field* multicore_field<T>::getField() const {
   return pcr_field;
 }
 
@@ -109,8 +114,12 @@ inline size_t multicore_field<T>::index(size_t idx1, size_t idx2) const {
 template<class T>
 inline T* multicore_field<T>::get_cell() const {
   return the_cells;
-
 }
 
+
+template<class T>
+inline double multicore_field<T>::cell_size() const {
+  return _cell_size;
+}
 
 } // namespace multicore_field

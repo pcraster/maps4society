@@ -8,6 +8,10 @@ INCLUDE_DIRECTORIES(
 )
 
 SET(_SOURCES
+  #add.cc
+  #sub.cc
+  #mul.cc
+  div.cc
   pow.cc
 )
 
@@ -15,4 +19,3 @@ ADD_LIBRARY(multicore_field_python_locals
   STATIC
     ${_SOURCES}
 )
-
