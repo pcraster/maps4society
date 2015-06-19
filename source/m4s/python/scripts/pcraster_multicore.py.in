@@ -54,9 +54,9 @@ def pcrmcRPow(self, number):
 #
 #_pcraster.Field.__mul__      = pcrmcMul
 #_pcraster.Field.__rmul__      = pcrmcRMul
-
-_pcraster.Field.__div__      = pcrmcDiv
-_pcraster.Field.__rdiv__      = pcrmcRDiv
+#
+#_pcraster.Field.__div__      = pcrmcDiv
+#_pcraster.Field.__rdiv__      = pcrmcRDiv
 
 _pcraster.Field.__pow__      = pcrmcPow
 _pcraster.Field.__rpow__     = pcrmcRPow

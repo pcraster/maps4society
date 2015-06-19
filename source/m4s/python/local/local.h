@@ -1,9 +1,9 @@
 #pragma once
 
-//#include "m4s/python/local/add.h"
-//#include "m4s/python/local/sub.h"
-//#include "m4s/python/local/mul.h"
-#include "m4s/python/local/div.h"
+// #include "m4s/python/local/add.h"
+// #include "m4s/python/local/sub.h"
+// #include "m4s/python/local/mul.h"
+// #include "m4s/python/local/div.h"
 
 
 
@@ -24,5 +24,9 @@ ifthen
 
 ifthenelse
 
+cover
 
+
+min
+max
 */
