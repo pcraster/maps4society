@@ -5,8 +5,7 @@ except:
   raise ImportError("Failed to import the module '_pcraster'")
 
 import pcraster_multicore_operations as pmcop
-#import _pcraster_multicore as pmc
-from _pcraster_multicore import set_nr_cpus, slope
+#from _pcraster_multicore import set_nr_cpus, slope
 
 
 def pcrmcAdd(self, field):
@@ -54,9 +53,9 @@ def pcrmcRPow(self, number):
 #
 #_pcraster.Field.__mul__      = pcrmcMul
 #_pcraster.Field.__rmul__      = pcrmcRMul
-#
-#_pcraster.Field.__div__      = pcrmcDiv
-#_pcraster.Field.__rdiv__      = pcrmcRDiv
+
+_pcraster.Field.__div__      = pcrmcDiv
+_pcraster.Field.__rdiv__      = pcrmcRDiv
 
 _pcraster.Field.__pow__      = pcrmcPow
 _pcraster.Field.__rpow__     = pcrmcRPow

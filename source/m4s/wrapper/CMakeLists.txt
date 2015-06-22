@@ -4,9 +4,9 @@ INCLUDE_DIRECTORIES(
   ${_PCRTREE2_ROOT_INCLUDE}/pcrcom
 )
 
-ADD_LIBRARY(multicore_field
-  STATIC
-    multicore_field
-)
-
-SET_TARGET_PROPERTIES(multicore_field PROPERTIES LINKER_LANGUAGE CXX)
+# ADD_LIBRARY(multicore_field
+#   STATIC
+#     multicore_field
+# )
+# 
+# SET_TARGET_PROPERTIES(multicore_field PROPERTIES LINKER_LANGUAGE CXX)

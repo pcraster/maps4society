@@ -1,4 +1,4 @@
-set(_TARGET_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/multicore_field)
+set(_TARGET_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/pcraster_multicore)
 
 configure_file(__init__.py.in
     ${_TARGET_DIRECTORY}/__init__.py

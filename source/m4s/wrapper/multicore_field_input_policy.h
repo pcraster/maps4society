@@ -44,5 +44,5 @@ template<class T>
 inline bool MulticoreFieldInputNoDataPolicy<T>::is_no_data(
     size_t index) const noexcept
 {
-    return pcr::isMV(_field.get_cell()[index]);
+    return pcr::isMV(_field.get_cells()[index]);
 }

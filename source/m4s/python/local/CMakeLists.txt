@@ -11,8 +11,10 @@ SET(_SOURCES
 #   add.cc
 #   sub.cc
 #   mul.cc
-#   div.cc
+  div.cc
   pow.cc
+
+  #cos.cc
 )
 
 ADD_LIBRARY(multicore_field_python_locals

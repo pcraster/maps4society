@@ -34,7 +34,7 @@ public:
 
   size_t           size(size_t dimension) const;
 
-  T*               get_cell() const;
+  T*               get_cells() const;
 
   void             set_cell(size_t idx2) const;
 
@@ -112,7 +112,7 @@ inline size_t multicore_field<T>::index(size_t idx1, size_t idx2) const {
 
 
 template<class T>
-inline T* multicore_field<T>::get_cell() const {
+inline T* multicore_field<T>::get_cells() const {
   return the_cells;
 }
 
