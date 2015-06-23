@@ -9,7 +9,7 @@
 #include "m4s/python/local/cos.h"
 //#include "m4s/python/local/sin.h"
 //#include "m4s/python/local/tan.h"
-//#include "m4s/python/local/sqrt.h"
+#include "m4s/python/local/sqrt.h"
 
 
 //#include "m4s/python/local/.h"
@@ -17,15 +17,18 @@
 
 
 /*
-abs
 
-ifthen 
+and or not defined fern/algorithm/algebra/boole/and.h>
 
-ifthenelse
+abs fern/algorithm/algebra/elementary/absolute.h>
 
-cover
+ifthen <fern/algorithm/core/if.h>
+
+ifthenelse<fern/algorithm/core/if.h>
+
+cover fern/algorithm/core/cover.h>
 
 
-min
+min<fern/algorithm/accumulator/min.h>
 max
 */
