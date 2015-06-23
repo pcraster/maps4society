@@ -14,7 +14,8 @@ SET(_SOURCES
   div.cc
   pow.cc
 
-  #cos.cc
+  cos.cc
+  sqrt.cc
 )
 
 ADD_LIBRARY(multicore_field_python_locals
