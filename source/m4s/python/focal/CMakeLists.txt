@@ -9,17 +9,11 @@ INCLUDE_DIRECTORIES(
 )
 
 SET(_SOURCES
-#   add.cc
-#   sub.cc
-   mul.cc
-  div.cc
-  pow.cc
-
-  cos.cc
-  sqrt.cc
+  slope.cc
+  #upstream.cc
 )
 
-ADD_LIBRARY(multicore_field_python_locals
+ADD_LIBRARY(multicore_field_python_focals
   STATIC
     ${_SOURCES}
 )
