@@ -1,4 +1,4 @@
-#include "m4s/python/local/pow.h"
+#include "m4s/python/local/div.h"
 
 // PCRaster
 #include "calc_spatial.h"
@@ -20,7 +20,7 @@
 
 // Fern
 #include "fern/algorithm/policy/policies.h"
-#include "fern/algorithm/algebra/elementary/pow.h"
+#include "fern/algorithm/algebra/elementary/divide.h"
 
 
 namespace fa = fern::algorithm;
@@ -29,7 +29,7 @@ namespace fa = fern::algorithm;
 namespace pcraster_multicore {
 namespace python {
 
-calc::Field* power(
+calc::Field* div(
          calc::Field* field_a,
          calc::Field* field_b){
 
@@ -41,7 +41,7 @@ calc::Field* power(
     res_field = new calc::NonSpatial(VS_S);
     multicore_nonspatial::multicore_nonspatial<REAL4> res(res_field);
 
-    return power_number_number(&arg1, &arg2, &res);
+    return div_number_number(&arg1, &arg2, &res);
   }
 
   res_field = new calc::Spatial(VS_S, calc::CRI_f, nr_cells());
@@ -51,20 +51,20 @@ calc::Field* power(
 
   if(field_b->isSpatial() == false){
     const multicore_field::multicore_field<REAL4> arg1(field_a);
-    return power_field_number(epol, &arg1, nonspatial_value(field_b), &res);
+    return div_field_number(epol, &arg1, nonspatial_value(field_b), &res);
   }
   else if(field_a->isSpatial() == false){
     const multicore_field::multicore_field<REAL4> arg2(field_b);
-    return power_number_field(epol, nonspatial_value(field_a), &arg2, &res);
+    return div_number_field(epol, nonspatial_value(field_a), &arg2, &res);
   }
   else{
     const multicore_field::multicore_field<REAL4> arg1(field_a);
     const multicore_field::multicore_field<REAL4> arg2(field_b);
-    return power_field_field(epol, &arg1, &arg2, &res);
+    return div_field_field(epol, &arg1, &arg2, &res);
   }
 }
 
-calc::Field* power_number_number(
+calc::Field* div_number_number(
          const multicore_nonspatial::multicore_nonspatial<REAL4>* arg1,
          const multicore_nonspatial::multicore_nonspatial<REAL4>* arg2,
          multicore_nonspatial::multicore_nonspatial<REAL4>* res){
@@ -75,15 +75,15 @@ calc::Field* power_number_number(
 
   MulticoreNonspatialOutputNoDataPolicy<REAL4> output_no_data_policy(*res);
 
-  fa::algebra::pow<fa::pow::OutOfDomainPolicy,
-    fa::pow::OutOfRangePolicy>(input_no_data_policy,
+  fa::algebra::divide<fa::divide::OutOfDomainPolicy,
+    fa::divide::OutOfRangePolicy>(input_no_data_policy,
     output_no_data_policy, fa::sequential, *arg1, *arg2, *res);
 
   return res->getField();
 }
 
 
-calc::Field* power_field_field(
+calc::Field* div_field_field(
          fa::ExecutionPolicy epol,
          const multicore_field::multicore_field<REAL4>* arg1,
          const multicore_field::multicore_field<REAL4>* arg2,
@@ -95,15 +95,15 @@ calc::Field* power_field_field(
 
   MulticoreFieldOutputNoDataPolicy<REAL4> output_no_data_policy(*res);
 
-  fa::algebra::pow<fa::pow::OutOfDomainPolicy,
-    fa::pow::OutOfRangePolicy>(input_no_data_policy,
+  fa::algebra::divide<fa::divide::OutOfDomainPolicy,
+    fa::divide::OutOfRangePolicy>(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
 
   return res->getField();
 }
 
 
-calc::Field* power_field_number(
+calc::Field* div_field_number(
          fern::algorithm::ExecutionPolicy epol,
          const multicore_field::multicore_field<REAL4>* arg1,
          REAL4 arg2,
@@ -115,15 +115,15 @@ calc::Field* power_field_number(
   InputNoDataPolicy input_no_data_policy{{*arg1},{}};
   MulticoreFieldOutputNoDataPolicy<REAL4> output_no_data_policy(*res);
 
-  fa::algebra::pow<fa::pow::OutOfDomainPolicy,
-    fa::pow::OutOfRangePolicy>(input_no_data_policy,
+  fa::algebra::divide<fa::divide::OutOfDomainPolicy,
+    fa::divide::OutOfRangePolicy>(input_no_data_policy,
     output_no_data_policy, epol, *arg1, arg2, *res);
 
   return res->getField();
 }
 
 
-calc::Field* power_number_field(
+calc::Field* div_number_field(
          fern::algorithm::ExecutionPolicy epol,
          REAL4 arg1,
          const multicore_field::multicore_field<REAL4>* arg2,
@@ -135,8 +135,8 @@ calc::Field* power_number_field(
   InputNoDataPolicy input_no_data_policy{{},{*arg2}};
   MulticoreFieldOutputNoDataPolicy<REAL4> output_no_data_policy(*res);
 
-  fa::algebra::pow<fa::pow::OutOfDomainPolicy,
-    fa::pow::OutOfRangePolicy>(input_no_data_policy,
+  fa::algebra::divide<fa::divide::OutOfDomainPolicy,
+    fa::divide::OutOfRangePolicy>(input_no_data_policy,
     output_no_data_policy, epol, arg1, *arg2, *res);
 
   return res->getField();

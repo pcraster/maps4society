@@ -17,6 +17,13 @@ def get_scalar_field(arg):
   return res
 
 
+
+
+
+
+
+# just get a spatial or nonspatial
+# correct SV should be checked in the C++ code
 def get_field(arg):
   res = arg
 
@@ -41,8 +48,8 @@ def get_field(arg):
 #
 #def pcrmcand(arg1, arg2):
 #  try:
-#    arg1 = get_boolean_field(arg1)
-#    arg2 = get_boolean_field(arg2)
+#    arg1 = get_field(arg1)
+#    arg2 = get_field(arg2)
 #    return _pmc.pcrmcand(arg1, arg2)
 #  except RuntimeError as exception:
 #    raise RuntimeError("pcraster_multicore.and: {}".format(str(exception)))
@@ -128,6 +135,8 @@ def cos(arg1):
     return _pmc.cos(arg1)
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.cos: {}".format(str(exception)))
+
+
 
 def sqrt(arg1):
   try:

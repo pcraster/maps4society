@@ -14,20 +14,20 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     "Set the number of CPUs used in one algorithms");
 
   // Local operations
-//  bp::def("and", &pmcpy::and,
+//  bp::def("_and", &pmcpy::and,
 //    bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("or", &pmcpy::or,
+//   bp::def("_or", &pmcpy::or,
 //     bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("not", &pmcpy::not,
+//   bp::def("_not", &pmcpy::not,
 //     bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("add", &pmcpy::add,
-//     bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("sub", &pmcpy::sub,
-//     bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("mul", &pmcpy::mul,
-//     bp::return_value_policy<bp::manage_new_object>());
-   bp::def("div", &pmcpy::div,
-     bp::return_value_policy<bp::manage_new_object>());
+  bp::def("add", &pmcpy::add,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("sub", &pmcpy::sub,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("mul", &pmcpy::mul,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("div", &pmcpy::div,
+    bp::return_value_policy<bp::manage_new_object>());
 
   bp::def("sqrt", &pmcpy::sqrt,
     bp::return_value_policy<bp::manage_new_object>());
@@ -37,11 +37,15 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
 
   bp::def("cos", &pmcpy::cos,
     bp::return_value_policy<bp::manage_new_object>());
+//   bp::def("sin", &pmcpy::sin,
+//     bp::return_value_policy<bp::manage_new_object>());
+//   bp::def("tan", &pmcpy::tan,
+//     bp::return_value_policy<bp::manage_new_object>());
 
 
   // Focal operations
   bp::def("slope", &pmcpy::slope,
     bp::return_value_policy<bp::manage_new_object>());
-  bp::def("upstream", &pmcpy::upstream,
-    bp::return_value_policy<bp::manage_new_object>());
+  //bp::def("upstream", &pmcpy::upstream,
+  //  bp::return_value_policy<bp::manage_new_object>());
 }

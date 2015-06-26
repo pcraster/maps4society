@@ -9,9 +9,10 @@ INCLUDE_DIRECTORIES(
 )
 
 SET(_SOURCES
-#   add.cc
-#   sub.cc
-   mul.cc
+  utils.cc
+  add.cc
+  sub.cc
+  mul.cc
   div.cc
   pow.cc
 
