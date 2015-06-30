@@ -14,29 +14,29 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     "Set the number of CPUs used in one algorithms");
 
   // Local operations
-//  bp::def("_and", &pmcpy::and,
-//    bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("_or", &pmcpy::or,
+  bp::def("_and", &pmcpy::_and,
+    bp::return_value_policy<bp::manage_new_object>());
+//   bp::def("_or", &pmcpy::_or,
 //     bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("_not", &pmcpy::not,
+//   bp::def("_not", &pmcpy::_not,
 //     bp::return_value_policy<bp::manage_new_object>());
-  bp::def("add", &pmcpy::add,
-    bp::return_value_policy<bp::manage_new_object>());
-  bp::def("sub", &pmcpy::sub,
-    bp::return_value_policy<bp::manage_new_object>());
-  bp::def("mul", &pmcpy::mul,
-    bp::return_value_policy<bp::manage_new_object>());
-  bp::def("div", &pmcpy::div,
-    bp::return_value_policy<bp::manage_new_object>());
-
-  bp::def("sqrt", &pmcpy::sqrt,
-    bp::return_value_policy<bp::manage_new_object>());
-
-  bp::def("power", &pmcpy::power,
-    bp::return_value_policy<bp::manage_new_object>());
-
-  bp::def("cos", &pmcpy::cos,
-    bp::return_value_policy<bp::manage_new_object>());
+//   bp::def("add", &pmcpy::add,
+//     bp::return_value_policy<bp::manage_new_object>());
+//   bp::def("sub", &pmcpy::sub,
+//     bp::return_value_policy<bp::manage_new_object>());
+//   bp::def("mul", &pmcpy::mul,
+//     bp::return_value_policy<bp::manage_new_object>());
+//   bp::def("div", &pmcpy::div,
+//     bp::return_value_policy<bp::manage_new_object>());
+// 
+//   bp::def("sqrt", &pmcpy::sqrt,
+//     bp::return_value_policy<bp::manage_new_object>());
+// 
+//   bp::def("power", &pmcpy::power,
+//     bp::return_value_policy<bp::manage_new_object>());
+// 
+//   bp::def("cos", &pmcpy::cos,
+//     bp::return_value_policy<bp::manage_new_object>());
 //   bp::def("sin", &pmcpy::sin,
 //     bp::return_value_policy<bp::manage_new_object>());
 //   bp::def("tan", &pmcpy::tan,
@@ -44,8 +44,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
 
 
   // Focal operations
-  bp::def("slope", &pmcpy::slope,
-    bp::return_value_policy<bp::manage_new_object>());
+//   bp::def("slope", &pmcpy::slope,
+//     bp::return_value_policy<bp::manage_new_object>());
   //bp::def("upstream", &pmcpy::upstream,
   //  bp::return_value_policy<bp::manage_new_object>());
 }

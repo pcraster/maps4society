@@ -7,11 +7,11 @@ except:
 import pcraster_multicore_operations as pmcop
 
 
-#def pcrmcAnd(self, field):
-#  return pmcop.pcrmcand(self, field)
-#
-#def pcrmcRAnd(self, number):
-#  return pmcop.pcrmcand(number, self)
+def pcrmcAnd(self, field):
+  return pmcop.pcrmcand(self, field)
+
+def pcrmcRAnd(self, number):
+  return pmcop.pcrmcand(number, self)
 #
 #def pcrmcOr(self, field):
 #  return pmcop.or(self, field)
@@ -59,8 +59,8 @@ def pcrmcRPow(self, number):
 
 # Some syntactic sugar to still allow the use of operators on Field objects.
 # These operators should overwrite the ones from the PCRaster module.
-#_pcraster.Field.__and__      = pcrmcAnd      # &
-#_pcraster.Field.__rand__     = pcrmcRAnd
+_pcraster.Field.__and__      = pcrmcAnd      # &
+_pcraster.Field.__rand__     = pcrmcRAnd
 #_pcraster.Field.__or__       = pcrmcOr       # |
 #_pcraster.Field.__ror__      = pcrmcROr
 #_pcraster.Field.__invert__   = pcrmcNot      # ~

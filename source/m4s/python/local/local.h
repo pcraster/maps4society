@@ -1,10 +1,10 @@
 #pragma once
 
-// #include "m4s/python/local/and.h"
+#include "m4s/python/local/and.h"
 // #include "m4s/python/local/or.h"
 // #include "m4s/python/local/not.h"
+// #include "m4s/python/local/xor.h"
 // #include "m4s/python/local/defined.h"
-// #include "m4s/python/local/xor.h" // is that in fern?
 
 
 #include "m4s/python/local/add.h"
@@ -27,7 +27,6 @@
 
 /*
 
-and or not defined fern/algorithm/algebra/boole/and.h>
 
 abs fern/algorithm/algebra/elementary/absolute.h>
 
@@ -35,10 +34,10 @@ ifthen <fern/algorithm/core/if.h>
 
 ifthenelse<fern/algorithm/core/if.h>
 
-cover fern/algorithm/core/cover.h>
+cover fern/algorithm/core/cover.h> // how to obtain multiple arguments?...
 
 
-min<fern/statistucs.../min.h>
+min<fern/statistucs.../min.h>  //binary_ma
 max
 
 

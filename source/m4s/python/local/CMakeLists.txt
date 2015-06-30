@@ -10,14 +10,21 @@ INCLUDE_DIRECTORIES(
 
 SET(_SOURCES
   utils.cc
-  add.cc
-  sub.cc
-  mul.cc
-  div.cc
-  pow.cc
 
-  cos.cc
-  sqrt.cc
+  and.cc
+#   or.cc
+#   xor.cc
+#   not.cc
+#   defined.cc
+
+#   add.cc
+#   sub.cc
+   mul.cc
+#   div.cc
+#   pow.cc
+# 
+#   cos.cc
+#   sqrt.cc
 )
 
 ADD_LIBRARY(multicore_field_python_locals
