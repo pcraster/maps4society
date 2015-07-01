@@ -28,7 +28,8 @@ SET(_SOURCES
 #  less_equal.cc
 #  greater.cc
 #  greater_equal.cc
-
+#  ifthen.cc
+#  ifthenelse.cc
 
 #   pow.cc
 # 
