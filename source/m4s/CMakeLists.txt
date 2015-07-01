@@ -16,8 +16,8 @@ INCLUDE(UsePython)
 # we need to accesss the PCRaster model engine
 FIND_PACKAGE(Pcrtree2)
 
-# to use some of the algorithms
-FIND_PACKAGE(Fern)
+### # to use some of the algorithms
+### FIND_PACKAGE(Fern)
 
 # shouldnt work this out of the box?
 # check if g++ version test is in site.cmake
