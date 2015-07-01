@@ -67,7 +67,7 @@ function build_software()
 
     # GDAL.
     options+=("-Dbuild_gdal=true")
-    options+=("-Dgdal_version=2.0.0")
+    options+=("-Dgdal_version=1.11.1")
     options+=("-Dgdal_build_ogr=true")
     options+=("-Dgdal_build_python_package=true")
 
