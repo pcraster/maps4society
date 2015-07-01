@@ -8,19 +8,47 @@ import pcraster_multicore_operations as pmcop
 
 
 def pcrmcAnd(self, field):
-  return pmcop.pcrmcand(self, field)
+  return pmcop._and(self, field)
 
 def pcrmcRAnd(self, number):
-  return pmcop.pcrmcand(number, self)
-#
+  return pmcop._and(number, self)
+
 #def pcrmcOr(self, field):
-#  return pmcop.or(self, field)
-#
+#  return pmcop._or(self, field)
+
 #def pcrmcROr(self, number):
-#  return pmcop.or(number, self)
-#
+#  return pmcop._or(number, self)
+
 #def pcrmcNot(self):
-#  return pmcop.not(self)
+#  return pmcop._not(self)
+
+#def pcrmcXOr(self, field):
+#  return pmcop._xor(self, field)
+
+
+def pcrmcEQ(self, field):
+  return pmcop.equal(self, field)
+
+#def pcrmcNE(self, field):
+#  return pmcop.unequal(self, field)
+
+#def pcrmcGT(self, field):
+#  return pmcop.larger(self, field)
+
+#def pcrmcGE(self, field):
+#  return pmcop.larger_equal(self, field)
+
+def pcrmcLT(self, field):
+  return pmcop.less(self, field)
+
+#def pcrmcLE(self, field):
+#  return pmcop.less_equal(self, field)
+
+
+
+
+
+
 
 
 
@@ -65,8 +93,7 @@ _pcraster.Field.__rand__     = pcrmcRAnd
 #_pcraster.Field.__ror__      = pcrmcROr
 #_pcraster.Field.__invert__   = pcrmcNot      # ~
 
-## these are not in fern???
-##_pcraster.Field.__xor__      = pcrXOr      # ^
+##_pcraster.Field.__xor__      = pcrmcXOr      # ^
 
 
 ## some of these should be in fern ???
@@ -74,7 +101,7 @@ _pcraster.Field.__rand__     = pcrmcRAnd
 #_pcraster.Field.__eq__       = pcrmcEQ
 #_pcraster.Field.__gt__       = pcrmcGT
 #_pcraster.Field.__ge__       = pcrmcGE
-#_pcraster.Field.__lt__       = pcrmcLT
+_pcraster.Field.__lt__       = pcrmcLT
 #_pcraster.Field.__le__       = pcrmcLE
 
 

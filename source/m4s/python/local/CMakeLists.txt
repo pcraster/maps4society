@@ -15,12 +15,21 @@ SET(_SOURCES
 #   or.cc
 #   xor.cc
 #   not.cc
-#   defined.cc
+#  defined.cc
 
 #   add.cc
 #   sub.cc
    mul.cc
 #   div.cc
+
+#  equal.cc
+#  unequal.cc
+#  less.cc
+#  less_equal.cc
+#  greater.cc
+#  greater_equal.cc
+
+
 #   pow.cc
 # 
 #   cos.cc

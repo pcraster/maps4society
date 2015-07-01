@@ -92,12 +92,12 @@ calc::Field* _and(
          calc::Field* field_a,
          calc::Field* field_b){
 
-  if(boolean_valuescale(field_a) == false){
+  if(boolean_valuescale(*field_a) == false){
     std::stringstream msg{};
     msg << "left operand is of type '" << field_a->vs() << "', legal type is 'boolean'\n";
     throw std::runtime_error(msg.str());
   }
-  if(boolean_valuescale(field_b) == false){
+  if(boolean_valuescale(*field_b) == false){
     std::stringstream msg{};
     msg << "right operand is of type '" << field_b->vs() << "', legal type is 'boolean'\n";
     throw std::runtime_error(msg.str());

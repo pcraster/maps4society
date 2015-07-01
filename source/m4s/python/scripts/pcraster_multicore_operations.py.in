@@ -1,6 +1,7 @@
 import types
 import pcraster._pcraster as _pcraster
 import _pcraster_multicore as _pmc
+from _pcraster_multicore import set_nr_cpus
 
 
 # TODO: the get_ ... need more error checking, string input handling
@@ -48,7 +49,19 @@ def get_field(arg):
 #
 #  return res
 #
-def pcrmcand(arg1, arg2):
+
+
+
+
+
+
+
+
+
+
+
+
+def _and(arg1, arg2):
   try:
     arg1 = get_field(arg1)
     arg2 = get_field(arg2)
@@ -56,7 +69,7 @@ def pcrmcand(arg1, arg2):
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.and: {}".format(str(exception)))
 
-#def pcrmcor(arg1, arg2):
+#def _or(arg1, arg2):
 #  try:
 #    arg1 = get_boolean_field(arg1)
 #    arg2 = get_boolean_field(arg2)
@@ -71,6 +84,12 @@ def pcrmcand(arg1, arg2):
 #  except RuntimeError as exception:
 #    raise RuntimeError("pcraster_multicore.not: {}".format(str(exception)))
 
+#def defined(arg1):
+#  try:
+#    arg1 = get_field(arg1)
+#    return _pmc.defined(arg1)
+#  except RuntimeError as exception:
+#    raise RuntimeError("pcraster_multicore.defined: {}".format(str(exception)))
 
 
 
@@ -163,3 +182,60 @@ def upstream(arg1, arg2):
     return _pmc.upstream(arg1, arg2)
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.downstream: {}".format(str(exception)))
+
+
+
+
+# these ones below here can be generated?!
+# assume type checking in the C++ code
+# 
+
+
+def equal(arg1, arg2):
+  try:
+    arg1 = get_field(arg1)
+    arg2 = get_field(arg2)
+    return _pmc.equal(arg1, arg2)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.equal: {}".format(str(exception)))
+
+#def larger(arg1, arg2):
+#  try:
+#    arg1 = get_field(arg1)
+#    arg2 = get_field(arg2)
+#    return _pmc.larger(arg1, arg2)
+#  except RuntimeError as exception:
+#    raise RuntimeError("pcraster_multicore.larger: {}".format(str(exception)))
+#
+#def larger_equal(arg1, arg2):
+#  try:
+#    arg1 = get_field(arg1)
+#    arg2 = get_field(arg2)
+#    return _pmc.larger_equal(arg1, arg2)
+#  except RuntimeError as exception:
+#    raise RuntimeError("pcraster_multicore.larger_equal: {}".format(str(exception)))
+#
+def less(arg1, arg2):
+  try:
+    arg1 = get_field(arg1)
+    arg2 = get_field(arg2)
+    return _pmc.less(arg1, arg2)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.less: {}".format(str(exception)))
+
+#def less_equal(arg1, arg2):
+#  try:
+#    arg1 = get_field(arg1)
+#    arg2 = get_field(arg2)
+#    return _pmc.less_equal(arg1, arg2)
+#  except RuntimeError as exception:
+#    raise RuntimeError("pcraster_multicore.less_equal: {}".format(str(exception)))
+#
+#def unequal(arg1, arg2):
+#  try:
+#    arg1 = get_field(arg1)
+#    arg2 = get_field(arg2)
+#    return _pmc.unequal(arg1, arg2)
+#  except RuntimeError as exception:
+#    raise RuntimeError("pcraster_multicore.unequal: {}".format(str(exception)))
+#
