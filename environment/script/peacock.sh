@@ -59,7 +59,7 @@ function build_software()
 
     # Fern.
     options+=("-Dbuild_fern=true")
-    options+=("-Dfern_git_repository=git@github.com:geoneric/fern.git")
+    options+=("-Dfern_git_repository=https://github.com/geoneric/fern.git")
     options+=("-Dfern_git_tag=6b4e7944a65d9c16916bd8e420e6c8dd8c19ac9e")
     options+=("-Dfern_build_fern_algorithm=true")
     options+=("-Dfern_build_fern_documentation=true")
@@ -67,7 +67,7 @@ function build_software()
 
     # GDAL.
     options+=("-Dbuild_gdal=true")
-    options+=("-Dgdal_version=2.0.0")
+    options+=("-Dgdal_version=1.11.1")
     options+=("-Dgdal_build_ogr=true")
     options+=("-Dgdal_build_python_package=true")
 
