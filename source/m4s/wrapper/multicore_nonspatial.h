@@ -4,27 +4,19 @@
 
 #include "calc_spatial.h"
 #include "com_mvop.h"
-//#include "Globals.h"
 
 
-// namespace pcraster {
-// namespace python {
-//   extern Globals globals;
-// }
-// }
-
-
-namespace multicore_nonspatial {
+namespace multicore_field {
 
 
 template<class T>
-class multicore_nonspatial{
+class Nonspatial {
 
 public:
 
-  multicore_nonspatial  (calc::Field* field);
+  Nonspatial  (calc::Field* field);
 
-  ~multicore_nonspatial (){};
+  ~Nonspatial (){};
 
   T&               get();
 
@@ -60,9 +52,10 @@ private:
 
 
 template<class T>
-multicore_nonspatial<T>::multicore_nonspatial(calc::Field* field){
+Nonspatial<T>::Nonspatial(calc::Field* field){
   pcr_field = field;
   the_cells = static_cast<T*>(pcr_field->dest());
+  /// todo clean this up...
 //   rows = pcraster::python::globals.cloneSpace().nrRows();
 //   cols = pcraster::python::globals.cloneSpace().nrCols();
 //   _cell_size = pcraster::python::globals.cloneSpace().cellSize();
@@ -70,27 +63,25 @@ multicore_nonspatial<T>::multicore_nonspatial(calc::Field* field){
 
 
 template<class T>
-inline calc::Field* multicore_nonspatial<T>::getField() const {
+inline calc::Field* Nonspatial<T>::getField() const {
   return pcr_field;
 }
 
 
 template<class T>
-inline T const & multicore_nonspatial<T>::get() const {
-  //std::cout << "nsp inline T const & multicore_nonspatial<T>::get() " << (int)the_cells[0]<< std::endl;
+inline T const & Nonspatial<T>::get() const {
   return the_cells[0];
 }
 
 
 template<class T>
-inline T& multicore_nonspatial<T>::get(){
-  //std::cout << "nsp inline T& multicore_nonspatial<T>::get() " << (int)the_cells[0]<< std::endl;
+inline T& Nonspatial<T>::get(){
   return the_cells[0];
 }
 
 
 // template<class T>
-// inline size_t multicore_nonspatial<T>::size(size_t dimension) const {
+// inline size_t Nonspatial<T>::size(size_t dimension) const {
 //   if(dimension == 0){
 //     return 1;
 //   }
@@ -102,13 +93,13 @@ inline T& multicore_nonspatial<T>::get(){
 
 
 template<class T>
-inline void multicore_nonspatial<T>::set_mv() const {
+inline void Nonspatial<T>::set_mv() const {
   pcr::setMV(the_cells[0]);
 }
 
 
 // template<class T>
-// inline size_t multicore_nonspatial<T>::index(size_t idx1, size_t idx2) const {
+// inline size_t Nonspatial<T>::index(size_t idx1, size_t idx2) const {
 //   (void)idx1;
 //   (void)idx2;
 //   return 0;
@@ -116,14 +107,14 @@ inline void multicore_nonspatial<T>::set_mv() const {
 
 
 template<class T>
-inline T* multicore_nonspatial<T>::get_cells() const {
+inline T* Nonspatial<T>::get_cells() const {
   return the_cells;
 }
 
 
 // template<class T>
-// inline double multicore_nonspatial<T>::cell_size() const {
+// inline double Nonspatial<T>::cell_size() const {
 //   return _cell_size;
 // }
 
-} // namespace multicore_nonspatial
+} // namespace multicore_field

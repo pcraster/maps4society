@@ -8,8 +8,8 @@ namespace fern {
 
 
 template<class T>
-inline multicore_field::multicore_field<T> clone(
-    multicore_field::multicore_field<T> const& aField)
+inline multicore_field::Spatial<T> clone(
+    multicore_field::Spatial<T> const& aField)
 {
   return aField.getField()->createClone();
 }
@@ -18,7 +18,7 @@ inline multicore_field::multicore_field<T> clone(
 
 template<class T>
 inline size_t size(
-    multicore_field::multicore_field<T> const& aField,
+    multicore_field::Spatial<T> const& aField,
     size_t dimension){
   return aField.size(dimension);
 }
@@ -26,7 +26,7 @@ inline size_t size(
 
 template<class T>
 inline T const& get(
-    multicore_field::multicore_field<T> const& aField,
+    multicore_field::Spatial<T> const& aField,
     size_t index){
   return aField.get(index);
 }
@@ -34,7 +34,7 @@ inline T const& get(
 
 template<class T>
 inline T& get(
-    multicore_field::multicore_field<T>& aField,
+    multicore_field::Spatial<T>& aField,
     size_t index){
   return aField.get(index);
 }
@@ -42,7 +42,7 @@ inline T& get(
 
 template<typename T>
 inline size_t index(
-    multicore_field::multicore_field<T> const& aField,
+    multicore_field::Spatial<T> const& aField,
     size_t index1,
     size_t index2){
   return aField.index(index1, index2);
@@ -51,7 +51,7 @@ inline size_t index(
 
 template<class T>
 inline double cell_size(
-    const multicore_field::multicore_field<T>& aField,
+    const multicore_field::Spatial<T>& aField,
     size_t index){
   (void)index;
   return aField.cell_size();

@@ -13,7 +13,7 @@ namespace fern {
 
 
 template<class T>
-struct ArgumentTraits<multicore_nonspatial::multicore_nonspatial<T>>{
+struct ArgumentTraits<multicore_field::multicore_nonspatial<T>>{
 
   using value_type = T;
 
@@ -39,7 +39,7 @@ struct ArgumentTraits<multicore_nonspatial::multicore_nonspatial<T>>{
 template<class T>
 inline size_t size(
     //T const& /* constant */)
-    multicore_nonspatial::multicore_nonspatial<T> const& /*aField*/)
+    multicore_field::multicore_nonspatial<T> const& /*aField*/)
 {
     return 1u;
 }
@@ -49,7 +49,7 @@ inline size_t size(
 
 template<class T>
 inline T const& get(
-    multicore_nonspatial::multicore_nonspatial<T> const& aField/*,
+    multicore_field::multicore_nonspatial<T> const& aField/*,
     size_t index*/){
 //   (void)index;
   //std::cout << "traits inline T const& get "<< std::endl;
@@ -59,7 +59,7 @@ inline T const& get(
 
 template<class T>
 inline T& get(
-    multicore_nonspatial::multicore_nonspatial<T>& aField/*,
+    multicore_field::multicore_nonspatial<T>& aField/*,
     size_t index*/){
 //   (void)index;
   //std::cout << "traits inline T& get "<< std::endl;

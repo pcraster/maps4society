@@ -9,7 +9,7 @@ namespace fern {
 
 template<class T>
 inline size_t size(
-    multicore_nonspatial::multicore_nonspatial<T> const& /*aField*/){
+    multicore_field::Nonspatial<T> const& /*aField*/){
 
   return 1;
 }
@@ -17,7 +17,7 @@ inline size_t size(
 
 template<class T>
 inline T const& get(
-    multicore_nonspatial::multicore_nonspatial<T> const& aField){
+    multicore_field::Nonspatial<T> const& aField){
 
   return aField.get();
 }
@@ -25,7 +25,7 @@ inline T const& get(
 
 template<class T>
 inline T& get(
-    multicore_nonspatial::multicore_nonspatial<T>& aField){
+    multicore_field::Nonspatial<T>& aField){
 
   return aField.get();
 }

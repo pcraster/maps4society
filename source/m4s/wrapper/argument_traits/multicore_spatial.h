@@ -10,10 +10,10 @@ namespace fern {
 namespace algorithm {
 
 template<class T>
-struct ArgumentTraits<multicore_field::multicore_field<T>>
+struct ArgumentTraits<multicore_field::Spatial<T>>
 {
 
-    using Mask = multicore_field::multicore_field<T>;
+    using Mask = multicore_field::Spatial<T>;
 
     using InputNoDataPolicy = MulticoreFieldInputNoDataPolicy<Mask>;
 

@@ -19,11 +19,12 @@ def pcrmcOr(self, field):
 def pcrmcROr(self, number):
   return pmcop._or(number, self)
 
-#def pcrmcNot(self):
-#  return pmcop._not(self)
-
 def pcrmcXOr(self, field):
   return pmcop._xor(self, field)
+
+def pcrmcNot(self):
+  return pmcop._not(self)
+
 
 
 def pcrmcEQ(self, field):
@@ -91,9 +92,8 @@ _pcraster.Field.__and__      = pcrmcAnd      # &
 _pcraster.Field.__rand__     = pcrmcRAnd
 _pcraster.Field.__or__       = pcrmcOr       # |
 _pcraster.Field.__ror__      = pcrmcROr
-#_pcraster.Field.__invert__   = pcrmcNot      # ~
-
-##_pcraster.Field.__xor__      = pcrmcXOr      # ^
+_pcraster.Field.__invert__   = pcrmcNot      # ~
+_pcraster.Field.__xor__      = pcrmcXOr      # ^
 
 
 ## some of these should be in fern ???

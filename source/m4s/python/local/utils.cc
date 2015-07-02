@@ -36,15 +36,15 @@ namespace pcraster_multicore {
 namespace python {
 
 /// todo: this should be removed soon as we wrap the nonspatials now as well...
-float nonspatial_value(const calc::Field* aField){
-  assert(aField->isSpatial() == false);
-
-  double value = 0.0;
-  bool valid = aField->getCell(value, 1);
-  assert(valid == true);
-
-  return static_cast<REAL4>(value);
-}
+// float nonspatial_value(const calc::Field* aField){
+//   assert(aField->isSpatial() == false);
+// 
+//   double value = 0.0;
+//   bool valid = aField->getCell(value, 1);
+//   assert(valid == true);
+// 
+//   return static_cast<REAL4>(value);
+// }
 
 
 

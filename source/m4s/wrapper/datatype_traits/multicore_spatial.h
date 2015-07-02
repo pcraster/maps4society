@@ -8,7 +8,7 @@ namespace fern {
 
 
 template<class T>
-struct DataTypeTraits<multicore_field::multicore_field<T>>{
+struct DataTypeTraits<multicore_field::Spatial<T>>{
 
   using value_type = T;
 

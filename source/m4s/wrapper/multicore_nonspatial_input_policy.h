@@ -14,24 +14,24 @@ private:
 
 public:
 
-                   MulticoreNonspatialInputNoDataPolicy(multicore_nonspatial::multicore_nonspatial<T> const& aField) noexcept;
+                   MulticoreNonspatialInputNoDataPolicy(multicore_field::Nonspatial<T> const& aField) noexcept;
 
                    MulticoreNonspatialInputNoDataPolicy(MulticoreNonspatialInputNoDataPolicy<T>&& other)=default;
 
 
     bool           is_no_data          () const noexcept;
-    bool           is_no_data          (size_t index) const noexcept;  // ?
+    bool           is_no_data          (size_t index) const noexcept;  /// todo remove this!!!
 
 private:
 
-    multicore_nonspatial::multicore_nonspatial<T> const&    _field;
+    multicore_field::Nonspatial<T> const&    _field;
 
 };
 
 
 template<class T>
 inline MulticoreNonspatialInputNoDataPolicy<T>::MulticoreNonspatialInputNoDataPolicy(
-    multicore_nonspatial::multicore_nonspatial<T> const& aField) noexcept
+    multicore_field::Nonspatial<T> const& aField) noexcept
 
     : _field(aField)
 

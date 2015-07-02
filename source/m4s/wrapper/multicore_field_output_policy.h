@@ -15,7 +15,7 @@ private:
 public:
 
                    MulticoreFieldOutputNoDataPolicy(
-                                        multicore_field::multicore_field<T> const& aField) noexcept;
+                                        multicore_field::Spatial<T> const& aField) noexcept;
 
     void           mark_as_no_data     (size_t index) const noexcept;
 
@@ -24,12 +24,12 @@ public:
 
 private:
 
-    multicore_field::multicore_field<T> const & _field;
+    multicore_field::Spatial<T> const & _field;
 };
 
 template<class T>
 inline MulticoreFieldOutputNoDataPolicy<T>::MulticoreFieldOutputNoDataPolicy(
-    multicore_field::multicore_field<T> const& aField) noexcept
+    multicore_field::Spatial<T> const& aField) noexcept
 
     : _field(aField)
 

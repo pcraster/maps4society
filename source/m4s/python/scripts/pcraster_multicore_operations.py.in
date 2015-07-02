@@ -62,13 +62,7 @@ def get_field(arg):
 
 
 
-#
-#def pcrmcnot(arg1):
-#  try:
-#    arg1 = get_boolean_field(arg1)
-#    return _pmc._not(arg1)
-#  except RuntimeError as exception:
-#    raise RuntimeError("pcraster_multicore.not: {}".format(str(exception)))
+
 
 #def defined(arg1):
 #  try:
@@ -252,3 +246,10 @@ def _xor(arg1, arg2):
     return _pmc._xor(arg1, arg2)
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.xor: {}".format(str(exception)))
+
+def _not(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc._not(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.not: {}".format(str(exception)))

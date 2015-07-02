@@ -7,8 +7,8 @@ namespace fern {
 namespace algorithm {
 
 template<typename T>
-inline multicore_nonspatial::multicore_nonspatial<T>& mask(
-    multicore_nonspatial::multicore_nonspatial<T>& argument)
+inline multicore_field::Nonspatial<T>& mask(
+    multicore_field::Nonspatial<T>& argument)
 {
     return argument;
 }

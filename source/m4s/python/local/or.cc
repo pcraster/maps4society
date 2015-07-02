@@ -31,9 +31,9 @@ namespace python {
 namespace detail {
 
 calc::Field* or_number_number(
-         const multicore_nonspatial::multicore_nonspatial<UINT1>* arg1,
-         const multicore_nonspatial::multicore_nonspatial<UINT1>* arg2,
-         multicore_nonspatial::multicore_nonspatial<UINT1>* res){
+         const multicore_field::nonspatial<UINT1>* arg1,
+         const multicore_field::nonspatial<UINT1>* arg2,
+         multicore_field::nonspatial<UINT1>* res){
 
   using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreNonspatialInputNoDataPolicy<UINT1>,
         MulticoreNonspatialInputNoDataPolicy<UINT1>>;
@@ -69,7 +69,7 @@ calc::Field* or_field_field(
 
 calc::Field* or_number_field(
          fern::algorithm::ExecutionPolicy epol,
-         const multicore_nonspatial::multicore_nonspatial<UINT1>* arg1,
+         const multicore_field::nonspatial<UINT1>* arg1,
          const multicore_field::multicore_field<UINT1>* arg2,
          multicore_field::multicore_field<UINT1>* res){
 
@@ -106,10 +106,10 @@ calc::Field* _or(
   calc::Field* res_field = nullptr;
 
   if((field_a->isSpatial() == false) && (field_b->isSpatial() == false)){
-    const multicore_nonspatial::multicore_nonspatial<UINT1> arg1(field_a);
-    const multicore_nonspatial::multicore_nonspatial<UINT1> arg2(field_b);
+    const multicore_field::nonspatial<UINT1> arg1(field_a);
+    const multicore_field::nonspatial<UINT1> arg2(field_b);
     res_field = new calc::NonSpatial(VS_B);
-    multicore_nonspatial::multicore_nonspatial<UINT1> res(res_field);
+    multicore_field::nonspatial<UINT1> res(res_field);
 
     return detail::or_number_number(&arg1, &arg2, &res);
   }
@@ -121,11 +121,11 @@ calc::Field* _or(
 
   if(field_b->isSpatial() == false){
     const multicore_field::multicore_field<UINT1> arg1(field_a);
-    const multicore_nonspatial::multicore_nonspatial<UINT1> arg2(field_b);
+    const multicore_field::nonspatial<UINT1> arg2(field_b);
     return detail::or_number_field(epol, &arg2, &arg1, &res);
   }
   else if(field_a->isSpatial() == false){
-    const multicore_nonspatial::multicore_nonspatial<UINT1> arg1(field_a);
+    const multicore_field::nonspatial<UINT1> arg1(field_a);
     const multicore_field::multicore_field<UINT1> arg2(field_b);
     return detail::or_number_field(epol, &arg1, &arg2, &res);
   }

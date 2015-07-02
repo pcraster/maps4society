@@ -14,7 +14,7 @@ private:
 public:
 
                    MulticoreNonspatialOutputNoDataPolicy(
-                                        multicore_nonspatial::multicore_nonspatial<T> const& aField) noexcept;
+                                        multicore_field::Nonspatial<T> const& aField) noexcept;
 
 
     void           mark_as_no_data     () const noexcept;
@@ -25,12 +25,12 @@ public:
 
 private:
 
-    multicore_nonspatial::multicore_nonspatial<T> const & _field;
+    multicore_field::Nonspatial<T> const & _field;
 };
 
 template<class T>
 inline MulticoreNonspatialOutputNoDataPolicy<T>::MulticoreNonspatialOutputNoDataPolicy(
-    multicore_nonspatial::multicore_nonspatial<T> const& aField) noexcept
+    multicore_field::Nonspatial<T> const& aField) noexcept
 
     : _field(aField)
 
@@ -40,8 +40,5 @@ inline MulticoreNonspatialOutputNoDataPolicy<T>::MulticoreNonspatialOutputNoData
 
 template<class T>
 inline void MulticoreNonspatialOutputNoDataPolicy<T>::mark_as_no_data() const noexcept {
- // std::cout << "inline void MulticoreNonspatialOutputNoDataPolicy<T>::mark_as_no_data( " << index << " " << _field.get_cells()[0]<< " " << pcr::isMV(_field.get_cells()[0])<< std::endl;
-  
-  //(void)index;
    _field.set_mv();
 }

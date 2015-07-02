@@ -16,7 +16,7 @@ private:
 
 public:
 
-                   MulticoreFieldInputNoDataPolicy(multicore_field::multicore_field<T> const& aField) noexcept;
+                   MulticoreFieldInputNoDataPolicy(multicore_field::Spatial<T> const& aField) noexcept;
 
                    MulticoreFieldInputNoDataPolicy(MulticoreFieldInputNoDataPolicy<T>&& other)=default;
 
@@ -27,14 +27,14 @@ public:
 
 private:
 
-    multicore_field::multicore_field<T> const&    _field;
+    multicore_field::Spatial<T> const&    _field;
 
 };
 
 
 template<class T>
 inline MulticoreFieldInputNoDataPolicy<T>::MulticoreFieldInputNoDataPolicy(
-    multicore_field::multicore_field<T> const& aField) noexcept
+    multicore_field::Spatial<T> const& aField) noexcept
 
     : _field(aField)
 

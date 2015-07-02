@@ -10,10 +10,10 @@ namespace fern {
 namespace algorithm {
 
 template<class T>
-struct ArgumentTraits<multicore_nonspatial::multicore_nonspatial<T>>
+struct ArgumentTraits<multicore_field::Nonspatial<T>>
 {
 
-    using Mask = multicore_nonspatial::multicore_nonspatial<T>;
+    using Mask = multicore_field::Nonspatial<T>;
 
     using InputNoDataPolicy = MulticoreNonspatialInputNoDataPolicy<Mask>;
 
