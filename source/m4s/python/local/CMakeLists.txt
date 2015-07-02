@@ -12,8 +12,8 @@ SET(_SOURCES
   utils.cc
 
   and.cc
-#   or.cc
-#   xor.cc
+  or.cc
+  xor.cc
 #   not.cc
 #  defined.cc
 

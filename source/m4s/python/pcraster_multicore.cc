@@ -16,10 +16,10 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
   // Local operations
   bp::def("_and", &pmcpy::_and,
     bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("_or", &pmcpy::_or,
-//     bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("_xor", &pmcpy::_not,
-//     bp::return_value_policy<bp::manage_new_object>());
+  bp::def("_or", &pmcpy::_or,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("_xor", &pmcpy::_xor,
+    bp::return_value_policy<bp::manage_new_object>());
 //   bp::def("_not", &pmcpy::_not,
 //     bp::return_value_policy<bp::manage_new_object>());
 //  bp::def("defined", &pmcpy::defined,
