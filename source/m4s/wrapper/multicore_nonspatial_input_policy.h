@@ -47,7 +47,8 @@ inline bool MulticoreNonspatialInputNoDataPolicy<T>::is_no_data() const noexcept
 
 template<class T>
 inline bool MulticoreNonspatialInputNoDataPolicy<T>::is_no_data(size_t index) const noexcept {
-  //std::cout << "why this? ";
+  // this method should not be necessary
+  // remove this with newer version of fern supporting the () in 0d_2d ops
   return pcr::isMV(_field.get_cells()[0]);
 }
 

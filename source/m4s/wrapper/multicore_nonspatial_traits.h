@@ -1,3 +1,8 @@
+#error
+
+
+
+
 #pragma once
 
 #include "fern/core/argument_traits.h"
@@ -16,7 +21,7 @@ struct ArgumentTraits<multicore_nonspatial::multicore_nonspatial<T>>{
 
   using const_reference = T const&;
 
-  using argument_category = constant_tag;//raster_1d_tag;//
+  using argument_category = constant_tag;
 
 };
 
@@ -40,13 +45,6 @@ inline size_t size(
 }
 
 
-// template<class T>
-// inline size_t size(
-//     multicore_nonspatial::multicore_nonspatial<T> const& aField,
-//     size_t dimension){
-//   //std::cout << "dfgdgfdfgdfgdfgdfgsdff " << std::endl;
-//   return aField.size(dimension);
-// }
 
 
 template<class T>

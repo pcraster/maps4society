@@ -19,7 +19,7 @@ SET(_SOURCES
 
 #   add.cc
 #   sub.cc
-   mul.cc
+#   mul.cc
 #   div.cc
 
 #  equal.cc

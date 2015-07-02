@@ -1,30 +1,9 @@
-#error
-
-
-
-
-
 #pragma once
 
-#include "fern/core/argument_traits.h"
-
-#include "multicore_field.h"
+#include "m4s/wrapper/datatype_traits/multicore_spatial.h"
+#include "m4s/wrapper/multicore_field.h"
 
 namespace fern {
-
-
-template<class T>
-struct ArgumentTraits<multicore_field::multicore_field<T>>{
-
-  using value_type = T;
-
-  using reference = T&;
-
-  using const_reference = T const&;
-
-  using argument_category = raster_2d_tag;
-
-};
 
 
 
@@ -68,6 +47,7 @@ inline size_t index(
     size_t index2){
   return aField.index(index1, index2);
 }
+
 
 template<class T>
 inline double cell_size(

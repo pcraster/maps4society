@@ -4,18 +4,20 @@
 #include "pcrdatatype.h"
 #include "Globals.h"
 
-#include "m4s/python/local/mul.h"
-#include "m4s/python/execution_policy.h"
-#include "m4s/wrapper/multicore_field.h"
-#include "m4s/wrapper/multicore_field_traits.h"
-#include "m4s/wrapper/multicore_field_output_policy.h"
-#include "m4s/wrapper/multicore_field_input_policy.h"
-#include "m4s/python/execution_policy.h"
+#include "fern/algorithm/policy/execution_policy.h"
 
-#include "m4s/wrapper/multicore_nonspatial.h"
-#include "m4s/wrapper/multicore_nonspatial_traits.h"
-#include "m4s/wrapper/multicore_nonspatial_output_policy.h"
-#include "m4s/wrapper/multicore_nonspatial_input_policy.h"
+// #include "m4s/python/local/mul.h"
+// #include "m4s/python/execution_policy.h"
+// #include "m4s/wrapper/multicore_field.h"
+// #include "m4s/wrapper/multicore_field_traits.h"
+// #include "m4s/wrapper/multicore_field_output_policy.h"
+// #include "m4s/wrapper/multicore_field_input_policy.h"
+// #include "m4s/python/execution_policy.h"
+// 
+// #include "m4s/wrapper/multicore_nonspatial.h"
+// #include "m4s/wrapper/multicore_nonspatial_traits.h"
+// #include "m4s/wrapper/multicore_nonspatial_output_policy.h"
+// #include "m4s/wrapper/multicore_nonspatial_input_policy.h"
 
 #include <iostream>
 
@@ -33,6 +35,7 @@ namespace fa = fern::algorithm;
 namespace pcraster_multicore {
 namespace python {
 
+/// todo: this should be removed soon as we wrap the nonspatials now as well...
 float nonspatial_value(const calc::Field* aField){
   assert(aField->isSpatial() == false);
 
@@ -42,6 +45,8 @@ float nonspatial_value(const calc::Field* aField){
 
   return static_cast<REAL4>(value);
 }
+
+
 
 bool scalar_valuescale(const calc::Field& aField){
   PCR_VS field_vs = VS_UNKNOWN;
@@ -55,6 +60,7 @@ bool directional_valuescale(const calc::Field& aField){
   field_vs = aField.vs();
   return field_vs == VS_D ? true : false;
 }
+
 
 bool boolean_valuescale(const calc::Field& aField){
   PCR_VS field_vs = VS_UNKNOWN;
@@ -73,8 +79,8 @@ bool ordinal_valuescale(const calc::Field& aField){
 
 
 
-
-
+/// this is needed...
+/*
 calc::Field* degrees_radians(const multicore_field::multicore_field<REAL4>* aField, size_t nr_cells){
 fa::ExecutionPolicy epol = execution_policy();
     const REAL4 conversion_factor = M_PI/180.0;
@@ -85,7 +91,7 @@ fa::ExecutionPolicy epol = execution_policy();
 
  return field_conv;
 
-}
+}*/
 
 
 

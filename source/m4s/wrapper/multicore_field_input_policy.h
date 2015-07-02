@@ -5,6 +5,8 @@
 
 #include "multicore_field.h"
 
+
+
 template<class T>
 class MulticoreFieldInputNoDataPolicy
 {
@@ -46,3 +48,4 @@ inline bool MulticoreFieldInputNoDataPolicy<T>::is_no_data(
 {
     return pcr::isMV(_field.get_cells()[index]);
 }
+

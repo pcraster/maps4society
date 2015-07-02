@@ -4,6 +4,7 @@
 
 #include "m4s/wrapper/multicore_field.h"
 
+
 template<class T>
 class MulticoreFieldOutputNoDataPolicy
 {
@@ -42,3 +43,4 @@ inline void MulticoreFieldOutputNoDataPolicy<T>::mark_as_no_data(
 {
    _field.set_cell(index);
 }
+

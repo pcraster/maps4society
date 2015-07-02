@@ -5,22 +5,36 @@
 #include "calc_nonspatial.h"
 
 // Field wrapper
-#include "m4s/wrapper/multicore_field.h"
-#include "m4s/wrapper/multicore_field_traits.h"
-#include "m4s/wrapper/multicore_field_output_policy.h"
-#include "m4s/wrapper/multicore_field_input_policy.h"
+// #include "m4s/wrapper/multicore_field.h"
+// #include "m4s/wrapper/multicore_field_traits.h"
+// #include "m4s/wrapper/multicore_field_output_policy.h"
+// #include "m4s/wrapper/multicore_field_input_policy.h"
+// 
+// #include "m4s/wrapper/multicore_nonspatial.h"
+// #include "m4s/wrapper/multicore_nonspatial_traits.h"
+// #include "m4s/wrapper/multicore_nonspatial_output_policy.h"
+// #include "m4s/wrapper/multicore_nonspatial_input_policy.h"
 
-#include "m4s/wrapper/multicore_nonspatial.h"
-#include "m4s/wrapper/multicore_nonspatial_traits.h"
-#include "m4s/wrapper/multicore_nonspatial_output_policy.h"
-#include "m4s/wrapper/multicore_nonspatial_input_policy.h"
+#include "m4s/wrapper/datatype_customization_points/multicore_spatial.h"
+#include "m4s/wrapper/datatype_traits/multicore_spatial.h"
+#include "m4s/wrapper/argument_customization_points/multicore_spatial.h"
+#include "m4s/wrapper/argument_traits/multicore_spatial.h"
 
-#include "m4s/python/execution_policy.h"
-#include "m4s/python/local/utils.h"
+#include "m4s/wrapper/datatype_customization_points/multicore_nonspatial.h"
+#include "m4s/wrapper/datatype_traits/multicore_nonspatial.h"
+#include "m4s/wrapper/argument_customization_points/multicore_nonspatial.h"
+#include "m4s/wrapper/argument_traits/multicore_nonspatial.h"
+
 
 // Fern
 #include "fern/algorithm/policy/policies.h"
 #include "fern/algorithm/algebra/boole/and.h"
+
+/*
+#include "m4s/wrapper/argument_traits/multicore_spatial.h"
+#include "m4s/wrapper/argument_traits/multicore_nonspatial.h"*/
+#include "m4s/python/execution_policy.h"
+#include "m4s/python/local/utils.h"
 
 
 namespace fa = fern::algorithm;

@@ -13,7 +13,7 @@ SET(_SOURCES
   #upstream.cc
 )
 
-ADD_LIBRARY(multicore_field_python_focals
-  STATIC
-    ${_SOURCES}
-)
+# ADD_LIBRARY(multicore_field_python_focals
+#   STATIC
+#     ${_SOURCES}
+# )
