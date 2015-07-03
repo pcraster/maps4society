@@ -1,7 +1,6 @@
 #pragma once
 
 #include "calc_spatial.h"
-#include "fern/algorithm/policy/execution_policy.h"
 
 
 namespace calc {

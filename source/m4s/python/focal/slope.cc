@@ -46,9 +46,9 @@ calc::Field* slope(
   }
 
   calc::Spatial* field_result = new calc::Spatial(VS_S, calc::CRI_f, field_dem->nrValues());
-  multicore_field::multicore_field<REAL4> result(field_result);
+  multicore_field::Spatial<REAL4> result(field_result);
 
-  const multicore_field::multicore_field<REAL4> arg1(field_dem);
+  const multicore_field::Spatial<REAL4> arg1(field_dem);
 
   fa::ExecutionPolicy epol = execution_policy();
 

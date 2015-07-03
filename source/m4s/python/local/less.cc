@@ -157,28 +157,30 @@ calc::Field* less(
          calc::Field* field_a,
          calc::Field* field_b){
 
-  // all kind of error checking first...
   // arguments must be of same VS
   if(ordinal_valuescale(*field_a) == true){
-    if(ordinal_valuescale(*field_b) == true){
+    test_ordinal_valuescale(*field_b);
+    
+    //if(ordinal_valuescale(*field_b) == true){
        detail::less<INT4>(field_a, field_b);
-    }
-    else{
-      std::stringstream msg{};
-      msg << "right operand is of type '" << field_b->vs() << "', legal type is 'ordinal'\n";
-      throw std::runtime_error(msg.str());
-    }
+    //}
+    //else{
+    //  std::stringstream msg{};
+    //  msg << "right operand is of type '" << field_b->vs() << "', legal type is 'ordinal'\n";
+    //  throw std::runtime_error(msg.str());
+    //}
   }
   else if(scalar_valuescale(*field_a) == true){
-    if(scalar_valuescale(*field_b) == true){
-      printf("less FF real\n");
+    test_scalar_valuescale(*field_b);
+    //if(scalar_valuescale(*field_b) == true){
+    //  printf("less FF real\n");
       return detail::less<REAL4>(field_a, field_b);
-    }
-    else{
-      std::stringstream msg{};
-      msg << "right operand is of type '" << field_b->vs() << "', legal type is 'scalar'\n";
-      throw std::runtime_error(msg.str());
-    }
+    //}
+    //else{
+    //  std::stringstream msg{};
+    //  msg << "right operand is of type '" << field_b->vs() << "', legal type is 'scalar'\n";
+    //  throw std::runtime_error(msg.str());
+    //}
   }
   else{
     std::stringstream msg{};

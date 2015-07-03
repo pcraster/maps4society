@@ -12,15 +12,17 @@ SET(_SOURCES
   utils.cc
 
   and.cc
-#  or.cc
-#  xor.cc
-#  not.cc
-#  defined.cc
+  or.cc
+  xor.cc
+  not.cc
+  defined.cc
 
-#   add.cc
-#   sub.cc
-#   mul.cc
-#   div.cc
+  add.cc
+  sub.cc
+  mul.cc
+  div.cc
+  sqrt.cc
+  pow.cc
 
 #  equal.cc
 #  unequal.cc
@@ -31,13 +33,15 @@ SET(_SOURCES
 #  ifthen.cc
 #  ifthenelse.cc
 
-#   pow.cc
 # 
 #   cos.cc
-#   sqrt.cc
 )
 
 ADD_LIBRARY(multicore_field_python_locals
   STATIC
     ${_SOURCES}
 )
+
+
+
+

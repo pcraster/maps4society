@@ -1,5 +1,8 @@
 #include <cassert>
+#include <sstream>
 
+
+#include "calc_nonspatial.h"
 #include "calc_spatial.h"
 #include "pcrdatatype.h"
 #include "Globals.h"
@@ -19,7 +22,7 @@
 // #include "m4s/wrapper/multicore_nonspatial_output_policy.h"
 // #include "m4s/wrapper/multicore_nonspatial_input_policy.h"
 
-#include <iostream>
+
 
 
 
@@ -79,6 +82,31 @@ bool ordinal_valuescale(const calc::Field& aField){
 
 
 
+void test_scalar_valuescale(const calc::Field& aField, const std::string& msg){
+  PCR_VS field_vs = VS_UNKNOWN;
+  field_vs = aField.vs();
+
+  if(field_vs != VS_S){
+    std::stringstream err_msg{};
+    err_msg << msg << " is of type '" << field_vs << "', legal type is 'scalar'\n";
+    throw std::runtime_error(err_msg.str());
+  }
+}
+
+
+void test_ordinal_valuescale(const calc::Field& aField, const std::string& msg){
+  PCR_VS field_vs = VS_UNKNOWN;
+  field_vs = aField.vs();
+
+  if(field_vs != VS_O){
+    std::stringstream err_msg{};
+    err_msg << msg << " is of type '" << field_vs << "', legal type is 'ordinal'\n";
+    throw std::runtime_error(err_msg.str());
+  }
+}
+
+
+
 /// this is needed...
 /*
 calc::Field* degrees_radians(const multicore_field::multicore_field<REAL4>* aField, size_t nr_cells){
@@ -106,6 +134,16 @@ size_t nr_cols(){
 size_t nr_cells(){
   return pcraster::python::globals.cloneSpace().nrRows() * pcraster::python::globals.cloneSpace().nrCols();
 }
+
+
+
+
+// the PCRaster nonspatials return with mutliple valuescales based on the input value
+// that will break the value scale checking in the algorithms
+calc::Field* newNonSpatialScalar(double value){
+  return new calc::NonSpatial(VS_S, value);
+}
+
 
 
 

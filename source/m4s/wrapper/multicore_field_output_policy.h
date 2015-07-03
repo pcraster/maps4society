@@ -3,7 +3,7 @@
 #include "csftypes.h"
 
 #include "m4s/wrapper/multicore_field.h"
-
+//#include "fern/core/data_type_traits/scalar.h"  /// todo
 
 template<class T>
 class MulticoreFieldOutputNoDataPolicy

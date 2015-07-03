@@ -18,6 +18,8 @@ SET(_SOURCES
   pcraster_multicore
 )
 
+#set (CMAKE_SHARED_LINKER_FLAGS "  -Wl,-z,defs ")
+
 
 ADD_LIBRARY(_pcraster_multicore SHARED ${_SOURCES})
 
