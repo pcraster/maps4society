@@ -1,4 +1,4 @@
-#include "m4s/python/local/less.h"
+#include "m4s/python/local/greater.h"
 
 // PCRaster
 #include "calc_spatial.h"
@@ -20,7 +20,7 @@
 
 // Fern
 #include "fern/algorithm/policy/policies.h"
-#include <fern/algorithm/algebra/elementary/less.h>
+#include <fern/algorithm/algebra/elementary/greater.h>
 
 
 namespace fa = fern::algorithm;
@@ -32,7 +32,7 @@ namespace detail {
 
 
 template<class T>
-calc::Field* less_number_number(
+calc::Field* greater_number_number(
          const multicore_field::Nonspatial<T>* arg1,
          const multicore_field::Nonspatial<T>* arg2,
          multicore_field::Nonspatial<UINT1>* res){
@@ -43,7 +43,7 @@ calc::Field* less_number_number(
 
   MulticoreNonspatialOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
 
-  fa::algebra::less(input_no_data_policy,
+  fa::algebra::greater(input_no_data_policy,
     output_no_data_policy, fa::sequential, *arg1, *arg2, *res);
 
   return res->getField();
@@ -51,7 +51,7 @@ calc::Field* less_number_number(
 
 
 template<class T>
-calc::Field* less_field_field(
+calc::Field* greater_field_field(
          fa::ExecutionPolicy epol,
          const multicore_field::Spatial<T>* arg1,
          const multicore_field::Spatial<T>* arg2,
@@ -63,7 +63,7 @@ calc::Field* less_field_field(
 
   MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
 
-  fa::algebra::less(input_no_data_policy,
+  fa::algebra::greater(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
 
   return res->getField();
@@ -71,7 +71,7 @@ calc::Field* less_field_field(
 
 
 template<class T>
-calc::Field* less_number_field(
+calc::Field* greater_number_field(
          fern::algorithm::ExecutionPolicy epol,
          const multicore_field::Nonspatial<T>* arg1,
          const multicore_field::Spatial<T>* arg2,
@@ -83,7 +83,7 @@ calc::Field* less_number_field(
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
   MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
 
-  fa::algebra::less(input_no_data_policy,
+  fa::algebra::greater(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
 
   return res->getField();
@@ -91,7 +91,7 @@ calc::Field* less_number_field(
 
 
 template<class T>
-calc::Field* less_field_number(
+calc::Field* greater_field_number(
          fern::algorithm::ExecutionPolicy epol,
          const multicore_field::Spatial<T>* arg1,
          const multicore_field::Nonspatial<T>* arg2,
@@ -103,7 +103,7 @@ calc::Field* less_field_number(
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
   MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
 
-  fa::algebra::less(input_no_data_policy,
+  fa::algebra::greater(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
 
   return res->getField();
@@ -111,7 +111,7 @@ calc::Field* less_field_number(
 
 
 template<class T>
-calc::Field* less(
+calc::Field* greater(
          calc::Field* field_a,
          calc::Field* field_b){
 
@@ -123,7 +123,7 @@ calc::Field* less(
     res_field = new calc::NonSpatial(VS_B);
     multicore_field::Nonspatial<UINT1> res(res_field);
 
-    return detail::less_number_number(&arg1, &arg2, &res);
+    return detail::greater_number_number(&arg1, &arg2, &res);
   }
 
 
@@ -136,19 +136,19 @@ calc::Field* less(
     const multicore_field::Spatial<T> arg1(field_a);
     const multicore_field::Nonspatial<T> arg2(field_b);
 
-    return detail::less_field_number<T>(epol, &arg1, &arg2, &res);
+    return detail::greater_field_number<T>(epol, &arg1, &arg2, &res);
   }
   else if(field_a->isSpatial() == false){
     const multicore_field::Nonspatial<T> arg1(field_a);
     const multicore_field::Spatial<T> arg2(field_b);
 
-    return detail::less_number_field<T>(epol, &arg1, &arg2, &res);
+    return detail::greater_number_field<T>(epol, &arg1, &arg2, &res);
   }
   else{
     const multicore_field::Spatial<T> arg1(field_a);
     const multicore_field::Spatial<T> arg2(field_b);
 
-    return detail::less_field_field<T>(epol, &arg1, &arg2, &res);
+    return detail::greater_field_field<T>(epol, &arg1, &arg2, &res);
   }
 }
 
@@ -156,18 +156,18 @@ calc::Field* less(
 } // namespace detail
 
 
-calc::Field* less(
+calc::Field* greater(
          calc::Field* field_a,
          calc::Field* field_b){
-printf("less\n");
+printf("greater\n");
   // arguments must be of same VS
   if(ordinal_valuescale(*field_a) == true){
     test_ordinal_valuescale(*field_b, "right operand");
-    detail::less<INT4>(field_a, field_b);
+    detail::greater<INT4>(field_a, field_b);
   }
   else if(scalar_valuescale(*field_a) == true){
     test_scalar_valuescale(*field_b, "right operand");
-    return detail::less<REAL4>(field_a, field_b);
+    return detail::greater<REAL4>(field_a, field_b);
   }
   else{
     std::stringstream msg{};

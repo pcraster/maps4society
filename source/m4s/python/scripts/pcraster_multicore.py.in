@@ -42,8 +42,8 @@ def pcrmcEQ(self, field):
 def pcrmcLT(self, field):
   return pmcop.less(self, field)
 
-#def pcrmcLE(self, field):
-#  return pmcop.less_equal(self, field)
+def pcrmcLE(self, field):
+  return pmcop.less_equal(self, field)
 
 
 
@@ -102,7 +102,7 @@ _pcraster.Field.__xor__      = pcrmcXOr      # ^
 #_pcraster.Field.__gt__       = pcrmcGT
 #_pcraster.Field.__ge__       = pcrmcGE
 _pcraster.Field.__lt__       = pcrmcLT
-#_pcraster.Field.__le__       = pcrmcLE
+_pcraster.Field.__le__       = pcrmcLE
 
 
 

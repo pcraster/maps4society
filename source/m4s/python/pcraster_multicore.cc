@@ -32,16 +32,16 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
 
 //  bp::def("equal", &pmcpy::equal,
 //    bp::return_value_policy<bp::manage_new_object>());// #include <fern/algorithm/algebra/elementary/less_equal.h>
-//  bp::def("less", &pmcpy::less,
-//    bp::return_value_policy<bp::manage_new_object>());
-// bp::def("less_equal", &pmcpy::less_equal,
-//   bp::return_value_policy<bp::manage_new_object>());
-// bp::def("larger", &pmcpy::larger,
-//   bp::return_value_policy<bp::manage_new_object>());
-// bp::def("larger_equal", &pmcpy::larger_equal,
-//   bp::return_value_policy<bp::manage_new_object>());
 // bp::def("unequal", &pmcpy::unequal,
 //   bp::return_value_policy<bp::manage_new_object>());
+  bp::def("less", &pmcpy::less,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("less_equal", &pmcpy::less_equal,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("greater", &pmcpy::greater,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("greater_equal", &pmcpy::greater_equal,
+    bp::return_value_policy<bp::manage_new_object>());
 
   bp::def("add", &pmcpy::add,
     bp::return_value_policy<bp::manage_new_object>());
@@ -56,6 +56,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("power", &pmcpy::power,
     bp::return_value_policy<bp::manage_new_object>());
+//  bp::def("power", &pmcpy::power,
+//    bp::return_value_policy<bp::manage_new_object>());
 
 // 
 //   bp::def("cos", &pmcpy::cos,

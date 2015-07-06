@@ -21,15 +21,17 @@ SET(_SOURCES
   sub.cc
   mul.cc
   div.cc
+
   sqrt.cc
   pow.cc
+  #abs.cc
 
 #  equal.cc
 #  unequal.cc
-#  less.cc
-#  less_equal.cc
-#  greater.cc
-#  greater_equal.cc
+  less.cc
+  less_equal.cc
+  greater.cc
+  greater_equal.cc
 #  ifthen.cc
 #  ifthenelse.cc
 
