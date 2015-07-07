@@ -24,7 +24,7 @@ SET(_SOURCES
 
   sqrt.cc
   pow.cc
-  #abs.cc
+  abs.cc
 
 #  equal.cc
 #  unequal.cc
@@ -35,8 +35,7 @@ SET(_SOURCES
 #  ifthen.cc
 #  ifthenelse.cc
 
-# 
-#   cos.cc
+#  cos.cc
 )
 
 ADD_LIBRARY(multicore_field_python_locals

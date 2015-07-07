@@ -94,12 +94,6 @@ def get_field(arg):
 
 
 
-def cos(arg1):
-  try:
-    arg1 = get_scalar_field(arg1)
-    return _pmc.cos(arg1)
-  except RuntimeError as exception:
-    raise RuntimeError("pcraster_multicore.cos: {}".format(str(exception)))
 
 
 
@@ -269,8 +263,20 @@ def power(arg1, arg2):
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.power: {}".format(str(exception)))
 
+def abs(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.abs(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.abs: {}".format(str(exception)))
 
 
+def cos(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.cos(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.cos: {}".format(str(exception)))
 
 
 

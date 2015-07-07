@@ -14,17 +14,17 @@
 
 #include "m4s/python/local/sqrt.h"
 #include "m4s/python/local/pow.h"
-//#include "m4s/python/local/abs.h"
+#include "m4s/python/local/abs.h"
 //#include "m4s/python/local/ln.h"
 //#include "m4s/python/local/log10.h"
 
 
-//#include "m4s/python/local/cos.h"
+#include "m4s/python/local/cos.h"
 //#include "m4s/python/local/sin.h"
 //#include "m4s/python/local/tan.h"
-//#include "m4s/python/local/acos.h"
-//#include "m4s/python/local/asin.h"
-//#include "m4s/python/local/atan.h"
+//#include "m4s/python/local/acos.h"  // not in fern
+//#include "m4s/python/local/asin.h"  // not in fern
+//#include "m4s/python/local/atan.h"  // not in fern
 
 
 //#include "m4s/python/local/equal.h"

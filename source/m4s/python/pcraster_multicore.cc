@@ -54,14 +54,13 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
 
   bp::def("sqrt", &pmcpy::sqrt,
     bp::return_value_policy<bp::manage_new_object>());
+  bp::def("abs", &pmcpy::abs,
+    bp::return_value_policy<bp::manage_new_object>());
   bp::def("power", &pmcpy::power,
     bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("power", &pmcpy::power,
-//    bp::return_value_policy<bp::manage_new_object>());
 
-// 
-//   bp::def("cos", &pmcpy::cos,
-//     bp::return_value_policy<bp::manage_new_object>());
+//  bp::def("cos", &pmcpy::cos,
+//    bp::return_value_policy<bp::manage_new_object>());
 //   bp::def("sin", &pmcpy::sin,
 //     bp::return_value_policy<bp::manage_new_object>());
 //   bp::def("tan", &pmcpy::tan,
