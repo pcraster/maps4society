@@ -30,14 +30,14 @@ def pcrmcNot(self):
 def pcrmcEQ(self, field):
   return pmcop.equal(self, field)
 
-#def pcrmcNE(self, field):
-#  return pmcop.unequal(self, field)
+def pcrmcNE(self, field):
+  return pmcop.unequal(self, field)
 
-#def pcrmcGT(self, field):
-#  return pmcop.larger(self, field)
+def pcrmcGT(self, field):
+  return pmcop.larger(self, field)
 
-#def pcrmcGE(self, field):
-#  return pmcop.larger_equal(self, field)
+def pcrmcGE(self, field):
+  return pmcop.larger_equal(self, field)
 
 def pcrmcLT(self, field):
   return pmcop.less(self, field)
@@ -95,16 +95,12 @@ _pcraster.Field.__ror__      = pcrmcROr
 _pcraster.Field.__invert__   = pcrmcNot      # ~
 _pcraster.Field.__xor__      = pcrmcXOr      # ^
 
-
-## some of these should be in fern ???
 #_pcraster.Field.__ne__       = pcrmcNE
 #_pcraster.Field.__eq__       = pcrmcEQ
-#_pcraster.Field.__gt__       = pcrmcGT
-#_pcraster.Field.__ge__       = pcrmcGE
+_pcraster.Field.__gt__       = pcrmcGT
+_pcraster.Field.__ge__       = pcrmcGE
 _pcraster.Field.__lt__       = pcrmcLT
 _pcraster.Field.__le__       = pcrmcLE
-
-
 
 _pcraster.Field.__add__      = pcrmcAdd
 _pcraster.Field.__radd__      = pcrmcRAdd

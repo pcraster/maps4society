@@ -29,22 +29,7 @@ namespace python {
 namespace detail {
 
 
-calc::Field* mul_number_number(
-         const multicore_field::Nonspatial<REAL4>* arg1,
-         const multicore_field::Nonspatial<REAL4>* arg2,
-         multicore_field::Nonspatial<REAL4>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreNonspatialInputNoDataPolicy<REAL4>,
-        MulticoreNonspatialInputNoDataPolicy<REAL4>>;
-  InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
-
-  MulticoreNonspatialOutputNoDataPolicy<REAL4> output_no_data_policy(*res);
-
-  fa::algebra::multiply<fa::multiply::OutOfRangePolicy>(input_no_data_policy,
-    output_no_data_policy, fa::sequential, *arg1, *arg2, *res);
-
-  return res->getField();
-}
 
 
 calc::Field* mul_field_field(
@@ -66,6 +51,36 @@ calc::Field* mul_field_field(
 }
 
 
+
+
+
+} // namespace detail
+
+
+
+calc::Field* mul_number_number(
+         const multicore_field::Nonspatial<REAL4>* arg1,
+         const multicore_field::Nonspatial<REAL4>* arg2,
+         multicore_field::Nonspatial<REAL4>* res){
+
+  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreNonspatialInputNoDataPolicy<REAL4>,
+        MulticoreNonspatialInputNoDataPolicy<REAL4>>;
+  InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
+
+  MulticoreNonspatialOutputNoDataPolicy<REAL4> output_no_data_policy(*res);
+
+  fa::algebra::multiply<fa::multiply::OutOfRangePolicy>(input_no_data_policy,
+    output_no_data_policy, fa::sequential, *arg1, *arg2, *res);
+
+  return res->getField();
+}
+
+
+
+
+
+
+
 calc::Field* mul_field_number(
          fern::algorithm::ExecutionPolicy epol,
          const multicore_field::Spatial<REAL4>* arg1,
@@ -85,7 +100,12 @@ calc::Field* mul_field_number(
 }
 
 
-} // namespace detail
+
+
+
+
+
+
 
 
 calc::Field* mul(
@@ -103,7 +123,7 @@ calc::Field* mul(
     res_field = new calc::NonSpatial(VS_S);
     multicore_field::Nonspatial<REAL4> res(res_field);
 
-    return detail::mul_number_number(&arg1, &arg2, &res);
+    return mul_number_number(&arg1, &arg2, &res);
   }
 
   res_field = new calc::Spatial(VS_S, calc::CRI_f, nr_cells());
@@ -114,12 +134,12 @@ calc::Field* mul(
   if(field_b->isSpatial() == false){
     const multicore_field::Spatial<REAL4> arg1(field_a);
     const multicore_field::Nonspatial<REAL4> arg2(field_b);
-    return detail::mul_field_number(epol, &arg1, &arg2, &res);
+    return mul_field_number(epol, &arg1, &arg2, &res);
   }
   else if(field_a->isSpatial() == false){
     const multicore_field::Nonspatial<REAL4> arg1(field_a);
     const multicore_field::Spatial<REAL4> arg2(field_b);
-    return detail::mul_field_number(epol, &arg2, &arg1, &res);
+    return mul_field_number(epol, &arg2, &arg1, &res);
   }
   else{
     const multicore_field::Spatial<REAL4> arg1(field_a);

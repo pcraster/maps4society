@@ -9,7 +9,6 @@ INCLUDE_DIRECTORIES(
 )
 
 SET(_SOURCES
-  utils.cc
 
   and.cc
   or.cc
@@ -35,7 +34,16 @@ SET(_SOURCES
 #  ifthen.cc
 #  ifthenelse.cc
 
-#  cos.cc
+  cos.cc
+  sin.cc
+  tan.cc
+  #acos.cc
+  #asin.cc
+  #atan.cc
+  
+
+
+  utils.cc
 )
 
 ADD_LIBRARY(multicore_field_python_locals

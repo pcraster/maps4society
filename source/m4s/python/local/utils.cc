@@ -112,25 +112,19 @@ void test_ordinal_valuescale(const calc::Field& aField, const std::string& msg){
 
 
 
-calc::Field* degrees_radians(const multicore_field::Spatial<REAL4>* aField/*, size_t nr_cells*/){
-// fa::ExecutionPolicy epol = execution_policy();
-//     const REAL4 conversion_factor = M_PI/180.0f;
-// 
-//     calc::Field* field_conv = new calc::Spatial(VS_S, calc::CRI_f, nr_cells());
-//     multicore_field::Spatial<REAL4> deg_rad(field_conv);
-//     mul_field_number(epol, aField, conversion_factor, &deg_rad);
-// 
-//  return field_conv;
+calc::Field* degrees_to_radians(const multicore_field::Nonspatial<REAL4>* aField,  multicore_field::Nonspatial<REAL4>* result){
+  double conversion_factor = M_PI/180.0;
+  calc::Field* field_conv = new calc::NonSpatial(VS_S, conversion_factor);
+  multicore_field::Nonspatial<REAL4> deg_rad(field_conv);
+  return mul_number_number(aField,&deg_rad, result);
 }
 
-calc::Field* degrees_radians(const multicore_field::Nonspatial<REAL4>* aField){
-//     const REAL4 conversion_factor = M_PI/180.0f;
-// 
-//     calc::Field* field_conv = new calc::NonSpatial(VS_S);
-//     multicore_field::Nonspatial<REAL4> deg_rad(field_conv);
-//     mul_number_number(aField, conversion_factor, &deg_rad);
-
-// return field_conv;
+calc::Field* degrees_to_radians(const multicore_field::Spatial<REAL4>* aField,  multicore_field::Spatial<REAL4>* result){
+  fa::ExecutionPolicy epol = execution_policy();
+  double conversion_factor = M_PI/180.0;
+  calc::Field* field_conv = new calc::NonSpatial(VS_S, conversion_factor);
+  multicore_field::Nonspatial<REAL4> deg_rad(field_conv);
+  return mul_field_number(epol,aField,&deg_rad, result);
 }
 
 
@@ -140,12 +134,6 @@ calc::Field* degrees_radians(const multicore_field::Nonspatial<REAL4>* aField){
 
 bool global_option_directional(){
   return appDirection == APP_DEGREES ? true : false;
-//   if(appDirection == APP_DEGREES){
-//     return true;
-//   }
-//   else{
-//     return false;
-//   }
 }
 
 
@@ -153,6 +141,10 @@ bool global_option_directional(){
 // that will break the value scale checking in the algorithms
 calc::Field* newNonSpatialScalar(double value){
   return new calc::NonSpatial(VS_S, value);
+}
+
+calc::Field* newNonSpatialNominal(int value){
+  return new calc::NonSpatial(VS_N, value);
 }
 
 

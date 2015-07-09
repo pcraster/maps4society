@@ -27,18 +27,18 @@ def get_scalar_field(arg):
 
 # just get a spatial or nonspatial
 # assign a valuescale if necessary
-# correct SV should be checked in the C++ code
+# correct SV of an operation should be checked in the C++ code
 def get_field(arg):
   if isinstance(arg, _pcraster.Field):
     return(arg)
   elif isinstance(arg, types.StringTypes):
     return(_pcraster.readmap(arg))
   elif isinstance(arg, types.BooleanType):
-    raise RuntimeError# return(_pcraster.newNonSpatialField(bool(arg)))
+    raise RuntimeError("no booleans")
   elif isinstance(arg, types.IntType) or isinstance(arg, types.LongType):
-    raise RuntimeError# return (_pcraster.newNonSpatialField(int(arg)))
+    return(_pmc._newNonSpatialNominal(arg))
   elif isinstance(arg, types.FloatType):
-    return(_pmc.newNonSpatialScalar(arg))
+    return(_pmc._newNonSpatialScalar(arg))
   else:
     msg = "conversion of argument with type '{}' to PCRaster not possible".format(type(arg).__name__)
     raise RuntimeError(msg)
@@ -277,6 +277,27 @@ def cos(arg1):
     return _pmc.cos(arg1)
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.cos: {}".format(str(exception)))
+
+def sin(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.sin(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.sin: {}".format(str(exception)))
+
+def tan(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.tan(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.tan: {}".format(str(exception)))
+
+#def atan(arg1):
+#  try:
+#    arg1 = get_field(arg1)
+#    return _pmc.atan(arg1)
+#  except RuntimeError as exception:
+#    raise RuntimeError("pcraster_multicore.atan: {}".format(str(exception)))
 
 
 

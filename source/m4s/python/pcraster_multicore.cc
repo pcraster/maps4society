@@ -13,7 +13,9 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
 
   bp::def("set_nr_cpus", &pmcpy::set_nr_cpus,
     "Set the number of CPUs used in one of the PCRaster multicore algorithms");
-  bp::def("newNonSpatialScalar", &pmcpy::newNonSpatialScalar,
+  bp::def("_newNonSpatialScalar", &pmcpy::newNonSpatialScalar,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("_newNonSpatialNominal", &pmcpy::newNonSpatialNominal,
     bp::return_value_policy<bp::manage_new_object>());
 
   // Local operations
@@ -59,12 +61,18 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
   bp::def("power", &pmcpy::power,
     bp::return_value_policy<bp::manage_new_object>());
 
-//  bp::def("cos", &pmcpy::cos,
+  bp::def("cos", &pmcpy::cos,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("sin", &pmcpy::sin,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("tan", &pmcpy::tan,
+    bp::return_value_policy<bp::manage_new_object>());
+//  bp::def("acos", &pmcpy::acos,
 //    bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("sin", &pmcpy::sin,
-//     bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("tan", &pmcpy::tan,
-//     bp::return_value_policy<bp::manage_new_object>());
+//  bp::def("asin", &pmcpy::asin,
+//    bp::return_value_policy<bp::manage_new_object>());
+//  bp::def("atan", &pmcpy::atan,
+//    bp::return_value_policy<bp::manage_new_object>());
 
 
   // Focal operations

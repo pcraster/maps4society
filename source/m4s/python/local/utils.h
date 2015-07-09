@@ -37,14 +37,16 @@ void test_scalar_valuescale(const calc::Field& aField, const std::string& msg);
 
 void test_ordinal_valuescale(const calc::Field& aField, const std::string& msg);
 
-//multicore_nonspatial::multicore_nonspatial<REAL4>* degrees_radians_nonspatial(const calc::Field* aField);
 
-calc::Field* degrees_to_radians(const multicore_field::Nonspatial<REAL4>* aField);
+calc::Field* degrees_to_radians(const multicore_field::Nonspatial<REAL4>* aField,  multicore_field::Nonspatial<REAL4>* result);
 
-calc::Field* degrees_to_radians(const multicore_field::Spatial<REAL4>* aField/*, size_t nr_cells*/);
+calc::Field* degrees_to_radians(const multicore_field::Spatial<REAL4>* aField,  multicore_field::Spatial<REAL4>* result);
+
 
 
 calc::Field* newNonSpatialScalar(double value);
+
+calc::Field* newNonSpatialNominal(int value);
 
 bool global_option_directional();
 
