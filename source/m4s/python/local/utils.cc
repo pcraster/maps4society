@@ -54,15 +54,32 @@ size_t nr_cells(){
 
 
 
+bool boolean_valuescale(const calc::Field& aField){
+  PCR_VS field_vs = VS_UNKNOWN;
+  field_vs = aField.vs();
+  return field_vs == VS_B ? true : false;
+}
+bool ldd_valuescale(const calc::Field& aField){
+  PCR_VS field_vs = VS_UNKNOWN;
+  field_vs = aField.vs();
+  return field_vs == VS_L ? true : false;
+}
 
-
+bool nominal_valuescale(const calc::Field& aField){
+  PCR_VS field_vs = VS_UNKNOWN;
+  field_vs = aField.vs();
+  return field_vs == VS_N ? true : false;
+}
+bool ordinal_valuescale(const calc::Field& aField){
+  PCR_VS field_vs = VS_UNKNOWN;
+  field_vs = aField.vs();
+  return field_vs == VS_O ? true : false;
+}
 bool scalar_valuescale(const calc::Field& aField){
   PCR_VS field_vs = VS_UNKNOWN;
   field_vs = aField.vs();
   return field_vs == VS_S ? true : false;
 }
-
-
 bool directional_valuescale(const calc::Field& aField){
   PCR_VS field_vs = VS_UNKNOWN;
   field_vs = aField.vs();
@@ -70,24 +87,23 @@ bool directional_valuescale(const calc::Field& aField){
 }
 
 
-bool boolean_valuescale(const calc::Field& aField){
-  PCR_VS field_vs = VS_UNKNOWN;
-  field_vs = aField.vs();
-  return field_vs == VS_B ? true : false;
+
+
+
+void assert_equal_valuescale(const calc::Field& field_a, const calc::Field& field_b/*, const std::string& msg*/){
+  PCR_VS field_vs1 = VS_UNKNOWN;
+  PCR_VS field_vs2 = VS_UNKNOWN;
+  field_vs1 = field_a.vs();
+  field_vs2 = field_b.vs();
+  if(field_vs1 != field_vs2){
+    std::stringstream err_msg{};
+    err_msg << "one operand is of type '" << field_vs2 << "', while other is of type '" << field_vs1 << "'\n";
+    throw std::runtime_error(err_msg.str());
+  }
 }
 
 
-bool ordinal_valuescale(const calc::Field& aField){
-  PCR_VS field_vs = VS_UNKNOWN;
-  field_vs = aField.vs();
-  return field_vs == VS_O ? true : false;
-}
-
-
-
-
-
-void test_scalar_valuescale(const calc::Field& aField, const std::string& msg){
+void assert_scalar_valuescale(const calc::Field& aField, const std::string& msg){
   PCR_VS field_vs = VS_UNKNOWN;
   field_vs = aField.vs();
 
@@ -99,7 +115,7 @@ void test_scalar_valuescale(const calc::Field& aField, const std::string& msg){
 }
 
 
-void test_ordinal_valuescale(const calc::Field& aField, const std::string& msg){
+void assert_ordinal_valuescale(const calc::Field& aField, const std::string& msg){
   PCR_VS field_vs = VS_UNKNOWN;
   field_vs = aField.vs();
 

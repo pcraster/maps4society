@@ -1,4 +1,4 @@
-#include "m4s/python/local/greater_equal.h"
+#include "m4s/python/local/equal.h"
 
 // PCRaster
 #include "calc_spatial.h"
@@ -20,7 +20,7 @@
 
 // Fern
 #include "fern/algorithm/policy/policies.h"
-#include <fern/algorithm/algebra/elementary/greater_equal.h>
+#include <fern/algorithm/algebra/elementary/equal.h>
 
 
 namespace fa = fern::algorithm;
@@ -32,7 +32,7 @@ namespace detail {
 
 
 template<class T>
-calc::Field* greater_equal_number_number(
+calc::Field* equal_number_number(
          const multicore_field::Nonspatial<T>* arg1,
          const multicore_field::Nonspatial<T>* arg2,
          multicore_field::Nonspatial<UINT1>* res){
@@ -43,7 +43,7 @@ calc::Field* greater_equal_number_number(
 
   MulticoreNonspatialOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
 
-  fa::algebra::greater_equal(input_no_data_policy,
+  fa::algebra::equal(input_no_data_policy,
     output_no_data_policy, fa::sequential, *arg1, *arg2, *res);
 
   return res->getField();
@@ -51,7 +51,7 @@ calc::Field* greater_equal_number_number(
 
 
 template<class T>
-calc::Field* greater_equal_field_field(
+calc::Field* equal_field_field(
          fa::ExecutionPolicy epol,
          const multicore_field::Spatial<T>* arg1,
          const multicore_field::Spatial<T>* arg2,
@@ -63,7 +63,7 @@ calc::Field* greater_equal_field_field(
 
   MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
 
-  fa::algebra::greater_equal(input_no_data_policy,
+  fa::algebra::equal(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
 
   return res->getField();
@@ -71,7 +71,7 @@ calc::Field* greater_equal_field_field(
 
 
 template<class T>
-calc::Field* greater_equal_number_field(
+calc::Field* equal_number_field(
          fern::algorithm::ExecutionPolicy epol,
          const multicore_field::Nonspatial<T>* arg1,
          const multicore_field::Spatial<T>* arg2,
@@ -83,7 +83,7 @@ calc::Field* greater_equal_number_field(
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
   MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
 
-  fa::algebra::greater_equal(input_no_data_policy,
+  fa::algebra::equal(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
 
   return res->getField();
@@ -91,7 +91,7 @@ calc::Field* greater_equal_number_field(
 
 
 template<class T>
-calc::Field* greater_equal_field_number(
+calc::Field* equal_field_number(
          fern::algorithm::ExecutionPolicy epol,
          const multicore_field::Spatial<T>* arg1,
          const multicore_field::Nonspatial<T>* arg2,
@@ -103,7 +103,7 @@ calc::Field* greater_equal_field_number(
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
   MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
 
-  fa::algebra::greater_equal(input_no_data_policy,
+  fa::algebra::equal(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
 
   return res->getField();
@@ -111,7 +111,7 @@ calc::Field* greater_equal_field_number(
 
 
 template<class T>
-calc::Field* greater_equal(
+calc::Field* equal(
          calc::Field* field_a,
          calc::Field* field_b){
 
@@ -123,7 +123,7 @@ calc::Field* greater_equal(
     res_field = new calc::NonSpatial(VS_B);
     multicore_field::Nonspatial<UINT1> res(res_field);
 
-    return detail::greater_equal_number_number(&arg1, &arg2, &res);
+    return detail::equal_number_number(&arg1, &arg2, &res);
   }
 
 
@@ -136,19 +136,19 @@ calc::Field* greater_equal(
     const multicore_field::Spatial<T> arg1(field_a);
     const multicore_field::Nonspatial<T> arg2(field_b);
 
-    return detail::greater_equal_field_number<T>(epol, &arg1, &arg2, &res);
+    return detail::equal_field_number<T>(epol, &arg1, &arg2, &res);
   }
   else if(field_a->isSpatial() == false){
     const multicore_field::Nonspatial<T> arg1(field_a);
     const multicore_field::Spatial<T> arg2(field_b);
 
-    return detail::greater_equal_number_field<T>(epol, &arg1, &arg2, &res);
+    return detail::equal_number_field<T>(epol, &arg1, &arg2, &res);
   }
   else{
     const multicore_field::Spatial<T> arg1(field_a);
     const multicore_field::Spatial<T> arg2(field_b);
 
-    return detail::greater_equal_field_field<T>(epol, &arg1, &arg2, &res);
+    return detail::equal_field_field<T>(epol, &arg1, &arg2, &res);
   }
 }
 
@@ -156,18 +156,19 @@ calc::Field* greater_equal(
 } // namespace detail
 
 
-calc::Field* greater_equal(
+calc::Field* equal(
          calc::Field* field_a,
          calc::Field* field_b){
-printf("greater_equal\n");
-  // arguments must be of same VS
-  if(ordinal_valuescale(*field_a) == true){
-    assert_ordinal_valuescale(*field_b, "right operand");
-    detail::greater_equal<INT4>(field_a, field_b);
+printf("equal\n");
+  assert_equal_valuescale(*field_a, *field_b);
+  if(boolean_valuescale(*field_a) || ldd_valuescale(*field_a)){
+    return detail::equal<UINT1>(field_a, field_b);
   }
-  else if(scalar_valuescale(*field_a) == true){
-    assert_scalar_valuescale(*field_b, "right operand");
-    return detail::greater_equal<REAL4>(field_a, field_b);
+  else if(nominal_valuescale(*field_a) || ordinal_valuescale(*field_a)){
+    return detail::equal<INT4>(field_a, field_b);
+  }
+  else if(scalar_valuescale(*field_a) || directional_valuescale(*field_a)){
+    return detail::equal<REAL4>(field_a, field_b);
   }
   else{
     std::stringstream msg{};

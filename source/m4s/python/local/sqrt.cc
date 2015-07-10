@@ -38,7 +38,7 @@ namespace detail {
 calc::Field* sqrt(
          calc::Field* field){
 
-  test_scalar_valuescale(*field, "argument");
+  assert_scalar_valuescale(*field, "argument");
 
   calc::Field* field_result = nullptr;
 

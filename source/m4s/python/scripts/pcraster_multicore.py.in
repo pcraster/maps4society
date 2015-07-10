@@ -95,8 +95,8 @@ _pcraster.Field.__ror__      = pcrmcROr
 _pcraster.Field.__invert__   = pcrmcNot      # ~
 _pcraster.Field.__xor__      = pcrmcXOr      # ^
 
-#_pcraster.Field.__ne__       = pcrmcNE
-#_pcraster.Field.__eq__       = pcrmcEQ
+_pcraster.Field.__ne__       = pcrmcNE
+_pcraster.Field.__eq__       = pcrmcEQ
 _pcraster.Field.__gt__       = pcrmcGT
 _pcraster.Field.__ge__       = pcrmcGE
 _pcraster.Field.__lt__       = pcrmcLT

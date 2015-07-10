@@ -112,8 +112,8 @@ calc::Field* mul(
          calc::Field* field_a,
          calc::Field* field_b){
 
-  test_scalar_valuescale(*field_a, "left operand");
-  test_scalar_valuescale(*field_b, "right operand");
+  assert_scalar_valuescale(*field_a, "left operand");
+  assert_scalar_valuescale(*field_b, "right operand");
 
   calc::Field* res_field = nullptr;
 

@@ -16,6 +16,7 @@
 #include "m4s/python/local/pow.h"
 //#include "m4s/python/local/sqr.h"
 #include "m4s/python/local/abs.h"
+
 //#include "m4s/python/local/ln.h"
 //#include "m4s/python/local/log10.h"
 
@@ -28,8 +29,8 @@
 #include "m4s/python/local/atan.h"
 
 
-//#include "m4s/python/local/equal.h"
-//#include "m4s/python/local/unequal.h"
+#include "m4s/python/local/equal.h"
+#include "m4s/python/local/unequal.h"
 #include "m4s/python/local/less.h"
 #include "m4s/python/local/less_equal.h"
 #include "m4s/python/local/greater.h"

@@ -25,8 +25,8 @@ SET(_SOURCES
   pow.cc
   abs.cc
 
-#  equal.cc
-#  unequal.cc
+  equal.cc
+  unequal.cc
   less.cc
   less_equal.cc
   greater.cc

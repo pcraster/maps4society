@@ -162,11 +162,11 @@ calc::Field* greater(
 printf("greater\n");
   // arguments must be of same VS
   if(ordinal_valuescale(*field_a) == true){
-    test_ordinal_valuescale(*field_b, "right operand");
+    assert_ordinal_valuescale(*field_b, "right operand");
     detail::greater<INT4>(field_a, field_b);
   }
   else if(scalar_valuescale(*field_a) == true){
-    test_scalar_valuescale(*field_b, "right operand");
+    assert_scalar_valuescale(*field_b, "right operand");
     return detail::greater<REAL4>(field_a, field_b);
   }
   else{
