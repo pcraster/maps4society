@@ -14,7 +14,7 @@
 
 #include "m4s/python/local/sqrt.h"
 #include "m4s/python/local/pow.h"
-//#include "m4s/python/local/sqr.h"
+#include "m4s/python/local/sqr.h"
 #include "m4s/python/local/abs.h"
 
 //#include "m4s/python/local/ln.h"
@@ -61,9 +61,6 @@
 
 
 /*
-
-
-abs fern/algorithm/algebra/elementary/absolute.h>
 
 ifthen <fern/algorithm/core/if.h>
 

@@ -60,6 +60,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("power", &pmcpy::power,
     bp::return_value_policy<bp::manage_new_object>());
+  bp::def("sqr", &pmcpy::sqr,
+    bp::return_value_policy<bp::manage_new_object>());
 
   bp::def("cos", &pmcpy::cos,
     bp::return_value_policy<bp::manage_new_object>());

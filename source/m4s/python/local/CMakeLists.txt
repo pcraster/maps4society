@@ -23,6 +23,7 @@ SET(_SOURCES
 
   sqrt.cc
   pow.cc
+  sqr.cc
   abs.cc
 
   equal.cc

@@ -299,5 +299,10 @@ def tan(arg1):
 #  except RuntimeError as exception:
 #    raise RuntimeError("pcraster_multicore.atan: {}".format(str(exception)))
 
-
+def sqr(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.sqr(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.sqr: {}".format(str(exception)))
 
