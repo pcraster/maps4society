@@ -1,7 +1,5 @@
 #pragma once
 
-//#include "calc_spatial.h"
-
 
 namespace calc {
   class Field;

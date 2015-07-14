@@ -18,6 +18,11 @@ struct DataTypeTraits<multicore_field::Spatial<T>>{
 
   using argument_category = raster_2d_tag;
 
+  template<class U>
+  struct Clone{
+    using type = multicore_field::Spatial<U>;
+  };
+
 };
 
 } // namespace fern

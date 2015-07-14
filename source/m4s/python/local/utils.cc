@@ -103,6 +103,17 @@ void assert_equal_valuescale(const calc::Field& field_a, const calc::Field& fiel
 }
 
 
+void assert_boolean_valuescale(const calc::Field& aField, const std::string& msg){
+  PCR_VS field_vs = VS_UNKNOWN;
+  field_vs = aField.vs();
+
+  if(field_vs != VS_B){
+    std::stringstream err_msg{};
+    err_msg << msg << " is of type '" << field_vs << "', legal type is 'boolean'\n";
+    throw std::runtime_error(err_msg.str());
+  }
+}
+
 void assert_scalar_valuescale(const calc::Field& aField, const std::string& msg){
   PCR_VS field_vs = VS_UNKNOWN;
   field_vs = aField.vs();
@@ -162,9 +173,6 @@ calc::Field* newNonSpatialScalar(double value){
 calc::Field* newNonSpatialNominal(int value){
   return new calc::NonSpatial(VS_N, value);
 }
-
-
-
 
 
 } // namespace python

@@ -34,7 +34,7 @@ bool directional_valuescale(const calc::Field& aField);
 
 
 
-//void assert_boolean_valuescale(const calc::Field& aField, const std::string& msg);
+void assert_boolean_valuescale(const calc::Field& aField, const std::string& msg);
 //void assert_ldd_valuescale(const calc::Field& aField, const std::string& msg);
 //void assert_nominal_valuescale(const calc::Field& aField, const std::string& msg);
 void assert_ordinal_valuescale(const calc::Field& aField, const std::string& msg);
@@ -54,7 +54,8 @@ calc::Field* newNonSpatialNominal(int value);
 
 bool global_option_directional();
 
-void  assert_equal_valuescale(const calc::Field& field_a, const calc::Field& field_b/*, const std::string& msg*/);
+void assert_equal_valuescale(const calc::Field& field_a, const calc::Field& field_b/*, const std::string& msg*/);
+
 
 } // namespace python
 } // namespace pcraster_multicore

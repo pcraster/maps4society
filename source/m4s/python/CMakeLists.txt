@@ -1,5 +1,6 @@
 ADD_SUBDIRECTORY(local)
 ADD_SUBDIRECTORY(focal)
+ADD_SUBDIRECTORY(total)
 ADD_SUBDIRECTORY(scripts)
 
 
@@ -27,11 +28,13 @@ ADD_LIBRARY(_pcraster_multicore SHARED ${_SOURCES})
 ADD_DEPENDENCIES(_pcraster_multicore
   #multicore_field_python_focals
   multicore_field_python_locals
+  multicore_field_python_totals
 )
 
 
 TARGET_LINK_LIBRARIES(_pcraster_multicore
   #multicore_field_python_focals
+  multicore_field_python_totals
   multicore_field_python_locals
   ${PCRTREE2_MODELENGINE_LIBRARY}
   ${PCRTREE2_PYTHON_LIBRARY}

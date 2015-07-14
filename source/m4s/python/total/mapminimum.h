@@ -10,9 +10,8 @@ namespace pcraster_multicore {
 namespace python {
 
 
-calc::Field* _and(
-         calc::Field* field_a,
-         calc::Field* field_b);
+calc::Field* mapminimum(
+         calc::Field* field_a);
 
 
 } // namespace python

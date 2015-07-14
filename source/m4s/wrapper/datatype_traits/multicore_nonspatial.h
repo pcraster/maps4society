@@ -18,6 +18,11 @@ struct DataTypeTraits<multicore_field::Nonspatial<T>>{
 
   using argument_category = scalar_tag;
 
+  template<class U>
+  struct Clone{
+    using type = multicore_field::Nonspatial<U>;
+  };
+
 };
 
 } // namespace fern

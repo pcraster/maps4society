@@ -140,21 +140,21 @@ def unequal(arg1, arg2):
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.unequal: {}".format(str(exception)))
 
-def larger(arg1, arg2):
+def greater(arg1, arg2):
   try:
     arg1 = get_field(arg1)
     arg2 = get_field(arg2)
-    return _pmc.larger(arg1, arg2)
+    return _pmc.greater(arg1, arg2)
   except RuntimeError as exception:
-    raise RuntimeError("pcraster_multicore.larger: {}".format(str(exception)))
+    raise RuntimeError("pcraster_multicore.greater: {}".format(str(exception)))
 
-def larger_equal(arg1, arg2):
+def greater_equal(arg1, arg2):
   try:
     arg1 = get_field(arg1)
     arg2 = get_field(arg2)
-    return _pmc.larger_equal(arg1, arg2)
+    return _pmc.greater_equal(arg1, arg2)
   except RuntimeError as exception:
-    raise RuntimeError("pcraster_multicore.larger_equal: {}".format(str(exception)))
+    raise RuntimeError("pcraster_multicore.greater_equal: {}".format(str(exception)))
 
 def less(arg1, arg2):
   try:
@@ -306,3 +306,41 @@ def sqr(arg1):
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.sqr: {}".format(str(exception)))
 
+#def ifthen(arg1, arg2):
+#  try:
+#    arg1 = get_field(arg1)
+#    arg2 = get_field(arg2)
+#    return _pmc.ifthen(arg1, arg2)
+#  except RuntimeError as exception:
+#    raise RuntimeError("pcraster_multicore.ifthen: {}".format(str(exception)))
+
+#def ifthenelse(arg1, arg2, arg3):
+#  try:
+#    arg1 = get_field(arg1)
+#    arg2 = get_field(arg2)
+#    arg3 = get_field(arg3)
+#    return _pmc.ifthenelse(arg1, arg2, arg3)
+#  except RuntimeError as exception:
+#    raise RuntimeError("pcraster_multicore.ifthenelse: {}".format(str(exception)))
+
+
+def mapmaximum(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.mapmaximum(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.mapmaximum: {}".format(str(exception)))
+
+def mapminimum(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.mapminimum(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.mapminimum: {}".format(str(exception)))
+
+def maptotal(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.maptotal(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.maptotal: {}".format(str(exception)))

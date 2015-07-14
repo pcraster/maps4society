@@ -35,7 +35,7 @@
 #include "m4s/python/local/less_equal.h"
 #include "m4s/python/local/greater.h"
 #include "m4s/python/local/greater_equal.h"
-//#include "m4s/python/local/ifthen.h"
+#include "m4s/python/local/ifthen.h"
 //#include "m4s/python/local/ifthenelse.h"
 
 

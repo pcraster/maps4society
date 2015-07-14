@@ -2,6 +2,7 @@
 #include "m4s/python/execution_policy.h"
 #include "m4s/python/local/local.h"
 #include "m4s/python/focal/focal.h"
+#include "m4s/python/total/total.h"
 #include "m4s/python/local/utils.h"
 
 namespace bp = boost::python;
@@ -30,10 +31,14 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     /// todo undefined symbol: _ZN4fern3getIhEERKT_S3_
 //  bp::def("defined", &pmcpy::defined,
 //    bp::return_value_policy<bp::manage_new_object>());
+//  bp::def("ifthen", &pmcpy::ifthen,
+//    bp::return_value_policy<bp::manage_new_object>());
+//  bp::def("ifthenelse", &pmcpy::ifthenelse,
+//    bp::return_value_policy<bp::manage_new_object>());
 
 
   bp::def("equal", &pmcpy::equal,
-    bp::return_value_policy<bp::manage_new_object>());// #include <fern/algorithm/algebra/elementary/less_equal.h>
+    bp::return_value_policy<bp::manage_new_object>());
   bp::def("unequal", &pmcpy::unequal,
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("less", &pmcpy::less,
@@ -82,4 +87,13 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
 //    bp::return_value_policy<bp::manage_new_object>());
   //bp::def("upstream", &pmcpy::upstream,
   //  bp::return_value_policy<bp::manage_new_object>());
+
+
+  // Operations on full map extent
+  bp::def("mapmaximum", &pmcpy::mapmaximum,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("mapminimum", &pmcpy::mapminimum,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("maptotal", &pmcpy::maptotal,
+    bp::return_value_policy<bp::manage_new_object>());
 }

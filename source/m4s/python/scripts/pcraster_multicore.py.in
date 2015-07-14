@@ -34,10 +34,10 @@ def pcrmcNE(self, field):
   return pmcop.unequal(self, field)
 
 def pcrmcGT(self, field):
-  return pmcop.larger(self, field)
+  return pmcop.greater(self, field)
 
 def pcrmcGE(self, field):
-  return pmcop.larger_equal(self, field)
+  return pmcop.greater_equal(self, field)
 
 def pcrmcLT(self, field):
   return pmcop.less(self, field)
