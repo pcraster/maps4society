@@ -208,12 +208,12 @@ def _not(arg1):
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.not: {}".format(str(exception)))
 
-#def defined(arg1):
-#  try:
-#    arg1 = get_field(arg1)
-#    return _pmc.defined(arg1)
-#  except RuntimeError as exception:
-#    raise RuntimeError("pcraster_multicore.defined: {}".format(str(exception)))
+def defined(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.defined(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.defined: {}".format(str(exception)))
 
 
 def add(arg1, arg2):

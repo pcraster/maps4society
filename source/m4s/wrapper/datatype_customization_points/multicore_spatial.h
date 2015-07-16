@@ -1,6 +1,5 @@
 #pragma once
 
-//#include "fern/core/data_type_traits/scalar.h"  /// todo
 #include "m4s/wrapper/datatype_traits/multicore_spatial.h"
 #include "m4s/wrapper/multicore_field.h"
 

@@ -28,9 +28,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("_not", &pmcpy::_not,
     bp::return_value_policy<bp::manage_new_object>());
-    /// todo undefined symbol: _ZN4fern3getIhEERKT_S3_
-//  bp::def("defined", &pmcpy::defined,
-//    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("defined", &pmcpy::defined,
+    bp::return_value_policy<bp::manage_new_object>());
 //  bp::def("ifthen", &pmcpy::ifthen,
 //    bp::return_value_policy<bp::manage_new_object>());
 //  bp::def("ifthenelse", &pmcpy::ifthenelse,
