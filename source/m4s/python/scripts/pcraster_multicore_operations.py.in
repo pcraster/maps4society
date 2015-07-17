@@ -314,14 +314,14 @@ def ifthen(arg1, arg2):
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.ifthen: {}".format(str(exception)))
 
-#def ifthenelse(arg1, arg2, arg3):
-#  try:
-#    arg1 = get_field(arg1)
-#    arg2 = get_field(arg2)
-#    arg3 = get_field(arg3)
-#    return _pmc.ifthenelse(arg1, arg2, arg3)
-#  except RuntimeError as exception:
-#    raise RuntimeError("pcraster_multicore.ifthenelse: {}".format(str(exception)))
+def ifthenelse(arg1, arg2, arg3):
+  try:
+    arg1 = get_field(arg1)
+    arg2 = get_field(arg2)
+    arg3 = get_field(arg3)
+    return _pmc.ifthenelse(arg1, arg2, arg3)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.ifthenelse: {}".format(str(exception)))
 
 
 def mapmaximum(arg1):

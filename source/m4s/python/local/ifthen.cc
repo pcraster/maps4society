@@ -116,7 +116,7 @@ calc::Field* ifthen(
          calc::Field* field_b,
          VS result_vs,
          calc::CRIndex result_cri){
-printf("ifthen<>\n");
+
   calc::Field* res_field = nullptr;
 
   if((field_a->isSpatial() == false) && (field_b->isSpatial() == false)){
@@ -162,13 +162,13 @@ calc::Field* ifthen(
   VS result_vs = field_a->vs();
   calc::CRIndex result_cri = field_a->cri();
 
-  if(boolean_valuescale(*field_a) || ldd_valuescale(*field_a)){printf("ifthen B\n");
+  if(boolean_valuescale(*field_a) || ldd_valuescale(*field_a)){
     return detail::ifthen<UINT1>(condition, field_a, result_vs, result_cri);
   }
-  else if(nominal_valuescale(*field_a) || ordinal_valuescale(*field_a)){printf("ifthen N\n");
+  else if(nominal_valuescale(*field_a) || ordinal_valuescale(*field_a)){
     return detail::ifthen<INT4>(condition, field_a, result_vs, result_cri);
   }
-  else if(scalar_valuescale(*field_a) || directional_valuescale(*field_a)){ printf("ifthen S\n");
+  else if(scalar_valuescale(*field_a) || directional_valuescale(*field_a)){
     return detail::ifthen<REAL4>(condition, field_a, result_vs, result_cri);
   }
 

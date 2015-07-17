@@ -35,9 +35,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("ifthen", &pmcpy::ifthen,
     bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("ifthenelse", &pmcpy::ifthenelse,
-//    bp::return_value_policy<bp::manage_new_object>());
-
+  bp::def("ifthenelse", &pmcpy::ifthenelse,
+    bp::return_value_policy<bp::manage_new_object>());
 
   bp::def("equal", &pmcpy::equal,
     bp::return_value_policy<bp::manage_new_object>());

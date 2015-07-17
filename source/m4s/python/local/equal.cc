@@ -159,8 +159,8 @@ calc::Field* equal(
 calc::Field* equal(
          calc::Field* field_a,
          calc::Field* field_b){
-printf("equal\n");
-  assert_equal_valuescale(*field_a, *field_b);
+
+  assert_equal_valuescale(*field_a, *field_b, "one operand");
   if(boolean_valuescale(*field_a) || ldd_valuescale(*field_a)){
     return detail::equal<UINT1>(field_a, field_b);
   }

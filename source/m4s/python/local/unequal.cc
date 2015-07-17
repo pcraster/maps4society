@@ -24,8 +24,8 @@ namespace detail {
 calc::Field* unequal(
          calc::Field* field_a,
          calc::Field* field_b){
-printf("unequal\n");
-  assert_equal_valuescale(*field_a, *field_b);
+
+  assert_equal_valuescale(*field_a, *field_b, "one operand");
 
   return _not(equal(field_a, field_b));
 }

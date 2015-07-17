@@ -56,7 +56,7 @@ calc::Field* newNonSpatialBoolean(bool value);
 
 bool global_option_directional();
 
-void assert_equal_valuescale(const calc::Field& field_a, const calc::Field& field_b/*, const std::string& msg*/);
+void assert_equal_valuescale(const calc::Field& field_a, const calc::Field& field_b, const std::string& msg);
 
 
 } // namespace python

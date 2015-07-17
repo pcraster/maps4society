@@ -33,7 +33,7 @@ SET(_SOURCES
   greater.cc
   greater_equal.cc
   ifthen.cc
-#  ifthenelse.cc
+  ifthenelse.cc
 
   cos.cc
   sin.cc

@@ -90,14 +90,15 @@ bool directional_valuescale(const calc::Field& aField){
 
 
 
-void assert_equal_valuescale(const calc::Field& field_a, const calc::Field& field_b/*, const std::string& msg*/){
+void assert_equal_valuescale(const calc::Field& field_a, const calc::Field& field_b, const std::string& msg){
   PCR_VS field_vs1 = VS_UNKNOWN;
   PCR_VS field_vs2 = VS_UNKNOWN;
   field_vs1 = field_a.vs();
   field_vs2 = field_b.vs();
   if(field_vs1 != field_vs2){
     std::stringstream err_msg{};
-    err_msg << "one operand is of type '" << field_vs2 << "', while other is of type '" << field_vs1 << "'\n";
+    //err_msg << "one operand is of type '" << field_vs2 << "', while other is of type '" << field_vs1 << "'\n";
+    err_msg << msg << " is of type '" << field_vs2 << "', while other is of type '" << field_vs1 << "'\n";
     throw std::runtime_error(err_msg.str());
   }
 }

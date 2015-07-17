@@ -87,7 +87,6 @@ calc::Field* defined(
       }
       default: {
         throw std::runtime_error("internal error: unable to perform operation");
-        break;
       }
     }
   }
