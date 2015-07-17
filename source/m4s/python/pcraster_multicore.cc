@@ -14,9 +14,12 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
 
   bp::def("set_nr_cpus", &pmcpy::set_nr_cpus,
     "Set the number of CPUs used in one of the PCRaster multicore algorithms");
+
   bp::def("_newNonSpatialScalar", &pmcpy::newNonSpatialScalar,
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("_newNonSpatialNominal", &pmcpy::newNonSpatialNominal,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("_newNonSpatialBoolean", &pmcpy::newNonSpatialBoolean,
     bp::return_value_policy<bp::manage_new_object>());
 
   // Local operations
@@ -30,8 +33,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("defined", &pmcpy::defined,
     bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("ifthen", &pmcpy::ifthen,
-//    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("ifthen", &pmcpy::ifthen,
+    bp::return_value_policy<bp::manage_new_object>());
 //  bp::def("ifthenelse", &pmcpy::ifthenelse,
 //    bp::return_value_policy<bp::manage_new_object>());
 

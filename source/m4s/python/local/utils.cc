@@ -164,16 +164,20 @@ bool global_option_directional(){
 }
 
 
-// the PCRaster nonspatials return with mutliple valuescales based on the input value
-// that will break the value scale checking in the algorithms
+// the PCRaster newnonspatialfield return with mutliple valuescales based on the input value
+// that will break the value scale checking in the multicore algorithms
+// just make our own ones
 calc::Field* newNonSpatialScalar(double value){
   return new calc::NonSpatial(VS_S, value);
 }
 
 calc::Field* newNonSpatialNominal(int value){
-  return new calc::NonSpatial(VS_N, value);
+  return new calc::NonSpatial(VS_N, static_cast<double>(value));
 }
 
+calc::Field* newNonSpatialBoolean(bool value){
+  return new calc::NonSpatial(VS_B, static_cast<double>(value));//(int)value);
+}
 
 } // namespace python
 } // namespace pcraster_multicore

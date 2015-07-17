@@ -52,11 +52,8 @@
 
 
 
-// fac idiv mod sqr
+// fac idiv mod
 
-
-// mapmax/min
-// maptotal
 
 
 
@@ -71,13 +68,5 @@ cover fern/algorithm/core/cover.h> // how to obtain multiple arguments?...
 
 min<fern/statistucs.../min.h>  //binary_ma
 max
-
-
-<
-<=
-==
-aso?
-
-
 
 */

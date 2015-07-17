@@ -52,6 +52,8 @@ calc::Field* newNonSpatialScalar(double value);
 
 calc::Field* newNonSpatialNominal(int value);
 
+calc::Field* newNonSpatialBoolean(bool value);
+
 bool global_option_directional();
 
 void assert_equal_valuescale(const calc::Field& field_a, const calc::Field& field_b/*, const std::string& msg*/);
