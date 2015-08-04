@@ -9,23 +9,20 @@
 
 
 // Field wrapper
-// #include "m4s/wrapper/multicore_field.h"
-// #include "m4s/wrapper/multicore_field_traits.h"
-// #include "m4s/wrapper/multicore_field_output_policy.h"
-// #include "m4s/wrapper/multicore_field_input_policy.h"
-
+#include "m4s/wrapper/argument_customization_points/multicore_spatial.h"
 #include "m4s/wrapper/datatype_customization_points/multicore_spatial.h"
 #include "m4s/wrapper/datatype_traits/multicore_spatial.h"
-#include "m4s/wrapper/argument_customization_points/multicore_spatial.h"
 #include "m4s/wrapper/argument_traits/multicore_spatial.h"
 
+#include "m4s/python/execution_policy.h"
+
 // Fern
+#include "fern/core/data_type_traits/scalar.h"  /// todo
 #include "fern/algorithm/policy/policies.h"
 #include "fern/algorithm/space/focal/slope.h"
 
 
 
-#include "m4s/python/execution_policy.h"
 
 namespace fa = fern::algorithm;
 
@@ -48,18 +45,21 @@ calc::Field* slope(
   calc::Spatial* field_result = new calc::Spatial(VS_S, calc::CRI_f, field_dem->nrValues());
   multicore_field::Spatial<REAL4> result(field_result);
 
-  const multicore_field::Spatial<REAL4> arg1(field_dem);
-
   fa::ExecutionPolicy epol = execution_policy();
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreFieldInputNoDataPolicy<REAL4>>;
-  InputNoDataPolicy input_no_data_policy{{arg1}};
+  const multicore_field::Spatial<REAL4> arg(field_dem);
+  using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<REAL4>>;
+  InputNoDataPolicy input_no_data_policy{{arg}};
 
-  MulticoreFieldOutputNoDataPolicy<REAL4> output_no_data_policy(result);
+  SpatialSetNoData<REAL4> output_no_data_policy(result);
+
+//   fa::space::slope<fa::slope::OutOfRangePolicy>(
+//         input_no_data_policy, output_no_data_policy,
+//         fa::sequential, arg, result);
 
   fa::space::slope<fa::slope::OutOfRangePolicy>(
         input_no_data_policy, output_no_data_policy,
-        epol, arg1, result);
+        fa::sequential, arg, result);
 
   return result.getField();
 }

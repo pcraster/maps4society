@@ -39,12 +39,12 @@ calc::Field* ifthenelse_number_n_n(
          multicore_field::Nonspatial<T>* res){
 
   using InputNoDataPolicy = fa::InputNoDataPolicies<
-        MulticoreNonspatialInputNoDataPolicy<UINT1>,
-        MulticoreNonspatialInputNoDataPolicy<T>,
-        MulticoreNonspatialInputNoDataPolicy<T>>;
+        NonspatialDetectNoData<UINT1>,
+        NonspatialDetectNoData<T>,
+        NonspatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*condition}, {*arg1}, {*arg2}};
 
-  MulticoreNonspatialOutputNoDataPolicy<T> output_no_data_policy(*res);
+  NonspatialSetNoData<T> output_no_data_policy(*res);
 
   fa::core::if_(input_no_data_policy,
     output_no_data_policy, fa::sequential, *condition, *arg1, *arg2, *res);
@@ -60,12 +60,12 @@ calc::Field* ifthenelse_number_n_s(
          multicore_field::Spatial<T>* res){
 
   using InputNoDataPolicy = fa::InputNoDataPolicies<
-        MulticoreNonspatialInputNoDataPolicy<UINT1>,
-        MulticoreNonspatialInputNoDataPolicy<T>,
-        MulticoreFieldInputNoDataPolicy<T>>;
+        NonspatialDetectNoData<UINT1>,
+        NonspatialDetectNoData<T>,
+        SpatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*condition}, {*arg1}, {*arg2}};
 
-  MulticoreFieldOutputNoDataPolicy<T> output_no_data_policy(*res);
+  SpatialSetNoData<T> output_no_data_policy(*res);
 
   fa::core::if_(input_no_data_policy,
     output_no_data_policy, fa::sequential, *condition, *arg1, *arg2, *res);
@@ -81,12 +81,12 @@ calc::Field* ifthenelse_number_s_n(
          multicore_field::Spatial<T>* res){
 
   using InputNoDataPolicy = fa::InputNoDataPolicies<
-         MulticoreNonspatialInputNoDataPolicy<UINT1>,
-         MulticoreFieldInputNoDataPolicy<T>,
-         MulticoreNonspatialInputNoDataPolicy<T>>;
+         NonspatialDetectNoData<UINT1>,
+         SpatialDetectNoData<T>,
+         NonspatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*condition}, {*arg1}, {*arg2}};
 
-  MulticoreFieldOutputNoDataPolicy<T> output_no_data_policy(*res);
+  SpatialSetNoData<T> output_no_data_policy(*res);
 
   fa::core::if_(input_no_data_policy,
     output_no_data_policy, fa::sequential, *condition, *arg1, *arg2, *res);
@@ -102,12 +102,12 @@ calc::Field* ifthenelse_number_s_s(
          multicore_field::Spatial<T>* res){
 
   using InputNoDataPolicy = fa::InputNoDataPolicies<
-         MulticoreNonspatialInputNoDataPolicy<UINT1>,
-         MulticoreFieldInputNoDataPolicy<T>,
-         MulticoreFieldInputNoDataPolicy<T>>;
+         NonspatialDetectNoData<UINT1>,
+         SpatialDetectNoData<T>,
+         SpatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*condition}, {*arg1}, {*arg2}};
 
-  MulticoreFieldOutputNoDataPolicy<T> output_no_data_policy(*res);
+  SpatialSetNoData<T> output_no_data_policy(*res);
 
   fa::core::if_(input_no_data_policy,
     output_no_data_policy, fa::sequential, *condition, *arg1, *arg2, *res);
@@ -125,12 +125,12 @@ calc::Field* ifthenelse_field_n_n(
          multicore_field::Spatial<T>* res){
 
   using InputNoDataPolicy = fa::InputNoDataPolicies<
-         MulticoreFieldInputNoDataPolicy<UINT1>,
-         MulticoreNonspatialInputNoDataPolicy<T>,
-         MulticoreNonspatialInputNoDataPolicy<T>>;
+         SpatialDetectNoData<UINT1>,
+         NonspatialDetectNoData<T>,
+         NonspatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*condition}, {*arg1}, {*arg2}};
 
-  MulticoreFieldOutputNoDataPolicy<T> output_no_data_policy(*res);
+  SpatialSetNoData<T> output_no_data_policy(*res);
 
   fa::core::if_(input_no_data_policy,
     output_no_data_policy, epol, *condition, *arg1, *arg2, *res);
@@ -147,12 +147,12 @@ calc::Field* ifthenelse_field_s_n(
          multicore_field::Spatial<T>* res){
 
   using InputNoDataPolicy = fa::InputNoDataPolicies<
-         MulticoreFieldInputNoDataPolicy<UINT1>,
-         MulticoreFieldInputNoDataPolicy<T>,
-         MulticoreNonspatialInputNoDataPolicy<T>>;
+         SpatialDetectNoData<UINT1>,
+         SpatialDetectNoData<T>,
+         NonspatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*condition}, {*arg1}, {*arg2}};
 
-  MulticoreFieldOutputNoDataPolicy<T> output_no_data_policy(*res);
+  SpatialSetNoData<T> output_no_data_policy(*res);
 
   fa::core::if_(input_no_data_policy,
     output_no_data_policy, epol, *condition, *arg1, *arg2, *res);
@@ -169,12 +169,12 @@ calc::Field* ifthenelse_field_n_s(
          multicore_field::Spatial<T>* res){
 
   using InputNoDataPolicy = fa::InputNoDataPolicies<
-         MulticoreFieldInputNoDataPolicy<UINT1>,
-         MulticoreNonspatialInputNoDataPolicy<T>,
-         MulticoreFieldInputNoDataPolicy<T>>;
+         SpatialDetectNoData<UINT1>,
+         NonspatialDetectNoData<T>,
+         SpatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*condition}, {*arg1}, {*arg2}};
 
-  MulticoreFieldOutputNoDataPolicy<T> output_no_data_policy(*res);
+  SpatialSetNoData<T> output_no_data_policy(*res);
 
   fa::core::if_(input_no_data_policy,
     output_no_data_policy, epol, *condition, *arg1, *arg2, *res);
@@ -191,12 +191,12 @@ calc::Field* ifthenelse_field_s_s(
          multicore_field::Spatial<T>* res){
 
   using InputNoDataPolicy = fa::InputNoDataPolicies<
-         MulticoreFieldInputNoDataPolicy<UINT1>,
-         MulticoreFieldInputNoDataPolicy<T>,
-         MulticoreFieldInputNoDataPolicy<T>>;
+         SpatialDetectNoData<UINT1>,
+         SpatialDetectNoData<T>,
+         SpatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*condition}, {*arg1}, {*arg2}};
 
-  MulticoreFieldOutputNoDataPolicy<T> output_no_data_policy(*res);
+  SpatialSetNoData<T> output_no_data_policy(*res);
 
   fa::core::if_(input_no_data_policy,
     output_no_data_policy, epol, *condition, *arg1, *arg2, *res);

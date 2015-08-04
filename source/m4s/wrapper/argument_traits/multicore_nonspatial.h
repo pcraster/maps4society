@@ -15,9 +15,9 @@ struct ArgumentTraits<multicore_field::Nonspatial<T>>
 
     using Mask = multicore_field::Nonspatial<T>;
 
-    using InputNoDataPolicy = MulticoreNonspatialInputNoDataPolicy<Mask>;
+    using InputNoDataPolicy = NonspatialDetectNoData<T>;
 
-    using OutputNoDataPolicy = MulticoreNonspatialOutputNoDataPolicy<T>;
+    using OutputNoDataPolicy = NonspatialSetNoData<T>;
 
 };
 

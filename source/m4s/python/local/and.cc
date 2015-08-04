@@ -35,11 +35,11 @@ calc::Field* and_number_number(
          const multicore_field::Nonspatial<UINT1>* arg2,
          multicore_field::Nonspatial<UINT1>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreNonspatialInputNoDataPolicy<UINT1>,
-        MulticoreNonspatialInputNoDataPolicy<UINT1>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<NonspatialDetectNoData<UINT1>,
+        NonspatialDetectNoData<UINT1>>;
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
 
-  MulticoreNonspatialOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
+  NonspatialSetNoData<UINT1> output_no_data_policy(*res);
 
   fa::algebra::and_(input_no_data_policy,
     output_no_data_policy, fa::sequential, *arg1, *arg2, *res);
@@ -54,11 +54,11 @@ calc::Field* and_field_field(
          const multicore_field::Spatial<UINT1>* arg2,
          multicore_field::Spatial<UINT1>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreFieldInputNoDataPolicy<UINT1>,
-        MulticoreFieldInputNoDataPolicy<UINT1>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<UINT1>,
+        SpatialDetectNoData<UINT1>>;
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
 
-  MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
+  SpatialSetNoData<UINT1> output_no_data_policy(*res);
 
   fa::algebra::and_(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
@@ -73,11 +73,11 @@ calc::Field* and_number_field(
          const multicore_field::Spatial<UINT1>* arg2,
          multicore_field::Spatial<UINT1>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreNonspatialInputNoDataPolicy<UINT1>,
-    MulticoreFieldInputNoDataPolicy<UINT1>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<NonspatialDetectNoData<UINT1>,
+    SpatialDetectNoData<UINT1>>;
 
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
-  MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
+  SpatialSetNoData<UINT1> output_no_data_policy(*res);
 
   fa::algebra::and_(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);

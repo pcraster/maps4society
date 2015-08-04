@@ -84,8 +84,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
 
 
   // Focal operations
-//  bp::def("slope", &pmcpy::slope,
-//    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("slope", &pmcpy::slope,
+    bp::return_value_policy<bp::manage_new_object>());
   //bp::def("upstream", &pmcpy::upstream,
   //  bp::return_value_policy<bp::manage_new_object>());
 

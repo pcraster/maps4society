@@ -3,35 +3,47 @@
 #include "csftypes.h"
 
 #include "m4s/wrapper/multicore_nonspatial.h"
-//#include "fern/core/data_type_traits/scalar.h"  /// todo
+#include "fern/core/data_type_traits/scalar.h"
 
 template<class T>
-class MulticoreNonspatialOutputNoDataPolicy
+class NonspatialSetNoData
 {
 
 private:
 
+    //using value_type = fern::value_type<T>;
+    using value_type = typename fern::DataTypeTraits<T>::value_type;
 
 public:
 
-                   MulticoreNonspatialOutputNoDataPolicy(
-                                        multicore_field::Nonspatial<T> const& aField) noexcept;
+                   NonspatialSetNoData (multicore_field::Nonspatial<T> & aField);
 
+                   ~NonspatialSetNoData()=default;
 
-    void           mark_as_no_data     () const noexcept;
-    //void           mark_as_no_data     (size_t index) const noexcept;
+    void           mark_as_no_data     ();
 
-//     void           mark_as_no_data     (size_t row,
-//                                         size_t col) const noexcept;
+protected:
+
+                   NonspatialSetNoData ()=delete;
+
+                   NonspatialSetNoData (NonspatialSetNoData const&)=delete;
+
+                   NonspatialSetNoData (NonspatialSetNoData&&)=default;
+
+    NonspatialSetNoData&    operator=  (NonspatialSetNoData const&)=delete;
+
+    NonspatialSetNoData&    operator=  (NonspatialSetNoData&&)=default;
 
 private:
 
-    multicore_field::Nonspatial<T> const & _field;
+    multicore_field::Nonspatial<T> & _field;
+
 };
 
+
 template<class T>
-inline MulticoreNonspatialOutputNoDataPolicy<T>::MulticoreNonspatialOutputNoDataPolicy(
-    multicore_field::Nonspatial<T> const& aField) noexcept
+inline NonspatialSetNoData<T>::NonspatialSetNoData(
+    multicore_field::Nonspatial<T> & aField)
 
     : _field(aField)
 
@@ -40,6 +52,6 @@ inline MulticoreNonspatialOutputNoDataPolicy<T>::MulticoreNonspatialOutputNoData
 
 
 template<class T>
-inline void MulticoreNonspatialOutputNoDataPolicy<T>::mark_as_no_data() const noexcept {
+inline void NonspatialSetNoData<T>::mark_as_no_data(){
    _field.set_mv();
 }

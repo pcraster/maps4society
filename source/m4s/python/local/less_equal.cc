@@ -37,11 +37,11 @@ calc::Field* less_equal_number_number(
          const multicore_field::Nonspatial<T>* arg2,
          multicore_field::Nonspatial<UINT1>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreNonspatialInputNoDataPolicy<T>,
-        MulticoreNonspatialInputNoDataPolicy<T>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<NonspatialDetectNoData<T>,
+        NonspatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
 
-  MulticoreNonspatialOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
+  NonspatialSetNoData<UINT1> output_no_data_policy(*res);
 
   fa::algebra::less_equal(input_no_data_policy,
     output_no_data_policy, fa::sequential, *arg1, *arg2, *res);
@@ -57,11 +57,11 @@ calc::Field* less_equal_field_field(
          const multicore_field::Spatial<T>* arg2,
          multicore_field::Spatial<UINT1>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreFieldInputNoDataPolicy<T>,
-        MulticoreFieldInputNoDataPolicy<T>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<T>,
+        SpatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
 
-  MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
+  SpatialSetNoData<UINT1> output_no_data_policy(*res);
 
   fa::algebra::less_equal(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
@@ -77,11 +77,11 @@ calc::Field* less_equal_number_field(
          const multicore_field::Spatial<T>* arg2,
          multicore_field::Spatial<UINT1>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreNonspatialInputNoDataPolicy<T>,
-    MulticoreFieldInputNoDataPolicy<T>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<NonspatialDetectNoData<T>,
+    SpatialDetectNoData<T>>;
 
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
-  MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
+  SpatialSetNoData<UINT1> output_no_data_policy(*res);
 
   fa::algebra::less_equal(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
@@ -97,11 +97,11 @@ calc::Field* less_equal_field_number(
          const multicore_field::Nonspatial<T>* arg2,
          multicore_field::Spatial<UINT1>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreFieldInputNoDataPolicy<T>,
-    MulticoreNonspatialInputNoDataPolicy<T>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<T>,
+    NonspatialDetectNoData<T>>;
 
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
-  MulticoreFieldOutputNoDataPolicy<UINT1> output_no_data_policy(*res);
+  SpatialSetNoData<UINT1> output_no_data_policy(*res);
 
   fa::algebra::less_equal(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);

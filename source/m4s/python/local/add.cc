@@ -34,11 +34,11 @@ calc::Field* add_number_number(
          const multicore_field::Nonspatial<REAL4>* arg2,
          multicore_field::Nonspatial<REAL4>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreNonspatialInputNoDataPolicy<REAL4>,
-        MulticoreNonspatialInputNoDataPolicy<REAL4>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<NonspatialDetectNoData<REAL4>,
+        NonspatialDetectNoData<REAL4>>;
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
 
-  MulticoreNonspatialOutputNoDataPolicy<REAL4> output_no_data_policy(*res);
+  NonspatialSetNoData<REAL4> output_no_data_policy(*res);
 
   fa::algebra::add<fa::add::OutOfRangePolicy>(input_no_data_policy,
     output_no_data_policy, fa::sequential, *arg1, *arg2, *res);
@@ -53,11 +53,11 @@ calc::Field* add_field_field(
          const multicore_field::Spatial<REAL4>* arg2,
          multicore_field::Spatial<REAL4>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreFieldInputNoDataPolicy<REAL4>,
-        MulticoreFieldInputNoDataPolicy<REAL4>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<REAL4>,
+        SpatialDetectNoData<REAL4>>;
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
 
-  MulticoreFieldOutputNoDataPolicy<REAL4> output_no_data_policy(*res);
+  SpatialSetNoData<REAL4> output_no_data_policy(*res);
 
   fa::algebra::add<fa::add::OutOfRangePolicy>(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);
@@ -72,11 +72,11 @@ calc::Field* add_field_number(
          const multicore_field::Nonspatial<REAL4>* arg2,
          multicore_field::Spatial<REAL4>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreFieldInputNoDataPolicy<REAL4>,
-        MulticoreNonspatialInputNoDataPolicy<REAL4>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<REAL4>,
+        NonspatialDetectNoData<REAL4>>;
 
   InputNoDataPolicy input_no_data_policy{{*arg1},{*arg2}};
-  MulticoreFieldOutputNoDataPolicy<REAL4> output_no_data_policy(*res);
+  SpatialSetNoData<REAL4> output_no_data_policy(*res);
 
   fa::algebra::add<fa::add::OutOfRangePolicy>(input_no_data_policy,
     output_no_data_policy, epol, *arg1, *arg2, *res);

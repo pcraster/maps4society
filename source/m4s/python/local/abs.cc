@@ -49,10 +49,10 @@ calc::Field* abs(
     field_result = new calc::NonSpatial(VS_S);
     multicore_field::Nonspatial<REAL4> result(field_result);
 
-    using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreNonspatialInputNoDataPolicy<REAL4>>;
+    using InputNoDataPolicy = fa::InputNoDataPolicies<NonspatialDetectNoData<REAL4>>;
     InputNoDataPolicy input_no_data_policy{{arg}};
 
-    MulticoreNonspatialOutputNoDataPolicy<REAL4> output_no_data_policy(result);
+    NonspatialSetNoData<REAL4> output_no_data_policy(result);
 
     fa::algebra::absolute<fa::absolute::OutOfRangePolicy>(input_no_data_policy,
       output_no_data_policy, fa::sequential, arg, result);
@@ -67,10 +67,10 @@ calc::Field* abs(
 
   fa::ExecutionPolicy epol = execution_policy();
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreFieldInputNoDataPolicy<REAL4>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<REAL4>>;
   InputNoDataPolicy input_no_data_policy{{arg}};
 
-  MulticoreFieldOutputNoDataPolicy<REAL4> output_no_data_policy(result);
+  SpatialSetNoData<REAL4> output_no_data_policy(result);
 
   fa::algebra::absolute<fa::absolute::OutOfRangePolicy>(input_no_data_policy,
     output_no_data_policy, epol, arg, result);

@@ -8,8 +8,7 @@ namespace algorithm {
 
 template<typename T>
 inline multicore_field::Spatial<T>& mask(
-    multicore_field::Spatial<T>& argument)
-{
+    multicore_field::Spatial<T>& argument){
     return argument;
 }
 

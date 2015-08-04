@@ -3,33 +3,51 @@
 #include "csftypes.h"
 
 #include "m4s/wrapper/multicore_field.h"
-//#include "fern/core/data_type_traits/scalar.h"  /// todo
+//#include "m4s/wrapper/datatype_traits/multicore_spatial.h"
+//#include "fern/core/data_type_traits.h"
+//#include "fern/core/data_type_traits/scalar.h"
 
 template<class T>
-class MulticoreFieldOutputNoDataPolicy
+class SpatialSetNoData
 {
 
 private:
 
+    using value_type = typename fern::DataTypeTraits<T>::value_type;//fern::value_type<T>;
 
 public:
 
-                   MulticoreFieldOutputNoDataPolicy(
-                                        multicore_field::Spatial<T> const& aField) noexcept;
+                   SpatialSetNoData    (multicore_field::Spatial<T> & aField);
 
-    void           mark_as_no_data     (size_t index) const noexcept;
+                   ~SpatialSetNoData   ()=default;
+
+    void           mark_as_no_data     (size_t index);
 
     void           mark_as_no_data     (size_t row,
-                                        size_t col) const noexcept;
+                                        size_t col);
+
+protected:
+
+                   SpatialSetNoData    ()=delete;
+
+                   SpatialSetNoData    (SpatialSetNoData const&)=delete;
+
+                   SpatialSetNoData    (SpatialSetNoData&&)=default;
+
+    SpatialSetNoData&    operator=     (SpatialSetNoData const&)=delete;
+
+    SpatialSetNoData&    operator=     (SpatialSetNoData&&)=default;
 
 private:
 
-    multicore_field::Spatial<T> const & _field;
+    multicore_field::Spatial<T> & _field;
+
 };
 
+
 template<class T>
-inline MulticoreFieldOutputNoDataPolicy<T>::MulticoreFieldOutputNoDataPolicy(
-    multicore_field::Spatial<T> const& aField) noexcept
+inline SpatialSetNoData<T>::SpatialSetNoData(
+    multicore_field::Spatial<T> & aField)
 
     : _field(aField)
 
@@ -38,8 +56,8 @@ inline MulticoreFieldOutputNoDataPolicy<T>::MulticoreFieldOutputNoDataPolicy(
 
 
 template<class T>
-inline void MulticoreFieldOutputNoDataPolicy<T>::mark_as_no_data(
-    size_t index) const noexcept
+inline void SpatialSetNoData<T>::mark_as_no_data(
+    size_t index)
 {
    _field.set_cell(index);
 }

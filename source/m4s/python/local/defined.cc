@@ -34,7 +34,7 @@ calc::Field* defined_number(
          const multicore_field::Nonspatial<T>* arg1,
          multicore_field::Nonspatial<UINT1>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreNonspatialInputNoDataPolicy<T>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<NonspatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*arg1}};
 
   fa::algebra::defined(input_no_data_policy, fa::sequential, *res);
@@ -49,7 +49,7 @@ calc::Field* defined_spatial(
          const multicore_field::Spatial<T>* arg1,
          multicore_field::Spatial<UINT1>* res){
 
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreFieldInputNoDataPolicy<T>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{*arg1}};
 
   fa::algebra::defined(input_no_data_policy, epol, *res);

@@ -41,7 +41,7 @@ calc::Field* maptotal(
 
   if(scalar_valuescale(*field_a) == true){
     const multicore_field::Spatial<REAL4> arg1(field_a);
-    using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreFieldInputNoDataPolicy<REAL4>>;
+    using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<REAL4>>;
     InputNoDataPolicy input_no_data_policy{{arg1}};
 
     calc::Field* res_field = nullptr;
@@ -49,7 +49,7 @@ calc::Field* maptotal(
     res_field = new calc::NonSpatial(VS_S);
     multicore_field::Nonspatial<REAL4> res(res_field);
 
-    MulticoreNonspatialOutputNoDataPolicy<REAL4> output_no_data_policy(res);
+    NonspatialSetNoData<REAL4> output_no_data_policy(res);
 
     fa::ExecutionPolicy epol = execution_policy();
 

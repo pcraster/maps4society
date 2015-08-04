@@ -38,7 +38,7 @@ calc::Field* mapmaximum(
          VS result_vs){
 
   const multicore_field::Spatial<T> arg1(field_a);
-  using InputNoDataPolicy = fa::InputNoDataPolicies<MulticoreFieldInputNoDataPolicy<T>>;
+  using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{arg1}};
 
   calc::Field* res_field = nullptr;
@@ -46,7 +46,7 @@ calc::Field* mapmaximum(
   res_field = new calc::NonSpatial(result_vs);
   multicore_field::Nonspatial<T> res(res_field);
 
-  MulticoreNonspatialOutputNoDataPolicy<T> output_no_data_policy(res);
+  NonspatialSetNoData<T> output_no_data_policy(res);
 
   fa::ExecutionPolicy epol = execution_policy();
 
