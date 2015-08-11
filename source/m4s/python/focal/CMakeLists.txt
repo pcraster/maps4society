@@ -10,6 +10,7 @@ INCLUDE_DIRECTORIES(
 
 SET(_SOURCES
   slope.cc
+  window4total.cc
   #upstream.cc
 )
 

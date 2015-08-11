@@ -1,5 +1,5 @@
 import types
-#import pcraster as pcr
+import pcraster as pcr
 import pcraster._pcraster as _pcraster
 
 import _pcraster_multicore as _pmc
@@ -344,3 +344,44 @@ def maptotal(arg1):
     return _pmc.maptotal(arg1)
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.maptotal: {}".format(str(exception)))
+
+
+
+
+def boolean(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.boolean(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.boolean: {}".format(str(exception)))
+
+def nominal(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.nominal(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.nominal: {}".format(str(exception)))
+
+
+def ordinal(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.ordinal(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.ordinal: {}".format(str(exception)))
+
+def scalar(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.scalar(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.scalar: {}".format(str(exception)))
+
+
+
+def window4total(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.window4total(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.window4total: {}".format(str(exception)))

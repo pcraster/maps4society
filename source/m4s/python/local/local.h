@@ -16,6 +16,7 @@
 #include "m4s/python/local/pow.h"
 #include "m4s/python/local/sqr.h"
 #include "m4s/python/local/abs.h"
+#include "m4s/python/local/fac.h"
 
 //#include "m4s/python/local/ln.h"
 //#include "m4s/python/local/log10.h"
@@ -24,9 +25,9 @@
 #include "m4s/python/local/cos.h"
 #include "m4s/python/local/sin.h"
 #include "m4s/python/local/tan.h"
-//#include "m4s/python/local/acos.h"  // not in fern
-//#include "m4s/python/local/asin.h"  // not in fern
-#include "m4s/python/local/atan.h"
+#include "m4s/python/local/acos.h"
+//#include "m4s/python/local/asin.h"
+//#include "m4s/python/local/atan.h"
 
 
 #include "m4s/python/local/equal.h"
@@ -38,9 +39,6 @@
 #include "m4s/python/local/ifthen.h"
 #include "m4s/python/local/ifthenelse.h"
 
-
-//#include "m4s/python/local/normal.h"
-//#include "m4s/python/local/uniform.h"
 
 //#include "m4s/python/local/pit.h"
 

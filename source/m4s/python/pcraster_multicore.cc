@@ -4,6 +4,7 @@
 #include "m4s/python/focal/focal.h"
 #include "m4s/python/total/total.h"
 #include "m4s/python/local/utils.h"
+#include "m4s/python/type_conversion/type_conversion.h"
 
 namespace bp = boost::python;
 namespace pmcpy = pcraster_multicore::python;
@@ -33,9 +34,19 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("defined", &pmcpy::defined,
     bp::return_value_policy<bp::manage_new_object>());
+
   bp::def("ifthen", &pmcpy::ifthen,
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("ifthenelse", &pmcpy::ifthenelse,
+    bp::return_value_policy<bp::manage_new_object>());
+
+  bp::def("boolean", &pmcpy::boolean,
+   bp::return_value_policy<bp::manage_new_object>());
+  bp::def("nominal", &pmcpy::nominal,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("ordinal", &pmcpy::ordinal,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("scalar", &pmcpy::scalar,
     bp::return_value_policy<bp::manage_new_object>());
 
   bp::def("equal", &pmcpy::equal,
@@ -68,6 +79,9 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("sqr", &pmcpy::sqr,
     bp::return_value_policy<bp::manage_new_object>());
+//  bp::def("fac", &pmcpy::fac,
+//    bp::return_value_policy<bp::manage_new_object>());
+
 
   bp::def("cos", &pmcpy::cos,
     bp::return_value_policy<bp::manage_new_object>());
@@ -86,6 +100,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
   // Focal operations
   bp::def("slope", &pmcpy::slope,
     bp::return_value_policy<bp::manage_new_object>());
+//  bp::def("window4total", &pmcpy::window4total,
+//    bp::return_value_policy<bp::manage_new_object>());
   //bp::def("upstream", &pmcpy::upstream,
   //  bp::return_value_policy<bp::manage_new_object>());
 

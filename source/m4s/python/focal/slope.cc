@@ -17,10 +17,8 @@
 #include "m4s/python/execution_policy.h"
 
 // Fern
-#include "fern/core/data_type_traits/scalar.h"  /// todo
 #include "fern/algorithm/policy/policies.h"
 #include "fern/algorithm/space/focal/slope.h"
-
 
 
 
@@ -53,13 +51,9 @@ calc::Field* slope(
 
   SpatialSetNoData<REAL4> output_no_data_policy(result);
 
-//   fa::space::slope<fa::slope::OutOfRangePolicy>(
-//         input_no_data_policy, output_no_data_policy,
-//         fa::sequential, arg, result);
-
   fa::space::slope<fa::slope::OutOfRangePolicy>(
         input_no_data_policy, output_no_data_policy,
-        fa::sequential, arg, result);
+        epol, arg, result);
 
   return result.getField();
 }

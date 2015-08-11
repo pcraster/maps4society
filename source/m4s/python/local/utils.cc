@@ -68,6 +68,7 @@ bool ldd_valuescale(const calc::Field& aField){
 bool nominal_valuescale(const calc::Field& aField){
   PCR_VS field_vs = VS_UNKNOWN;
   field_vs = aField.vs();
+  std::cout << "VS nom? " << (field_vs == VS_N ? true : false) << " vs " << aField.vs() <<std::endl;
   return field_vs == VS_N ? true : false;
 }
 bool ordinal_valuescale(const calc::Field& aField){

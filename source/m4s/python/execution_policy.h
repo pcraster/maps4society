@@ -8,6 +8,8 @@ namespace python {
 
 void               set_nr_cpus         (size_t cpus);
 
+size_t             nr_cpus             ();
+
 fern::algorithm::ExecutionPolicy const&
                    execution_policy    ();
 

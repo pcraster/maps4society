@@ -13,6 +13,7 @@ namespace python {
 static fa::ExecutionPolicy _execution_policy{
     fa::ParallelExecutionPolicy{}};
 
+static size_t _nr_cpus{1};
 
 void set_nr_cpus(size_t cpus){
   size_t max_cpus = std::thread::hardware_concurrency();
@@ -23,12 +24,17 @@ void set_nr_cpus(size_t cpus){
   if(cpus < 1){
     cpus = 1;
   }
+  _nr_cpus = cpus;
   _execution_policy = fa::ParallelExecutionPolicy{cpus};
 }
 
 
 fa::ExecutionPolicy const& execution_policy(){
   return _execution_policy;
+}
+
+size_t nr_cpus(){
+  return _nr_cpus;
 }
 
 } // namespace python

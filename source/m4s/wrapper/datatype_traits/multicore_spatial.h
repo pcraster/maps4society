@@ -1,8 +1,8 @@
 #pragma once
 
+#include "fern/core/data_type_traits/scalar.h"  /// todo
 #include "fern/core/data_type_traits.h"
 #include "m4s/wrapper/multicore_field.h"
-
 
 namespace fern {
 
