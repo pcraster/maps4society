@@ -70,7 +70,7 @@ void scalar_spatial(const T* in_cells, REAL4* res_cells){
   auto arg = std::cref(in_cells);
   auto res = std::ref(res_cells);
 
-  std::div_t interval = std::div(nr_cells(), static_cast<int>(nr_threads));
+  std::lldiv_t interval = std::div(static_cast<long long>(nr_cells()), static_cast<long long>(nr_threads));
   size_t segment_size = interval.quot;
 
   for(size_t segments = 0; segments < nr_threads; ++segments){
