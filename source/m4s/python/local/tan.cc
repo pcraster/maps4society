@@ -46,7 +46,7 @@ calc::Field* tan_scalar(
 
     NonspatialSetNoData<REAL4> output_no_data_policy(result);
 
-    if(global_option_directional()){
+    if(global_option_degrees()){
       // fist convert input to radians...
       multicore_field::Nonspatial<REAL4> deg_rad(degrees_to_radians(&arg, &result));
 
@@ -72,7 +72,7 @@ calc::Field* tan_scalar(
 
     SpatialSetNoData<REAL4> output_no_data_policy(result);
 
-    if(global_option_directional()){
+    if(global_option_degrees()){
       // fist convert input to radians...
       multicore_field::Spatial<REAL4> deg_rad(degrees_to_radians(&arg, &result));
 
@@ -105,7 +105,7 @@ calc::Field* tan_directional(
 
     NonspatialSetNoData<REAL4> output_no_data_policy(result);
 
-    if(global_option_directional()){
+    if(global_option_degrees()){
       // fist convert input to radians...
       multicore_field::Nonspatial<REAL4> deg_rad(degrees_to_radians(&arg, &result));
 
@@ -131,7 +131,7 @@ calc::Field* tan_directional(
 
     SpatialSetNoData<REAL4> output_no_data_policy(result);
 
-    if(global_option_directional()){
+    if(global_option_degrees()){
       // fist convert input to radians...
       multicore_field::Spatial<REAL4> deg_rad(degrees_to_radians(&arg, &result));
 

@@ -79,8 +79,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("sqr", &pmcpy::sqr,
     bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("fac", &pmcpy::fac,
-//    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("fac", &pmcpy::fac,
+    bp::return_value_policy<bp::manage_new_object>());
 
 
   bp::def("cos", &pmcpy::cos,
@@ -89,12 +89,12 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("tan", &pmcpy::tan,
     bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("acos", &pmcpy::acos,
-//    bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("asin", &pmcpy::asin,
-//    bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("atan", &pmcpy::atan,
-//    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("acos", &pmcpy::acos,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("asin", &pmcpy::asin,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("atan", &pmcpy::atan,
+    bp::return_value_policy<bp::manage_new_object>());
 
 
   // Focal operations

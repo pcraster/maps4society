@@ -161,12 +161,12 @@ calc::Field* degrees_to_radians(const multicore_field::Spatial<REAL4>* aField,  
 
 
 
-bool global_option_directional(){
+bool global_option_degrees(){
   return appDirection == APP_DEGREES ? true : false;
 }
 
 
-// the PCRaster newnonspatialfield return with mutliple valuescales based on the input value
+// the PCRaster newnonspatialfield return with multiple valuescales based on the input value
 // that will break the value scale checking in the multicore algorithms
 // just make our own ones
 calc::Field* newNonSpatialScalar(double value){

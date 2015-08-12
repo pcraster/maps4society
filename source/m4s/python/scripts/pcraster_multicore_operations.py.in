@@ -379,6 +379,43 @@ def scalar(arg1):
 
 
 
+
+def acos(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.acos(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.acos: {}".format(str(exception)))
+
+def asin(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.asin(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.asin: {}".format(str(exception)))
+
+def atan(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.atan(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.atan: {}".format(str(exception)))
+
+def fac(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.fac(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.fac: {}".format(str(exception)))
+
+
+
+
+
+
+
+
+
 def window4total(arg1):
   try:
     arg1 = get_field(arg1)

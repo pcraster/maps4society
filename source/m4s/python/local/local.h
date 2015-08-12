@@ -26,8 +26,8 @@
 #include "m4s/python/local/sin.h"
 #include "m4s/python/local/tan.h"
 #include "m4s/python/local/acos.h"
-//#include "m4s/python/local/asin.h"
-//#include "m4s/python/local/atan.h"
+#include "m4s/python/local/asin.h"
+#include "m4s/python/local/atan.h"
 
 
 #include "m4s/python/local/equal.h"

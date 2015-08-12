@@ -25,7 +25,7 @@ SET(_SOURCES
   pow.cc
   sqr.cc
   abs.cc
-  #fac.cc
+  fac.cc
 
   equal.cc
   unequal.cc
@@ -40,8 +40,8 @@ SET(_SOURCES
   sin.cc
   tan.cc
   acos.cc
-  #asin.cc
-  #atan.cc
+  asin.cc
+  atan.cc
 
   utils.cc
 )
