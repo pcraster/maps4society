@@ -16,6 +16,7 @@
 #include "m4s/python/execution_policy.h"
 #include "m4s/python/local/utils.h"
 #include "m4s/python/local/policies.h"
+#include "m4s/python/type_conversion/scale_zero_to_2pi.h"
 
 // Fern
 #include "fern/algorithm/policy/policies.h"
@@ -49,6 +50,8 @@ calc::Field* asin(
     fa::trigonometry::asin<fa::asin::OutOfDomainPolicy>(input_no_data_policy,
       output_no_data_policy, fa::sequential, arg, result);
 
+    scale_zero_to_2pi(input_no_data_policy, output_no_data_policy, fa::sequential, result, result);
+
     return result.getField();
   }
   else{
@@ -66,6 +69,8 @@ calc::Field* asin(
 
     fa::trigonometry::asin<fa::asin::OutOfDomainPolicy>(input_no_data_policy,
       output_no_data_policy, epol, arg, result);
+
+    scale_zero_to_2pi(input_no_data_policy, output_no_data_policy, epol, result, result);
 
     return result.getField();
   }
