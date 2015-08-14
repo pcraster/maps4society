@@ -15,6 +15,7 @@
 #include "m4s/wrapper/argument_traits/multicore_spatial.h"
 
 #include "m4s/python/execution_policy.h"
+#include "m4s/python/local/utils.h"
 
 // Fern
 #include "fern/algorithm/policy/policies.h"
@@ -40,7 +41,7 @@ calc::Field* slope(
     throw std::runtime_error("argument is non-spatial, only spatial is allowed\n");
   }
 
-  calc::Spatial* field_result = new calc::Spatial(VS_S, calc::CRI_f, field_dem->nrValues());
+  calc::Spatial* field_result = new calc::Spatial(VS_S, calc::CRI_f, nr_cells());
   multicore_field::Spatial<REAL4> result(field_result);
 
   fa::ExecutionPolicy epol = execution_policy();

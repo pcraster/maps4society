@@ -63,12 +63,10 @@ template<class T>
 Spatial<T>::Spatial(calc::Field* field){
   pcr_field = field;
   the_cells = static_cast<T*>(pcr_field->dest());
-  /// todo check if this is still required, think can be skipped due to the nr_... in utils
   rows = pcraster::python::globals.cloneSpace().nrRows();
   cols = pcraster::python::globals.cloneSpace().nrCols();
   _cell_size = pcraster::python::globals.cloneSpace().cellSize();
 }
-
 
 template<class T>
 inline calc::Field* Spatial<T>::getField() const {
@@ -91,10 +89,10 @@ inline T& Spatial<T>::get(size_t index){
 template<class T>
 inline size_t Spatial<T>::size(size_t dimension) const {
   if(dimension == 0){
-    return cols;
+    return rows;
   }
   else if (dimension == 1){
-    return rows;
+    return cols;
   }
   return 0;
 }
@@ -108,7 +106,7 @@ inline void Spatial<T>::set_cell(size_t index) const {
 
 template<class T>
 inline size_t Spatial<T>::index(size_t idx1, size_t idx2) const {
-  return idx1 * rows + idx2;
+  return idx1 * cols + idx2;
 }
 
 
