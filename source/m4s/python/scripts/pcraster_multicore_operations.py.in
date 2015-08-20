@@ -114,8 +114,18 @@ def upstream(arg1, arg2):
     arg2 = get_field(arg2)
     return _pmc.upstream(arg1, arg2)
   except RuntimeError as exception:
-    raise RuntimeError("pcraster_multicore.downstream: {}".format(str(exception)))
+    raise RuntimeError("pcraster_multicore.upstream: {}".format(str(exception)))
 
+
+
+def cover(*args):
+  try:
+    fields = list(args)
+    for i, field in enumerate(fields):
+      fields[i] = get_field(field)
+    return _pmc.cover(fields)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.cover: {}".format(str(exception)))
 
 
 

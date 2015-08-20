@@ -33,8 +33,10 @@ SET(_SOURCES
   less_equal.cc
   greater.cc
   greater_equal.cc
+
   ifthen.cc
   ifthenelse.cc
+  cover.cc
 
   cos.cc
   sin.cc

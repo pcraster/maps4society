@@ -10,8 +10,8 @@ namespace pcraster_multicore {
 namespace python {
 
 
-calc::Field* slope(
-         calc::Field * field_dem);
+calc::Field* cos(
+         calc::Field* field);
 
 
 } // namespace python

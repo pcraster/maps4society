@@ -178,7 +178,7 @@ calc::Field* newNonSpatialNominal(int value){
 }
 
 calc::Field* newNonSpatialBoolean(bool value){
-  return new calc::NonSpatial(VS_B, static_cast<double>(value));//(int)value);
+  return new calc::NonSpatial(VS_B, static_cast<double>(value));
 }
 
 } // namespace python

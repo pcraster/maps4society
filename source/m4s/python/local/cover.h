@@ -1,17 +1,24 @@
 #pragma once
 
 
+namespace boost {
+namespace python {
+  class list;
+}
+}
+
 namespace calc {
   class Field;
 }
+
 
 
 namespace pcraster_multicore {
 namespace python {
 
 
-calc::Field* slope(
-         calc::Field * field_dem);
+calc::Field* cover(boost::python::list const&   arguments);
+         //calc::Field* field_a);
 
 
 } // namespace python

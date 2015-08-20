@@ -5,7 +5,6 @@
 #include "m4s/python/local/xor.h"
 #include "m4s/python/local/not.h"
 #include "m4s/python/local/defined.h"
-//#include "m4s/python/local/cover.h"
 
 #include "m4s/python/local/add.h"
 #include "m4s/python/local/sub.h"
@@ -17,9 +16,15 @@
 #include "m4s/python/local/sqr.h"
 #include "m4s/python/local/abs.h"
 #include "m4s/python/local/fac.h"
-
 //#include "m4s/python/local/ln.h"
 //#include "m4s/python/local/log10.h"
+//#include "m4s/python/local/roundup.h"
+//#include "m4s/python/local/rounddown.h"
+//#include "m4s/python/local/roundoff.h"
+
+#include "m4s/python/local/cover.h"
+//#include "m4s/python/local/minimum.h"
+//#include "m4s/python/local/maximum.h"
 
 
 #include "m4s/python/local/cos.h"
@@ -40,29 +45,12 @@
 #include "m4s/python/local/ifthenelse.h"
 
 
-//#include "m4s/python/local/pit.h"
-
-
 
 
 //#include "m4s/python/local/.h"
 //#include "m4s/python/local/.h"
-
-
-
-// fac idiv mod
-
-
-
 
 /*
-
-ifthen <fern/algorithm/core/if.h>
-
-ifthenelse<fern/algorithm/core/if.h>
-
-cover fern/algorithm/core/cover.h> // how to obtain multiple arguments?...
-
 
 min<fern/statistucs.../min.h>  //binary_ma
 max

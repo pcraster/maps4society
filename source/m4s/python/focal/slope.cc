@@ -31,7 +31,7 @@ namespace python {
 
 
 calc::Field* slope(
-         calc::Field* field_dem){
+         calc::Field * field_dem){
 
   if(appUnitTrue == false){
     throw std::runtime_error("not implemented for global option 'unitcell'\n");
