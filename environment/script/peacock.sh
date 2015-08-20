@@ -60,7 +60,7 @@ function build_software()
     # Fern.
     options+=("-Dbuild_fern=true")
     options+=("-Dfern_git_repository=https://github.com/geoneric/fern.git")
-    options+=("-Dfern_git_tag=ecb0e18409a9614797365b9ee15102236938ba55")
+    options+=("-Dfern_git_tag=d90ececdcaf365e608009aaa3c4c7a30027e0249")
     options+=("-Dfern_build_fern_algorithm=true")
     options+=("-Dfern_build_fern_documentation=true")
     options+=("-Dfern_build_fern_test=true")
