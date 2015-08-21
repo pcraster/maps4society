@@ -36,7 +36,10 @@ SET(_SOURCES
 
   ifthen.cc
   ifthenelse.cc
+
   cover.cc
+  minimum.cc
+  maximum.cc
 
   cos.cc
   sin.cc

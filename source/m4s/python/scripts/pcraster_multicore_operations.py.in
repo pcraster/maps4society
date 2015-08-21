@@ -127,6 +127,24 @@ def cover(*args):
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.cover: {}".format(str(exception)))
 
+def max(*args):
+  try:
+    fields = list(args)
+    for i, field in enumerate(fields):
+      fields[i] = get_field(field)
+    return _pmc.maximum(fields)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.maximum: {}".format(str(exception)))
+
+def min(*args):
+  try:
+    fields = list(args)
+    for i, field in enumerate(fields):
+      fields[i] = get_field(field)
+    return _pmc.minimum(fields)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.minimum: {}".format(str(exception)))
+
 
 
 # these ones below here can be generated?!

@@ -1,4 +1,4 @@
-#include "m4s/python/local/cover.h"
+#include "m4s/python/local/maximum.h"
 
 #include <boost/python.hpp>
 
@@ -20,7 +20,7 @@
 
 // Fern
 #include "fern/algorithm/policy/policies.h"
-#include "fern/algorithm/core/cover.h"
+#include "fern/algorithm/statistic/binary_max.h"
 
 
 namespace fa = fern::algorithm;
@@ -32,7 +32,7 @@ namespace detail {
 
 
 template<class T>
-void cover_nonspatial(
+void maximum_nonspatial(
          fa::ExecutionPolicy& epol,
          multicore_field::Spatial<T>& res,
          multicore_field::Nonspatial<T> const& arg2) {
@@ -43,13 +43,13 @@ void cover_nonspatial(
 
   SpatialSetNoData<T> output_no_data_policy(res);
 
-  fa::core::cover(input_no_data_policy,
+  fa::statistic::binary_max(input_no_data_policy,
     output_no_data_policy, epol, res, arg2, res);
 }
 
 
 template<class T>
-void cover_spatial(
+void maximum_spatial(
          fa::ExecutionPolicy& epol,
          multicore_field::Spatial<T>& res,
          multicore_field::Spatial<T> const& arg2){
@@ -61,29 +61,32 @@ void cover_spatial(
 
   SpatialSetNoData<T> output_no_data_policy(res);
 
-  fa::core::cover(input_no_data_policy,
+  fa::statistic::binary_max(input_no_data_policy,
     output_no_data_policy, epol, res, arg2, res);
 }
 
 
 template<class T>
-calc::Field* cover(std::vector<calc::Field*> const&  field_arguments){
+calc::Field* maximum(std::vector<calc::Field*> const&  field_arguments){
+auto start = std::chrono::high_resolution_clock::now();
 
   calc::Field* res_field = (field_arguments.at(0))->createClone();
+
   multicore_field::Spatial<T> res(res_field);
 
   fa::ExecutionPolicy epol = execution_policy();
 
   for(size_t idx = 1; idx < field_arguments.size(); ++idx){
     // we assume that the first field is always spatial
-    // i.e. spatial argument, or spatial result of previous cover
+    // i.e. spatial argument, or spatial result of previous maximum
     if(field_arguments.at(idx)->isSpatial() == true){
       const multicore_field::Spatial<T> arg2(field_arguments.at(idx));
-      cover_spatial<T>(epol, res, arg2);
+      maximum_spatial<T>(epol, res, arg2);
     }
     else{
       const multicore_field::Nonspatial<T> arg2(field_arguments.at(idx));
-      cover_nonspatial<T>(epol, res, arg2);
+      maximum_nonspatial<T>(epol, res, arg2);
+
     }
   }
   return res.getField();
@@ -94,7 +97,7 @@ calc::Field* cover(std::vector<calc::Field*> const&  field_arguments){
 
 
 
-calc::Field* cover(boost::python::list const& arguments){
+calc::Field* maximum(boost::python::list const& arguments){
 
   size_t nr_args = boost::python::len(arguments);
 
@@ -112,14 +115,17 @@ calc::Field* cover(boost::python::list const& arguments){
     field_arguments.push_back(boost::python::extract<calc::Field*>(arguments[idx]));
   }
 
-  // implement this when requested
   if(directional_valuescale(*field_arguments.at(0))){
     throw std::runtime_error("operation not implemented for type 'directional'");
   }
-
-  // implement this when requested, see remark cover ldd in manpage...
   if(ldd_valuescale(*field_arguments.at(0))){
     throw std::runtime_error("operation not implemented for type 'ldd'");
+  }
+  if(nominal_valuescale(*field_arguments.at(0))){
+    throw std::runtime_error("operation not implemented for type 'nominal'");
+  }
+  if(boolean_valuescale(*field_arguments.at(0))){
+    throw std::runtime_error("operation not implemented for type 'boolean'");
   }
 
   // implement this when requested
@@ -137,14 +143,11 @@ calc::Field* cover(boost::python::list const& arguments){
     assert_equal_valuescale(*field_arguments.at(idx), *field_arguments.at(idx + 1), msg.str());
   }
 
-  if(boolean_valuescale(*field_arguments.at(0))){
-    return detail::cover<UINT1>(field_arguments);
+  if(ordinal_valuescale(*field_arguments.at(0))){
+    return detail::maximum<INT4>(field_arguments);
   }
-  else if(nominal_valuescale(*field_arguments.at(0)) || ordinal_valuescale(*field_arguments.at(0))){
-    return detail::cover<INT4>(field_arguments);
-  }
-  else if(scalar_valuescale(*field_arguments.at(0)) || directional_valuescale(*field_arguments.at(0))){
-    return detail::cover<REAL4>(field_arguments);
+  else if(scalar_valuescale(*field_arguments.at(0))){
+    return detail::maximum<REAL4>(field_arguments);
   }
 }
 

@@ -34,12 +34,16 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("defined", &pmcpy::defined,
     bp::return_value_policy<bp::manage_new_object>());
-
   bp::def("ifthen", &pmcpy::ifthen,
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("ifthenelse", &pmcpy::ifthenelse,
     bp::return_value_policy<bp::manage_new_object>());
+
   bp::def("cover", &pmcpy::cover,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("maximum", &pmcpy::maximum,
+    bp::return_value_policy<bp::manage_new_object>());
+  bp::def("minimum", &pmcpy::minimum,
     bp::return_value_policy<bp::manage_new_object>());
 
   bp::def("boolean", &pmcpy::boolean,
@@ -102,8 +106,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
   // Focal operations
   bp::def("slope", &pmcpy::slope,
     bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("window4total", &pmcpy::window4total,
-//     bp::return_value_policy<bp::manage_new_object>());
+   bp::def("window4total", &pmcpy::window4total,
+     bp::return_value_policy<bp::manage_new_object>());
 //   bp::def("upstream", &pmcpy::upstream,
 //     bp::return_value_policy<bp::manage_new_object>());
 

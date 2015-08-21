@@ -23,8 +23,8 @@
 //#include "m4s/python/local/roundoff.h"
 
 #include "m4s/python/local/cover.h"
-//#include "m4s/python/local/minimum.h"
-//#include "m4s/python/local/maximum.h"
+#include "m4s/python/local/minimum.h"
+#include "m4s/python/local/maximum.h"
 
 
 #include "m4s/python/local/cos.h"

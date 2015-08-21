@@ -17,7 +17,7 @@ namespace pcraster_multicore {
 namespace python {
 
 
-calc::Field* cover(boost::python::list const& arguments);
+calc::Field* maximum(boost::python::list const& arguments);
 
 
 } // namespace python
