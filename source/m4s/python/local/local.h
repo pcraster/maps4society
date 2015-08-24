@@ -16,7 +16,7 @@
 #include "m4s/python/local/sqr.h"
 #include "m4s/python/local/abs.h"
 #include "m4s/python/local/fac.h"
-//#include "m4s/python/local/ln.h"
+#include "m4s/python/local/ln.h"
 //#include "m4s/python/local/log10.h"
 //#include "m4s/python/local/roundup.h"
 //#include "m4s/python/local/rounddown.h"

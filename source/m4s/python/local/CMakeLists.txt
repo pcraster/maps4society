@@ -26,6 +26,11 @@ SET(_SOURCES
   sqr.cc
   abs.cc
   fac.cc
+  ln.cc
+#  log10.cc
+#  roundup.cc
+#  rounddown.cc
+#  roundoff.cc
 
   equal.cc
   unequal.cc

@@ -436,17 +436,16 @@ def fac(arg1):
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.fac: {}".format(str(exception)))
 
-
-
-
-
-
-
-
-
 def window4total(arg1):
   try:
     arg1 = get_field(arg1)
     return _pmc.window4total(arg1)
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.window4total: {}".format(str(exception)))
+
+def ln(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.ln(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.ln: {}".format(str(exception)))
