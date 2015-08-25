@@ -11,7 +11,7 @@ namespace python {
 
 
 static fa::ExecutionPolicy _execution_policy{
-    fa::ParallelExecutionPolicy{}};
+    fa::parallel};
 
 static size_t _nr_cpus{1};
 
@@ -25,7 +25,8 @@ void set_nr_cpus(size_t cpus){
     cpus = 1;
   }
   _nr_cpus = cpus;
-  _execution_policy = fa::ParallelExecutionPolicy{cpus};
+  fa::parallel = fa::ParallelExecutionPolicy{cpus};
+  _execution_policy = fa::parallel;
 }
 
 
