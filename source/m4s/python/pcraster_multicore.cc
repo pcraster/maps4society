@@ -89,8 +89,8 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
   bp::def("ln", &pmcpy::ln,
    bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("log10", &pmcpy::log10,
-//   bp::return_value_policy<bp::manage_new_object>());
+  bp::def("log10", &pmcpy::log10,
+   bp::return_value_policy<bp::manage_new_object>());
 //  bp::def("rounddown", &pmcpy::rounddown,
 //   bp::return_value_policy<bp::manage_new_object>());
 //  bp::def("roundup", &pmcpy::roundup,

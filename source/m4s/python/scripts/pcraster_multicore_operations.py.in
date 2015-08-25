@@ -449,3 +449,32 @@ def ln(arg1):
     return _pmc.ln(arg1)
   except RuntimeError as exception:
     raise RuntimeError("pcraster_multicore.ln: {}".format(str(exception)))
+
+def log10(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.log10(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.log10: {}".format(str(exception)))
+
+
+def rounddown(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.rounddown(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.rounddown: {}".format(str(exception)))
+
+def roundup(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.roundup(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.roundup: {}".format(str(exception)))
+
+def roundoff(arg1):
+  try:
+    arg1 = get_field(arg1)
+    return _pmc.roundoff(arg1)
+  except RuntimeError as exception:
+    raise RuntimeError("pcraster_multicore.roundoff: {}".format(str(exception)))

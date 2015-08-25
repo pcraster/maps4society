@@ -27,7 +27,7 @@ SET(_SOURCES
   abs.cc
   fac.cc
   ln.cc
-#  log10.cc
+  log10.cc
 #  roundup.cc
 #  rounddown.cc
 #  roundoff.cc
