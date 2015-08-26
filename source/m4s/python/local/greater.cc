@@ -159,7 +159,7 @@ calc::Field* greater(
 calc::Field* greater(
          calc::Field* field_a,
          calc::Field* field_b){
-printf("greater\n");
+
   // arguments must be of same VS
   if(ordinal_valuescale(*field_a) == true){
     assert_ordinal_valuescale(*field_b, "right operand");

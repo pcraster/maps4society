@@ -25,7 +25,7 @@ namespace detail {
 
 calc::Field* sqr(
          calc::Field* field_a){
-printf("sqr\n");
+
   assert_scalar_valuescale(*field_a, "argument");
 
   calc::Field* two = new calc::NonSpatial(VS_S, 2.0);

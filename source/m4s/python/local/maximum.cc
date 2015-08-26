@@ -68,7 +68,6 @@ void maximum_spatial(
 
 template<class T>
 calc::Field* maximum(std::vector<calc::Field*> const&  field_arguments){
-auto start = std::chrono::high_resolution_clock::now();
 
   calc::Field* res_field = (field_arguments.at(0))->createClone();
 

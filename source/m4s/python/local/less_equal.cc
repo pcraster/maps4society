@@ -159,7 +159,6 @@ calc::Field* less_equal(
 calc::Field* less_equal(
          calc::Field* field_a,
          calc::Field* field_b){
-printf("less equal\n");
 
   // arguments must be of same VS
   if(ordinal_valuescale(*field_a) == true){
