@@ -154,7 +154,7 @@ calc::Field* sin_directional(
 
 calc::Field* sin(
          calc::Field* field){
-printf("sin\n");
+
   if(scalar_valuescale(*field)){
     return detail::sin_scalar(field);
   }

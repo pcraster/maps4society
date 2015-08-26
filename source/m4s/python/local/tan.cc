@@ -154,7 +154,7 @@ calc::Field* tan_directional(
 
 calc::Field* tan(
          calc::Field* field){
-printf("tan\n");
+
   if(scalar_valuescale(*field)){
     return detail::tan_scalar(field);
   }

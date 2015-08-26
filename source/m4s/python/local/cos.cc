@@ -154,7 +154,7 @@ calc::Field* cos_directional(
 
 calc::Field* cos(
          calc::Field* field){
-printf("cos\n");
+
   if(scalar_valuescale(*field)){
     return detail::cos_scalar(field);
   }
