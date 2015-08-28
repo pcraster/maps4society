@@ -51,8 +51,12 @@ function build_software()
     # Boost.
     options+=("-Dbuild_boost=true")
     options+=("-Dboost_version=1.57.0")
+    options+=("-Dboost_build_boost_date_time=true")
     options+=("-Dboost_build_boost_filesystem=true")
+    options+=("-Dboost_build_boost_math=true")
+    options+=("-Dboost_build_boost_program_options=true")
     options+=("-Dboost_build_boost_python=true")
+    options+=("-Dboost_build_boost_regex=true")
     options+=("-Dboost_build_boost_system=true")
     options+=("-Dboost_build_boost_test=true")
     options+=("-Dboost_build_boost_timer=true")
@@ -70,6 +74,18 @@ function build_software()
     options+=("-Dgdal_version=1.11.1")
     options+=("-Dgdal_build_ogr=true")
     options+=("-Dgdal_build_python_package=true")
+
+    # PCRaster raster format.
+    options+=("-Dbuild_pcraster_raster_format=true")
+    options+=("-Dpcraster_raster_format_version=1.3.1")
+
+    # PCRaster.
+    options+=("-Dbuild_pcraster=true")
+    options+=(
+        "-Dpcraster_git_repository=https://github.com/pcraster/pcraster.git")
+    options+=("-Dpcraster_git_tag=918151d3c95d2f881069c82840ea53b8cf4b4b81")
+    options+=("-Dpcraster_build_pcraster_documentation=true")
+    options+=("-Dpcraster_build_pcraster_test=true")
 
 
     cmake "${options[@]}" $source
