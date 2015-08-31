@@ -143,6 +143,7 @@ calc::Field* div(
     return detail::div_number_field(epol, &arg1, &arg2, &res);
   }
   else{
+    assert_equal_location_attributes(*field_a, *field_b);
     const multicore_field::Spatial<REAL4> arg1(field_a);
     const multicore_field::Spatial<REAL4> arg2(field_b);
     return detail::div_field_field(epol, &arg1, &arg2, &res);

@@ -57,7 +57,6 @@ calc::Field* mul_field_field(
 } // namespace detail
 
 
-
 calc::Field* mul_number_number(
          const multicore_field::Nonspatial<REAL4>* arg1,
          const multicore_field::Nonspatial<REAL4>* arg2,
@@ -74,12 +73,6 @@ calc::Field* mul_number_number(
 
   return res->getField();
 }
-
-
-
-
-
-
 
 calc::Field* mul_field_number(
          fern::algorithm::ExecutionPolicy epol,
@@ -98,14 +91,6 @@ calc::Field* mul_field_number(
 
   return res->getField();
 }
-
-
-
-
-
-
-
-
 
 
 calc::Field* mul(
@@ -142,6 +127,7 @@ calc::Field* mul(
     return mul_field_number(epol, &arg2, &arg1, &res);
   }
   else{
+    assert_equal_location_attributes(*field_a, *field_b);
     const multicore_field::Spatial<REAL4> arg1(field_a);
     const multicore_field::Spatial<REAL4> arg2(field_b);
     return detail::mul_field_field(epol, &arg1, &arg2, &res);

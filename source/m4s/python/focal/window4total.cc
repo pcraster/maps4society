@@ -48,16 +48,16 @@ void w4t(
 
 
     //fern::Square<bool, 1> window_kernel({ on the todo list
-//     fern::Square<REAL4, 1> window_kernel({
-//         {0, 1, 0},
-//         {1, 0, 1},
-//         {0, 1, 0}
-//     });
+    fern::Square<INT4, 1> window_kernel({
+        {0, 1, 0},
+        {1, 0, 1},
+        {0, 1, 0}
+    });
 
     //test, test...
-    fern::Square<REAL4, 1000> window_kernel({
-    #include "buf.inc"
-    });
+//     fern::Square<INT4, 1> window_kernel({
+//     #include "buf.inc"
+//     });
 
     fa::convolution::convolve<
         fern::algorithm::convolve::SkipNoData,
