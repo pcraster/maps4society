@@ -183,11 +183,13 @@ calc::Field* newNonSpatialBoolean(bool value){
 }
 
 
-void assert_equal_location_attributes(const calc::Field& field_a, const calc::Field& field_b){
+void assert_equal_location_attributes(const calc::Field& field){
   // this is a rather weak test, we should add methods to the PCRaster calc::Field
   // that expose location attributes
-  if((nr_cells() != field_a.nrValues()) || (nr_cells() != field_b.nrValues())){
-    throw std::runtime_error("Number of cells are different");
+  // on the other hand, this test is similar to the one performed by the
+  // 4.1.0 PCRaster model engine...
+  if(field.isSpatial() && (nr_cells() != field.nrValues())){
+    throw std::runtime_error("Number of cells is different from clone map");
   }
 }
 

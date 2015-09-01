@@ -58,8 +58,8 @@ bool global_option_degrees();
 
 void assert_equal_valuescale(const calc::Field& field_a, const calc::Field& field_b, const std::string& msg);
 
-
-void assert_equal_location_attributes(const calc::Field& field_a, const calc::Field& field_b);
+/// simple test if location attributes of field match the clone ones
+void assert_equal_location_attributes(const calc::Field& field_a);
 
 
 } // namespace python

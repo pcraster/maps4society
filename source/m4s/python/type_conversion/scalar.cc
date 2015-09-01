@@ -95,6 +95,8 @@ void scalar_spatial(const T* in_cells, REAL4* res_cells){
 calc::Field* scalar(
          calc::Field* field){
 
+  assert_equal_location_attributes(*field);
+
   if(scalar_valuescale(*field)){
     calc::Field* res_field = field->createClone();
     return res_field;

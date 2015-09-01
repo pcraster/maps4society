@@ -95,6 +95,8 @@ void boolean_spatial(const T* in_cells, UINT1* res_cells){
 calc::Field* boolean(
          calc::Field* field){
 
+  assert_equal_location_attributes(*field);
+
   if(boolean_valuescale(*field)){
     calc::Field* res_field = field->createClone();
     return res_field;

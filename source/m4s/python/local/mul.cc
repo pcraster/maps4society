@@ -97,6 +97,8 @@ calc::Field* mul(
          calc::Field* field_a,
          calc::Field* field_b){
 
+  assert_equal_location_attributes(*field_a);
+  assert_equal_location_attributes(*field_b);
   assert_scalar_valuescale(*field_a, "left operand");
   assert_scalar_valuescale(*field_b, "right operand");
 
@@ -127,7 +129,6 @@ calc::Field* mul(
     return mul_field_number(epol, &arg2, &arg1, &res);
   }
   else{
-    assert_equal_location_attributes(*field_a, *field_b);
     const multicore_field::Spatial<REAL4> arg1(field_a);
     const multicore_field::Spatial<REAL4> arg2(field_b);
     return detail::mul_field_field(epol, &arg1, &arg2, &res);
