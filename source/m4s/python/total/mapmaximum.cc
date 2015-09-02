@@ -34,10 +34,10 @@ namespace detail {
 
 template<class T>
 calc::Field* mapmaximum(
-         calc::Field* field_a,
+         calc::Field* field,
          VS result_vs){
 
-  const multicore_field::Spatial<T> arg1(field_a);
+  const multicore_field::Spatial<T> arg1(field);
   using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<T>>;
   InputNoDataPolicy input_no_data_policy{{arg1}};
 
@@ -60,24 +60,25 @@ calc::Field* mapmaximum(
 
 
 calc::Field* mapmaximum(
-         calc::Field* field_a){
-printf("mapmaximum\n");
+         calc::Field* field){
 
-  if(field_a->isSpatial() == false){
+  assert_equal_location_attributes(*field);
+
+  if(field->isSpatial() == false){
     throw std::runtime_error("argument is non-spatial, only spatial allowed\n");
   }
 
-  VS result_vs = field_a->vs();
+  VS result_vs = field->vs();
 
-  if(scalar_valuescale(*field_a) == true){
-    return detail::mapmaximum<REAL4>(field_a, result_vs);
+  if(scalar_valuescale(*field) == true){
+    return detail::mapmaximum<REAL4>(field, result_vs);
   }
-  else if(ordinal_valuescale(*field_a) == true){
-    return detail::mapmaximum<INT4>(field_a, result_vs);
+  else if(ordinal_valuescale(*field) == true){
+    return detail::mapmaximum<INT4>(field, result_vs);
   }
   else{
     std::stringstream msg{};
-    msg << "argument is of type '" << field_a->vs() << "', legal type is either 'ordinal' or 'scalar'\n";
+    msg << "argument is of type '" << field->vs() << "', legal type is either 'ordinal' or 'scalar'\n";
     throw std::runtime_error(msg.str());
   }
 }

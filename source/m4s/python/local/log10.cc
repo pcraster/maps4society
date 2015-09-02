@@ -81,6 +81,8 @@ calc::Field* log10(
 calc::Field* log10(
          calc::Field* field){
 
+  assert_equal_location_attributes(*field);
+
   if(scalar_valuescale(*field)){
     return detail::log10(field);
   }

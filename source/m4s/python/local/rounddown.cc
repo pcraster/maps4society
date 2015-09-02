@@ -81,6 +81,8 @@ calc::Field* rounddown(
 calc::Field* rounddown(
          calc::Field* field){
 
+  assert_equal_location_attributes(*field);
+
   if(scalar_valuescale(*field)){
     return detail::rounddown(field);
   }

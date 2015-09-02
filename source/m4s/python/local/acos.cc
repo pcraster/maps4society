@@ -79,6 +79,8 @@ calc::Field* acos(
 calc::Field* acos(
          calc::Field* field){
 
+  assert_equal_location_attributes(*field);
+
   if(scalar_valuescale(*field)){
     return detail::acos(field);
   }

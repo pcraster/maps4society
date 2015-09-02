@@ -76,6 +76,7 @@ void w4t(
 calc::Field* window4total(
          calc::Field * field){
 
+  assert_equal_location_attributes(*field);
   assert_scalar_valuescale(*field, "argument");
 
   if(field->isSpatial() == false){

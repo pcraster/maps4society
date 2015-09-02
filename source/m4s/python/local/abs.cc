@@ -39,6 +39,7 @@ namespace detail {
 calc::Field* abs(
          calc::Field* field){
 
+  assert_equal_location_attributes(*field);
   assert_scalar_valuescale(*field, "argument");
 
   calc::Field* field_result = nullptr;

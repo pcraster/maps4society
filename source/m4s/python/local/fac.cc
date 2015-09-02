@@ -38,6 +38,7 @@ namespace detail {
 calc::Field* fac(
          calc::Field* field){
 
+  assert_equal_location_attributes(*field);
   assert_scalar_valuescale(*field, "argument");
 
   if(field->isSpatial() == false){

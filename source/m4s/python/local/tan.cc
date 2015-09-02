@@ -155,6 +155,8 @@ calc::Field* tan_directional(
 calc::Field* tan(
          calc::Field* field){
 
+  assert_equal_location_attributes(*field);
+
   if(scalar_valuescale(*field)){
     return detail::tan_scalar(field);
   }
