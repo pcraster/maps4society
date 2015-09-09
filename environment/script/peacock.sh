@@ -91,7 +91,7 @@ function build_software()
     options+=("-Dbuild_pcraster=true")
     options+=(
         "-Dpcraster_git_repository=https://github.com/pcraster/pcraster.git")
-    options+=("-Dpcraster_git_tag=918151d3c95d2f881069c82840ea53b8cf4b4b81")
+    options+=("-Dpcraster_git_tag=f1b54c6b5d6b0006543b05978bb0b4abc5bf5ad1")
     options+=("-Dpcraster_build_pcraster_documentation=true")
     options+=("-Dpcraster_build_pcraster_test=true")
 
