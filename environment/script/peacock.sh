@@ -79,6 +79,14 @@ function build_software()
     options+=("-Dbuild_pcraster_raster_format=true")
     options+=("-Dpcraster_raster_format_version=1.3.1")
 
+    # Qt
+    options+=("-Dbuild_qt=true")
+    options+=("-Dqt_version=4.8.6")
+
+    # Qwt
+    options+=("-Dbuild_qwt=true")
+    options+=("-Dqwt_version=6.0.2")
+
     # PCRaster.
     options+=("-Dbuild_pcraster=true")
     options+=(
