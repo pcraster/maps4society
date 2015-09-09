@@ -92,6 +92,8 @@ calc::Field* add(
          calc::Field* field_a,
          calc::Field* field_b){
 
+  assert_equal_location_attributes(*field_a);
+  assert_equal_location_attributes(*field_b);
   assert_scalar_valuescale(*field_a, "left operand");
   assert_scalar_valuescale(*field_b, "right operand");
 

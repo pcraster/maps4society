@@ -81,6 +81,8 @@ calc::Field* ln(
 calc::Field* ln(
          calc::Field* field){
 
+  assert_equal_location_attributes(*field);
+
   if(scalar_valuescale(*field)){
     return detail::ln(field);
   }

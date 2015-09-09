@@ -33,6 +33,8 @@ namespace python {
 calc::Field* slope(
          calc::Field * field_dem){
 
+  assert_equal_location_attributes(*field_dem);
+
   if(appUnitTrue == false){
     throw std::runtime_error("not implemented for global option 'unitcell'\n");
   }

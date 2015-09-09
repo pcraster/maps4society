@@ -290,6 +290,9 @@ calc::Field* ifthenelse(
          calc::Field* field_a,
          calc::Field* field_b){
 
+  assert_equal_location_attributes(*condition);
+  assert_equal_location_attributes(*field_a);
+  assert_equal_location_attributes(*field_b);
   assert_boolean_valuescale(*condition, "first argument");
   assert_equal_valuescale(*field_a, *field_b, "one argument");
 

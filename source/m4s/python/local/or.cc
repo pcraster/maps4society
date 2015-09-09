@@ -92,16 +92,10 @@ calc::Field* _or(
          calc::Field* field_a,
          calc::Field* field_b){
 
-  if(boolean_valuescale(*field_a) == false){
-    std::stringstream msg{};
-    msg << "left operand is of type '" << field_a->vs() << "', legal type is 'boolean'\n";
-    throw std::runtime_error(msg.str());
-  }
-  if(boolean_valuescale(*field_b) == false){
-    std::stringstream msg{};
-    msg << "right operand is of type '" << field_b->vs() << "', legal type is 'boolean'\n";
-    throw std::runtime_error(msg.str());
-  }
+  assert_equal_location_attributes(*field_a);
+  assert_equal_location_attributes(*field_b);
+  assert_boolean_valuescale(*field_a, "left operand");
+  assert_boolean_valuescale(*field_b, "right operand");
 
   calc::Field* res_field = nullptr;
 

@@ -110,6 +110,8 @@ calc::Field* cover(boost::python::list const& arguments){
 
   for(size_t idx = 0; idx < nr_args; ++idx){
     field_arguments.push_back(boost::python::extract<calc::Field*>(arguments[idx]));
+    // arguments must have same extent as clone
+    assert_equal_location_attributes(*field_arguments.at(idx));
   }
 
   // implement this when requested

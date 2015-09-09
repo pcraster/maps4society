@@ -68,19 +68,21 @@ bool ldd_valuescale(const calc::Field& aField){
 bool nominal_valuescale(const calc::Field& aField){
   PCR_VS field_vs = VS_UNKNOWN;
   field_vs = aField.vs();
-  std::cout << "VS nom? " << (field_vs == VS_N ? true : false) << " vs " << aField.vs() <<std::endl;
   return field_vs == VS_N ? true : false;
 }
+
 bool ordinal_valuescale(const calc::Field& aField){
   PCR_VS field_vs = VS_UNKNOWN;
   field_vs = aField.vs();
   return field_vs == VS_O ? true : false;
 }
+
 bool scalar_valuescale(const calc::Field& aField){
   PCR_VS field_vs = VS_UNKNOWN;
   field_vs = aField.vs();
   return field_vs == VS_S ? true : false;
 }
+
 bool directional_valuescale(const calc::Field& aField){
   PCR_VS field_vs = VS_UNKNOWN;
   field_vs = aField.vs();
@@ -98,7 +100,6 @@ void assert_equal_valuescale(const calc::Field& field_a, const calc::Field& fiel
   field_vs2 = field_b.vs();
   if(field_vs1 != field_vs2){
     std::stringstream err_msg{};
-    //err_msg << "one operand is of type '" << field_vs2 << "', while other is of type '" << field_vs1 << "'\n";
     err_msg << msg << " is of type '" << field_vs2 << "', while other is of type '" << field_vs1 << "'\n";
     throw std::runtime_error(err_msg.str());
   }
@@ -180,6 +181,19 @@ calc::Field* newNonSpatialNominal(int value){
 calc::Field* newNonSpatialBoolean(bool value){
   return new calc::NonSpatial(VS_B, static_cast<double>(value));
 }
+
+
+void assert_equal_location_attributes(const calc::Field& field){
+  // this is a rather weak test, we should add methods to the PCRaster calc::Field
+  // that expose location attributes
+  // on the other hand, this test is similar to the one performed by the
+  // 4.1.0 PCRaster model engine...
+  if(field.isSpatial() && (nr_cells() != field.nrValues())){
+    throw std::runtime_error("Number of cells is different from clone map");
+  }
+}
+
+
 
 } // namespace python
 } // namespace pcraster_multicore

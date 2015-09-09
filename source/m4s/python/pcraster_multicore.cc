@@ -91,13 +91,12 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
    bp::return_value_policy<bp::manage_new_object>());
   bp::def("log10", &pmcpy::log10,
    bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("rounddown", &pmcpy::rounddown,
-//   bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("roundup", &pmcpy::roundup,
-//   bp::return_value_policy<bp::manage_new_object>());
-//  bp::def("roundoff", &pmcpy::roundoff,
-//   bp::return_value_policy<bp::manage_new_object>());
-
+  bp::def("rounddown", &pmcpy::rounddown,
+   bp::return_value_policy<bp::manage_new_object>());
+  bp::def("roundup", &pmcpy::roundup,
+   bp::return_value_policy<bp::manage_new_object>());
+  bp::def("roundoff", &pmcpy::roundoff,
+   bp::return_value_policy<bp::manage_new_object>());
 
   bp::def("cos", &pmcpy::cos,
     bp::return_value_policy<bp::manage_new_object>());
@@ -118,8 +117,6 @@ BOOST_PYTHON_MODULE(_pcraster_multicore){
     bp::return_value_policy<bp::manage_new_object>());
    bp::def("window4total", &pmcpy::window4total,
      bp::return_value_policy<bp::manage_new_object>());
-//   bp::def("upstream", &pmcpy::upstream,
-//     bp::return_value_policy<bp::manage_new_object>());
 
 
   // Operations on full map extent

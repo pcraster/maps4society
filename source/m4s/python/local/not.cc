@@ -67,11 +67,8 @@ calc::Field* not_spatial(
 calc::Field* _not(
          calc::Field* field_a){
 
-  if(boolean_valuescale(*field_a) == false){
-    std::stringstream msg{};
-    msg << "operand is of type '" << field_a->vs() << "', legal type is 'boolean'\n";
-    throw std::runtime_error(msg.str());
-  }
+  assert_equal_location_attributes(*field_a);
+  assert_boolean_valuescale(*field_a, "operand");
 
   calc::Field* res_field = nullptr;
 

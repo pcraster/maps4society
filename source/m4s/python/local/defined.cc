@@ -64,6 +64,8 @@ calc::Field* defined_spatial(
 calc::Field* defined(
          calc::Field* field_a){
 
+  assert_equal_location_attributes(*field_a);
+
   calc::Field* res_field = nullptr;
 
   CSF_CR cell_representation = field_a->cr();

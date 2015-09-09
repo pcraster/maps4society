@@ -24,13 +24,14 @@ namespace detail {
 
 
 calc::Field* sqr(
-         calc::Field* field_a){
+         calc::Field* field){
 
-  assert_scalar_valuescale(*field_a, "argument");
+  assert_equal_location_attributes(*field);
+  assert_scalar_valuescale(*field, "argument");
 
   calc::Field* two = new calc::NonSpatial(VS_S, 2.0);
 
-  return power(field_a, two);
+  return power(field, two);
 }
 
 } // namespace python

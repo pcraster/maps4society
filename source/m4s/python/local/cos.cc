@@ -155,6 +155,8 @@ calc::Field* cos_directional(
 calc::Field* cos(
          calc::Field* field){
 
+  assert_equal_location_attributes(*field);
+
   if(scalar_valuescale(*field)){
     return detail::cos_scalar(field);
   }

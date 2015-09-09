@@ -33,14 +33,16 @@ namespace detail {
 
 
 calc::Field* maptotal(
-         calc::Field* field_a){
+         calc::Field* field){
 
-  if(field_a->isSpatial() == false){
+  assert_equal_location_attributes(*field);
+
+  if(field->isSpatial() == false){
     throw std::runtime_error("argument is non-spatial, only spatial allowed\n");
   }
 
-  if(scalar_valuescale(*field_a) == true){
-    const multicore_field::Spatial<REAL4> arg1(field_a);
+  if(scalar_valuescale(*field) == true){
+    const multicore_field::Spatial<REAL4> arg1(field);
     using InputNoDataPolicy = fa::InputNoDataPolicies<SpatialDetectNoData<REAL4>>;
     InputNoDataPolicy input_no_data_policy{{arg1}};
 
@@ -59,7 +61,7 @@ calc::Field* maptotal(
   }
   else{
     std::stringstream msg{};
-    msg << "argument is of type '" << field_a->vs() << "', legal type is 'scalar'\n";
+    msg << "argument is of type '" << field->vs() << "', legal type is 'scalar'\n";
     throw std::runtime_error(msg.str());
   }
 }

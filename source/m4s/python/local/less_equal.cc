@@ -160,13 +160,14 @@ calc::Field* less_equal(
          calc::Field* field_a,
          calc::Field* field_b){
 
-  // arguments must be of same VS
+  assert_equal_location_attributes(*field_a);
+  assert_equal_location_attributes(*field_b);
+  assert_equal_valuescale(*field_a, *field_b, "one operand");
+
   if(ordinal_valuescale(*field_a) == true){
-    assert_ordinal_valuescale(*field_b, "right operand");
-    detail::less_equal<INT4>(field_a, field_b);
+    return detail::less_equal<INT4>(field_a, field_b);
   }
   else if(scalar_valuescale(*field_a) == true){
-    assert_scalar_valuescale(*field_b, "right operand");
     return detail::less_equal<REAL4>(field_a, field_b);
   }
   else{

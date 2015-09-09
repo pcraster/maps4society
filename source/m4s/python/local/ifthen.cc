@@ -157,6 +157,8 @@ calc::Field* ifthen(
          calc::Field* condition,
          calc::Field* field_a){
 
+  assert_equal_location_attributes(*condition);
+  assert_equal_location_attributes(*field_a);
   assert_boolean_valuescale(*condition, "first argument");
 
   VS result_vs = field_a->vs();

@@ -57,7 +57,6 @@ calc::Field* mul_field_field(
 } // namespace detail
 
 
-
 calc::Field* mul_number_number(
          const multicore_field::Nonspatial<REAL4>* arg1,
          const multicore_field::Nonspatial<REAL4>* arg2,
@@ -74,12 +73,6 @@ calc::Field* mul_number_number(
 
   return res->getField();
 }
-
-
-
-
-
-
 
 calc::Field* mul_field_number(
          fern::algorithm::ExecutionPolicy epol,
@@ -100,18 +93,12 @@ calc::Field* mul_field_number(
 }
 
 
-
-
-
-
-
-
-
-
 calc::Field* mul(
          calc::Field* field_a,
          calc::Field* field_b){
 
+  assert_equal_location_attributes(*field_a);
+  assert_equal_location_attributes(*field_b);
   assert_scalar_valuescale(*field_a, "left operand");
   assert_scalar_valuescale(*field_b, "right operand");
 
