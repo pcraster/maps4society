@@ -1,9 +1,9 @@
 #include "m4s/python/local/ifthen.h"
 
 // PCRaster
-#include "calc_spatial.h"
-#include "calc_nonspatial.h"
-#include "calc_cr.h"
+#include "pcrtree2/calc_spatial.h"
+#include "pcrtree2/calc_nonspatial.h"
+#include "pcrtree2/calc_cr.h"
 
 // Field wrapper
 #include "m4s/wrapper/datatype_customization_points/multicore_spatial.h"

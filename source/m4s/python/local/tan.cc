@@ -1,8 +1,8 @@
 #include "m4s/python/local/tan.h"
 
 // PCRaster
-#include "calc_spatial.h"
-#include "calc_nonspatial.h"
+#include "pcrtree2/calc_spatial.h"
+#include "pcrtree2/calc_nonspatial.h"
 
 // Field wrapper
 #include "m4s/wrapper/datatype_customization_points/multicore_spatial.h"

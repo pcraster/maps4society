@@ -35,6 +35,47 @@ function parse_commandline()
     source=$3
 }
 
+function copy_headers()
+{
+  # todo: other architectures?
+  target_dir=$prefix/linux/linux/gcc-4/x86_64/include/pcrtree2/
+  source_dir=$prefix/pcraster-head-Release-prefix/src/pcraster-head-Release/source
+  echo $target_dir
+  mkdir -p $target_dir
+
+  cp \
+$source_dir/pcraster_model_engine/calc_spatial.h \
+$source_dir/pcraster_model_engine/calc_nonspatial.h \
+$source_dir/pcraster_model_engine/calc_cr.h \
+$source_dir/pcraster_model_engine/calc_vs.h \
+$source_dir/pcraster_model_engine/calc_types.h \
+$source_dir/pcraster_model_engine/calc_field.h \
+$source_dir/pcraster_model_engine/calc_datavalue.h \
+$source_dir/pcraster_model_engine/calc_ovs.h \
+$source_dir/pcraster_python/Globals.h \
+$source_dir/pcrgeo/geo_rasterspace.h \
+$source_dir/pcrgeo/geo_def.h \
+$source_dir/pcrgeo/geo_rasterdim.h \
+$source_dir/pcrgeo/geo_cellloc.h \
+$source_dir/pcrcom/com_mvop.h \
+$source_dir/pcrcom/com_csfcell.h \
+$source_dir/app/appargs.h \
+$source_dir/include/pcrdatatype.h \
+$source_dir/include/environ.h \
+$source_dir/include/stddefx.h \
+$source_dir/include/pcrdll.h \
+$source_dir/include/typedef.h \
+$source_dir/include/debug.h \
+$source_dir/include/dev_Compiler.h \
+$source_dir/pcraster_dal/dal_Client.h \
+$source_dir/pcraster_dal/dal_Configure.h \
+$target_dir
+
+  
+
+
+}
+
 
 function build_software()
 {
@@ -96,8 +137,13 @@ function build_software()
     options+=("-Dpcraster_build_pcraster_test=true")
 
 
-    cmake "${options[@]}" $source
-    cmake --build . --target all
+#    cmake "${options[@]}" $source
+#    cmake --build . --target all
+    echo    $download_dir
+    echo $prefix
+    echo $source
+
+    copy_headers
 }
 
 

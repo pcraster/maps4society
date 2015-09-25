@@ -1,10 +1,11 @@
 INCLUDE_DIRECTORIES(
-  ${_PCRTREE2_ROOT_INCLUDE}/pcraster_model_engine
-  ${_PCRTREE2_ROOT_INCLUDE}/include
-  ${_PCRTREE2_ROOT_INCLUDE}/pcraster_python
-  ${_PCRTREE2_ROOT_INCLUDE}/pcrgeo
-  ${_PCRTREE2_ROOT_INCLUDE}/pcrcom
-  ${_PCRTREE2_ROOT_INCLUDE}/app
+  #${_PCRTREE2_ROOT_INCLUDE}/pcraster_model_engine
+  #${_PCRTREE2_ROOT_INCLUDE}/include
+  #${_PCRTREE2_ROOT_INCLUDE}/pcraster_python
+  #${_PCRTREE2_ROOT_INCLUDE}/pcrgeo
+  #${_PCRTREE2_ROOT_INCLUDE}/pcrcom
+  #${_PCRTREE2_ROOT_INCLUDE}/app
+  ${PCRTREE2_INCLUDE_DIRS}
   ${FERN_INCLUDE_DIRS}
 )
 
@@ -28,9 +29,9 @@ SET(_SOURCES
   fac.cc
   ln.cc
   log10.cc
-#  roundup.cc
-#  rounddown.cc
-#  roundoff.cc
+  roundup.cc
+  rounddown.cc
+  roundoff.cc
 
   equal.cc
   unequal.cc

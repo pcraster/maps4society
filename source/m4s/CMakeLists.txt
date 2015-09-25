@@ -8,10 +8,10 @@
 #)
 
 # use the PCRaster configuration
-INCLUDE(Site)
-INCLUDE(UsePCRasterDal)
-INCLUDE(UseBoost)
-INCLUDE(UsePython)
+#INCLUDE(Site)
+#INCLUDE(UsePCRasterDal)
+#INCLUDE(UseBoost)
+#INCLUDE(UsePython)
 
 # we need to accesss the PCRaster model engine
 FIND_PACKAGE(Pcrtree2)

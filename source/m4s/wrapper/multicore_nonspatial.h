@@ -2,8 +2,8 @@
 
 #include <cstddef>
 
-#include "calc_spatial.h"
-#include "com_mvop.h"
+#include "pcrtree2/calc_spatial.h"
+#include "pcrtree2/com_mvop.h"
 
 
 namespace multicore_field {

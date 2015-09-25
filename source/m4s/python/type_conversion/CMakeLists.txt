@@ -1,6 +1,7 @@
 INCLUDE_DIRECTORIES(
-  ${_PCRTREE2_ROOT_INCLUDE}/pcraster_model_engine
-  ${_PCRTREE2_ROOT_INCLUDE}/include
+#  ${_PCRTREE2_ROOT_INCLUDE}/pcraster_model_engine
+#  ${_PCRTREE2_ROOT_INCLUDE}/include
+  ${PCRTREE2_INCLUDE_DIRS}
   ${FERN_INCLUDE_DIRS}
 )
 

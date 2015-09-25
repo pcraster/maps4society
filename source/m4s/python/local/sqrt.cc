@@ -2,8 +2,8 @@
 #include "m4s/python/local/utils.h"
 
 // PCRaster
-#include "calc_spatial.h"
-#include "calc_nonspatial.h"
+#include "pcrtree2/calc_spatial.h"
+#include "pcrtree2/calc_nonspatial.h"
 
 
 // Field wrapper

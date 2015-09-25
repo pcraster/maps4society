@@ -40,12 +40,12 @@ TARGET_LINK_LIBRARIES(_pcraster_multicore
   multicore_field_python_locals
   multicore_field_python_type_conversions
   ${PCRTREE2_MODELENGINE_LIBRARY}
-  ${PCRTREE2_PYTHON_LIBRARY}
+# ttt  ${PCRTREE2_PYTHON_LIBRARY}
   ${BOOST_PYTHON_LIBRARY}
   ${FERN_LIBRARIES}
 )
 
-
-CONFIGURE_PYTHON_EXTENSION(_pcraster_multicore
-    "_pcraster_multicore"
-)
+# ttt
+#CONFIGURE_PYTHON_EXTENSION(_pcraster_multicore
+#    "_pcraster_multicore"
+#)

@@ -2,11 +2,11 @@
 #include <sstream>
 
 
-#include "calc_nonspatial.h"
-#include "calc_spatial.h"
-#include "pcrdatatype.h"
-#include "Globals.h"
-#include "appargs.h"
+#include "pcrtree2/calc_nonspatial.h"
+#include "pcrtree2/calc_spatial.h"
+#include "pcrtree2/pcrdatatype.h"
+#include "pcrtree2/Globals.h"
+#include "pcrtree2/appargs.h"
 
 #include "fern/algorithm/policy/execution_policy.h"
 

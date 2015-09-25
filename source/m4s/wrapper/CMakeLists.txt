@@ -1,7 +1,8 @@
 INCLUDE_DIRECTORIES(
-  ${_PCRTREE2_ROOT_INCLUDE}/pcraster_model_engine
-  ${_PCRTREE2_ROOT_INCLUDE}/include
-  ${_PCRTREE2_ROOT_INCLUDE}/pcrcom
+  #${_PCRTREE2_ROOT_INCLUDE}/pcraster_model_engine
+  #${_PCRTREE2_ROOT_INCLUDE}/include
+  #${_PCRTREE2_ROOT_INCLUDE}/pcrcom
+  ${PCRTREE2_INCLUDE_DIRS}
 )
 
 # ADD_LIBRARY(multicore_field
