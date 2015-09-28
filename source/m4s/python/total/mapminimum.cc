@@ -1,9 +1,9 @@
 #include "m4s/python/total/mapminimum.h"
 
 // PCRaster
-#include "calc_spatial.h"
-#include "calc_nonspatial.h"
-#include "calc_cr.h"
+#include "pcrtree2/calc_spatial.h"
+#include "pcrtree2/calc_nonspatial.h"
+#include "pcrtree2/calc_cr.h"
 
 
 // Field wrapper

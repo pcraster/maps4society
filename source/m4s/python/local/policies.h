@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cassert>
-#include "calc_spatial.h"
+#include "pcrtree2/calc_spatial.h"
 
 
 namespace pcraster_multicore {

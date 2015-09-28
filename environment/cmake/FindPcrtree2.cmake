@@ -1,7 +1,7 @@
 # This module defines the following CMake variables:
 ##   _FOUND
 #  PCRTREE2_INCLUDE_DIRS
-##  _LIBRARIES
+#  PCRTREE2_LIBRARIES
 #
 
 
@@ -11,10 +11,21 @@ FIND_PATH(PCRTREE2_INCLUDE_DIRS
     PATHS ${_PCRTREE2_ROOT_INCLUDE}
 )
 
+FIND_LIBRARY(PCRTREE2_MODELENGINE_LIBRARY
+    NAMES pcraster_model_engine
+    PATHS ${_PCRTREE2_ROOT_LIB}
+)
+
+FIND_LIBRARY(PCRTREE2_PYTHON_LIBRARY
+    NAMES _pcraster.so
+    #PATHS ${PCRTREE2_INCLUDE_DIRS}/../python/pcraster #${_PCRTREE2_ROOT_LIB}
+    PATHS ${_PCRTREE2_ROOT_LIB} # /// todo check which one works with clean directory...
+)
 
 
 SET(PCRTREE2_LIBRARIES
-    ${PCRTREE2_CORE_LIBRARY}
+    ${PCRTREE2_MODELENGINE_LIBRARY}
+    ${PCRTREE2_PYTHON_LIBRARY}
 )
 
 INCLUDE(FindPackageHandleStandardArgs)

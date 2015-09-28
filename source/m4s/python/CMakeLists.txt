@@ -6,11 +6,8 @@ ADD_SUBDIRECTORY(scripts)
 
 
 INCLUDE_DIRECTORIES(
-  ${_PCRTREE2_ROOT_INCLUDE}/pcraster_model_engine
-  ${_PCRTREE2_ROOT_INCLUDE}/pcraster_python
-  ${_PCRTREE2_ROOT_INCLUDE}/pcrgeo
-  ${_PCRTREE2_ROOT_INCLUDE}/include
-  ${_PCRTREE2_ROOT_INCLUDE}/pcrcom
+  ${PCRTREE2_INCLUDE_DIRS}
+  ${PYTHON_INCLUDE_DIRS}
   ${FERN_INCLUDE_DIRS}
 )
 
@@ -40,10 +37,13 @@ TARGET_LINK_LIBRARIES(_pcraster_multicore
   multicore_field_python_locals
   multicore_field_python_type_conversions
   ${PCRTREE2_MODELENGINE_LIBRARY}
-# ttt  ${PCRTREE2_PYTHON_LIBRARY}
+  ${PCRTREE2_PYTHON_LIBRARY}
   ${BOOST_PYTHON_LIBRARY}
   ${FERN_LIBRARIES}
 )
+
+
+
 
 # ttt
 #CONFIGURE_PYTHON_EXTENSION(_pcraster_multicore

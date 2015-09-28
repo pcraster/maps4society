@@ -2,7 +2,7 @@
 
 
 // PCRaster
-#include "calc_spatial.h"
+#include "pcrtree2/calc_spatial.h"
 
 
 // Field wrapper

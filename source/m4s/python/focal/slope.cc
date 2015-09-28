@@ -3,9 +3,9 @@
 #include <stdexcept>
 
 // PCRaster
-#include "calc_spatial.h"
-#include "Globals.h"
-#include "appargs.h"
+#include "pcrtree2/calc_spatial.h"
+#include "pcrtree2/Globals.h"
+#include "pcrtree2/appargs.h"
 
 
 // Field wrapper
