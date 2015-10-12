@@ -1,0 +1,26 @@
+# This module defines the following CMake variables:
+##   _FOUND
+#  BOOST_INCLUDE_DIRS
+#  BOOST_LIBRARIES
+#
+
+FIND_PATH(BOOST_INCLUDE_DIRS
+    NAMES boost/python.hpp
+    PATHS ${_BOOST_ROOT_INCLUDE}
+)
+
+FIND_LIBRARY(BOOST_PYTHON_LIBRARY
+    NAMES boost_python-mt
+    PATHS ${_BOOST_ROOT_LIB}
+)
+
+SET(BOOST_LIBRARIES
+    ${BOOST_PYTHON_LIBRARY}
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(BOOST
+    REQUIRED_VARS
+        BOOST_LIBRARIES
+        BOOST_INCLUDE_DIRS
+)

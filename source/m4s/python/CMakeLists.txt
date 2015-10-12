@@ -42,10 +42,6 @@ TARGET_LINK_LIBRARIES(_pcraster_multicore
   ${FERN_LIBRARIES}
 )
 
-
-
-
-# ttt
-#CONFIGURE_PYTHON_EXTENSION(_pcraster_multicore
-#    "_pcraster_multicore"
-#)
+CONFIGURE_PYTHON_EXTENSION(_pcraster_multicore
+  "_pcraster_multicore"
+)
