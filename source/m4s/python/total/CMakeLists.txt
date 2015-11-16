@@ -1,19 +1,10 @@
-INCLUDE_DIRECTORIES(
-  ${PCRTREE2_INCLUDE_DIRS}
-  ${FERN_INCLUDE_DIRS}
+set(_SOURCES
+    mapmaximum
+    mapminimum
+    maptotal
 )
 
-SET(_SOURCES
-  mapmaximum.cc
-  mapminimum.cc
-  maptotal.cc
+add_library(multicore_field_python_totals
+    STATIC
+        ${_SOURCES}
 )
-
-ADD_LIBRARY(multicore_field_python_totals
-  STATIC
-    ${_SOURCES}
-)
-
-
-
-

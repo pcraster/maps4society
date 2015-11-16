@@ -150,6 +150,9 @@ calc::Field* minimum(boost::python::list const& arguments){
   else if(scalar_valuescale(*field_arguments.at(0))){
     return detail::minimum<REAL4>(field_arguments);
   }
+
+  assert(false);
+  return nullptr;
 }
 
 

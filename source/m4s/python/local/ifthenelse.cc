@@ -308,6 +308,9 @@ calc::Field* ifthenelse(
   else if(scalar_valuescale(*field_a) || directional_valuescale(*field_a)){
     return detail::ifthenelse<REAL4>(condition, field_a, field_b, result_vs, result_cri);
   }
+
+  assert(false);
+  return nullptr;
 }
 
 
