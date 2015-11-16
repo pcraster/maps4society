@@ -1,60 +1,54 @@
-INCLUDE_DIRECTORIES(
-  ${PCRTREE2_INCLUDE_DIRS}
-  ${FERN_INCLUDE_DIRS}
-  ${PYTHON_INCLUDE_DIRS}
+set(_SOURCES
+
+    and
+    or
+    xor
+    not
+    defined
+
+    add
+    sub
+    mul
+    div
+
+    sqrt
+    pow
+    sqr
+    abs
+    fac
+    ln
+    log10
+    roundup
+    rounddown
+    roundoff
+
+    equal
+    unequal
+    less
+    less_equal
+    greater
+    greater_equal
+
+    ifthen
+    ifthenelse
+
+    cover
+    minimum
+    maximum
+
+    cos
+    sin
+    tan
+    acos
+    asin
+    atan
+
+    utils
 )
 
-SET(_SOURCES
-
-  and.cc
-  or.cc
-  xor.cc
-  not.cc
-  defined.cc
-
-  add.cc
-  sub.cc
-  mul.cc
-  div.cc
-
-  sqrt.cc
-  pow.cc
-  sqr.cc
-  abs.cc
-  fac.cc
-  ln.cc
-  log10.cc
-  roundup.cc
-  rounddown.cc
-  roundoff.cc
-
-  equal.cc
-  unequal.cc
-  less.cc
-  less_equal.cc
-  greater.cc
-  greater_equal.cc
-
-  ifthen.cc
-  ifthenelse.cc
-
-  cover.cc
-  minimum.cc
-  maximum.cc
-
-  cos.cc
-  sin.cc
-  tan.cc
-  acos.cc
-  asin.cc
-  atan.cc
-
-  utils.cc
-)
-
-ADD_LIBRARY(multicore_field_python_locals
-  STATIC
-    ${_SOURCES}
+add_library(multicore_field_python_locals
+    STATIC
+        ${_SOURCES}
 )
 
 

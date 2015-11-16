@@ -1,20 +1,11 @@
-INCLUDE_DIRECTORIES(
-  ${PCRTREE2_INCLUDE_DIRS}
-  ${FERN_INCLUDE_DIRS}
+set(_SOURCES
+    boolean
+    nominal
+    ordinal
+    scalar
 )
 
-SET(_SOURCES
-  boolean.cc
-  nominal.cc
-  ordinal.cc
-  scalar.cc
+add_library(multicore_field_python_type_conversions
+    STATIC
+        ${_SOURCES}
 )
-
-ADD_LIBRARY(multicore_field_python_type_conversions
-  STATIC
-    ${_SOURCES}
-)
-
-
-
-

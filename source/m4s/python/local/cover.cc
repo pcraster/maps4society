@@ -148,6 +148,9 @@ calc::Field* cover(boost::python::list const& arguments){
   else if(scalar_valuescale(*field_arguments.at(0)) || directional_valuescale(*field_arguments.at(0))){
     return detail::cover<REAL4>(field_arguments);
   }
+
+  assert(false);
+  return nullptr;
 }
 
 

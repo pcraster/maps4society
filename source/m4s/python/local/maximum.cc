@@ -150,8 +150,10 @@ calc::Field* maximum(boost::python::list const& arguments){
   else if(scalar_valuescale(*field_arguments.at(0))){
     return detail::maximum<REAL4>(field_arguments);
   }
-}
 
+  assert(false);
+  return nullptr;
+}
 
 } // namespace python
 } // namespace pcraster_multicore

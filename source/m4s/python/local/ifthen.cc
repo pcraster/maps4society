@@ -174,6 +174,8 @@ calc::Field* ifthen(
     return detail::ifthen<REAL4>(condition, field_a, result_vs, result_cri);
   }
 
+  assert(false);
+  return nullptr;
 }
 
 

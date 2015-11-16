@@ -1,47 +1,30 @@
-ADD_SUBDIRECTORY(local)
-ADD_SUBDIRECTORY(focal)
-ADD_SUBDIRECTORY(total)
-ADD_SUBDIRECTORY(type_conversion)
-ADD_SUBDIRECTORY(scripts)
+add_subdirectory(local)
+add_subdirectory(focal)
+add_subdirectory(total)
+add_subdirectory(type_conversion)
+add_subdirectory(scripts)
 
 
-INCLUDE_DIRECTORIES(
-  ${PCRTREE2_INCLUDE_DIRS}
-  ${PYTHON_INCLUDE_DIRS}
-  ${FERN_INCLUDE_DIRS}
+set(_SOURCES
+    execution_policy
+    pcraster_multicore
 )
 
+add_library(_pcraster_multicore SHARED ${_SOURCES})
 
-SET(_SOURCES
-  execution_policy
-  pcraster_multicore
+target_link_libraries(_pcraster_multicore
+    multicore_field_python_totals
+    multicore_field_python_focals
+    multicore_field_python_locals
+    multicore_field_python_type_conversions
+    ${PCRTREE2_MODELENGINE_LIBRARY}
+    ${PCRTREE2_PYTHON_LIBRARY}
+    ${FERN_LIBRARIES}
+    ${Boost_PYTHON_LIBRARY}
+    ${Boost_SYSTEM_LIBRARY}
+    ${PYTHON_LIBRARIES}
 )
 
-#set (CMAKE_SHARED_LINKER_FLAGS "  -Wl,-z,defs ")
-
-
-ADD_LIBRARY(_pcraster_multicore SHARED ${_SOURCES})
-
-
-ADD_DEPENDENCIES(_pcraster_multicore
-  multicore_field_python_totals
-  multicore_field_python_focals
-  multicore_field_python_locals
-  multicore_field_python_type_conversions
-)
-
-
-TARGET_LINK_LIBRARIES(_pcraster_multicore
-  multicore_field_python_totals
-  multicore_field_python_focals
-  multicore_field_python_locals
-  multicore_field_python_type_conversions
-  ${PCRTREE2_MODELENGINE_LIBRARY}
-  ${PCRTREE2_PYTHON_LIBRARY}
-  ${BOOST_PYTHON_LIBRARY}
-  ${FERN_LIBRARIES}
-)
-
-CONFIGURE_PYTHON_EXTENSION(_pcraster_multicore
-  "_pcraster_multicore"
+configure_python_extension(_pcraster_multicore
+    "_pcraster_multicore"
 )
