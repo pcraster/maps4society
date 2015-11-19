@@ -4,7 +4,7 @@ except:
   # we rely on a correct PCRaster setup
   raise ImportError("Failed to import the module '_pcraster'")
 
-import pcraster_multicore_operations as pmcop
+from . import operations as pmcop
 
 
 def pcrmcAnd(self, field):
