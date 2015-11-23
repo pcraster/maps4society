@@ -38,5 +38,5 @@ class AddTimerCase(timer_case.TimerCase):
             self.f32_random_2_raster)
 
 
-    time_add_pcr_f32_random.repeat = 3
-    time_add_pcrmc_f32_random.repeat = 3
+    # time_add_pcr_f32_random.repeat = 3
+    # time_add_pcrmc_f32_random.repeat = 3

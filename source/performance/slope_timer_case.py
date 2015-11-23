@@ -15,7 +15,7 @@ import pcraster5.multicore as pcrmc
 import timer_case
 
 
-class SqrtTimerCase(timer_case.TimerCase):
+class SlopeTimerCase(timer_case.TimerCase):
 
     @classmethod
     def set_up_class(cls):
@@ -23,15 +23,15 @@ class SqrtTimerCase(timer_case.TimerCase):
             cls.data.raster_dataset_pathnames["f32_random_1"])
 
 
-    def time_sqrt_pcr_f32_random(self):
-        result = pcr.sqrt(
+    def time_slope_pcr_f32_random(self):
+        result = pcr.slope(
             self.f32_random_1_raster)
 
 
-    def time_sqrt_pcrmc_f32_random(self):
-        result = pcrmc.sqrt(
+    def time_slope_pcrmc_f32_random(self):
+        result = pcrmc.slope(
             self.f32_random_1_raster)
 
 
-    # time_sqrt_pcr_f32_random.repeat = 3
-    # time_sqrt_pcrmc_f32_random.repeat = 3
+    # time_slope_pcr_f32_random.repeat = 3
+    # time_slope_pcrmc_f32_random.repeat = 3
