@@ -9,5 +9,6 @@ loader = pa.TimerLoader()
 pa.SQLiteTimerRunner(database_name="timings.db").run(
     pa.TimerSuite([
         loader.load_timers_from_name("add_timer_case.AddTimerCase"),
+        loader.load_timers_from_name("slope_timer_case.SlopeTimerCase"),
         loader.load_timers_from_name("sqrt_timer_case.SqrtTimerCase"),
 ]))
