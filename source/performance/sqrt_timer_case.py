@@ -1,5 +1,6 @@
 import os
 import sys
+import psutil
 
 sys.path = [
     # TODO Use ${PCRASTER_PYTHON_ROOT}
@@ -23,6 +24,11 @@ class SqrtTimerCase(timer_case.TimerCase):
             cls.data.raster_dataset_pathnames["f32_random_1"])
 
 
+    def set_up(self):
+        # Set the number of cpus to use by the algorithm to the default.
+        pcrmc.set_nr_cpus(psutil.cpu_count(logical=True))
+
+
     def time_sqrt_pcr_f32_random(self):
         result = pcr.sqrt(
             self.f32_random_1_raster)
@@ -35,3 +41,25 @@ class SqrtTimerCase(timer_case.TimerCase):
 
     # time_sqrt_pcr_f32_random.repeat = 3
     # time_sqrt_pcrmc_f32_random.repeat = 3
+
+
+def create_method(
+        nr_logical_cpus):
+
+    def method(self):
+        pcrmc.set_nr_cpus(nr_logical_cpus)
+        result = pcrmc.sqrt(
+            self.f32_random_1_raster)
+
+    method.__name__ = "time_sqrt_{}".format(nr_logical_cpus)
+
+    return method
+
+
+def add_sqrt_cases():
+
+    for n in xrange(1, psutil.cpu_count(logical=True) + 1):
+        SqrtTimerCase.add_method(create_method(n))
+
+
+add_sqrt_cases()
