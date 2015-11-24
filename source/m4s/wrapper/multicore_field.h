@@ -17,14 +17,16 @@ namespace python {
 namespace multicore_field {
 
 
-template<class T>
+template<
+    typename T>
 class Spatial {
 
 public:
 
-  Spatial  (calc::Field* field);
+                   Spatial             (calc::Field* field,
+                                        bool const delete_upon_exit=false);
 
-  ~Spatial (){};
+                   ~Spatial            ();
 
   T&               get(size_t index);
 
@@ -48,6 +50,8 @@ private:
 
   calc::Field*     pcr_field;
 
+  bool const       _delete_upon_exit;
+
   T*               the_cells;
 
   size_t           rows;
@@ -60,13 +64,29 @@ private:
 
 
 template<class T>
-Spatial<T>::Spatial(calc::Field* field){
-  pcr_field = field;
-  the_cells = static_cast<T*>(pcr_field->dest());
-  rows = pcraster::python::globals.cloneSpace().nrRows();
-  cols = pcraster::python::globals.cloneSpace().nrCols();
-  _cell_size = pcraster::python::globals.cloneSpace().cellSize();
+inline Spatial<T>::Spatial(
+    calc::Field* field,
+    bool delete_upon_exit)
+
+    : pcr_field(field),
+      _delete_upon_exit(delete_upon_exit)
+
+{
+    the_cells = static_cast<T*>(pcr_field->dest());
+    rows = pcraster::python::globals.cloneSpace().nrRows();
+    cols = pcraster::python::globals.cloneSpace().nrCols();
+    _cell_size = pcraster::python::globals.cloneSpace().cellSize();
 }
+
+
+template<class T>
+inline Spatial<T>::~Spatial()
+{
+    if(_delete_upon_exit) {
+        delete pcr_field;
+    }
+}
+
 
 template<class T>
 inline calc::Field* Spatial<T>::getField() const {

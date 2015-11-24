@@ -11,7 +11,7 @@ template<class T>
 inline multicore_field::Spatial<T> clone(
     multicore_field::Spatial<T> const& aField)
 {
-  return aField.getField()->createClone();
+  return multicore_field::Spatial<T>(aField.getField()->createClone(), true);
 }
 
 
