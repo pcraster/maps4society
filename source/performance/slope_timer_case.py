@@ -33,5 +33,5 @@ class SlopeTimerCase(timer_case.TimerCase):
             self.f32_random_1_raster)
 
 
-    # time_slope_pcr_f32_random.repeat = 3
-    # time_slope_pcrmc_f32_random.repeat = 3
+    time_slope_pcr_f32_random.repeat = 3
+    time_slope_pcrmc_f32_random.repeat = 3
