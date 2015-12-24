@@ -101,8 +101,7 @@ function build_software()
     # Fern.
     options+=("-Dbuild_fern=true")
     options+=("-Dfern_git_repository=https://github.com/geoneric/fern.git")
-    # options+=("-Dfern_git_tag=d90ececdcaf365e608009aaa3c4c7a30027e0249")
-    options+=("-Dfern_git_tag=47cd1676bcbef67b04fe3cb0fd310366764571ad")
+    options+=("-Dfern_git_tag=12fa63cb2d72e6abafbbac50f40ca2143344da6a")
     options+=("-Dfern_build_fern_algorithm=true")
     options+=("-Dfern_build_fern_documentation=true")
     options+=("-Dfern_build_fern_test=true")
@@ -122,27 +121,22 @@ function build_software()
 
     # Qwt
     options+=("-Dbuild_qwt=true")
-    options+=("-Dqwt_version=6.0.2")
+    options+=("-Dqwt_version=6.1.2")
 
     # PCRaster.
     options+=("-Dbuild_pcraster=true")
     options+=(
         "-Dpcraster_git_repository=https://github.com/pcraster/pcraster.git")
-    options+=("-Dpcraster_git_tag=f1b54c6b5d6b0006543b05978bb0b4abc5bf5ad1")
-    # CMake Error at source/modflow/documentation/cmake_install.cmake:36 (file):
-    #   file INSTALL cannot find
-    #     "/home/shared1/builder/tmp/peacock/pcraster-head-Release-prefix/src/pcraster-head-Release-build/source/modflow/documentation/_build/html".
-    # options+=("-Dpcraster_git_tag=9d73caee948454aac8f923d1013c7ee4e0afd539")
+    options+=("-Dpcraster_git_tag=3d8d74defd0af7db4c70295a42da4835eb6da864")
     options+=("-Dpcraster_build_pcraster_documentation=true")
     options+=("-Dpcraster_build_pcraster_test=true")
 
 
     cmake "${options[@]}" $source
     cmake --build . --target all
-
-    copy_headers
 }
 
 
 parse_commandline $*
 build_software
+copy_headers
